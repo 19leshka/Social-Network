@@ -1,0 +1,86 @@
+header {
+  position: sticky;
+  background-color: #fff;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.headerWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerWrapper div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: row;
+}
+
+.headerRight {
+  height: 100%;
+}
+
+.headerIcon {
+  width: 165px;
+}
+
+.searchInput {
+  background-color: #eee;
+  border-radius: 10px;
+  border: none;
+  height: 32px;
+  width: 230px;
+  outline: 0;
+  line-height: 32px;
+  padding-left: 30px;
+  margin-right: 40px;
+}
+
+.searchInput::placeholder {
+  color: #212529;
+  opacity: 0.4;
+}
+
+.notify {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(192, 92, 154);
+  opacity: 0.6;
+}
+
+.notify:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.myProfile {
+  width: 70px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.myProfile:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.myProfileImg {
+  height: 32px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.myProfileImg::after {
+  content: "\ea50";
+  font-family: "icomoon";
+  position: absolute;
+}

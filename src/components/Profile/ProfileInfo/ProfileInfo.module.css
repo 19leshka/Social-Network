@@ -1,0 +1,47 @@
+.profileInner {
+  background-color: #fff;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.editPhoto {
+  background-color: #eee;
+  border-radius: 5px;
+  height: 30px;
+  width: 190px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.editPhoto:hover {
+  background-color: rgb(216, 216, 216);
+}
+
+.profileName {
+  font-size: 21px;
+  line-height: 21px;
+  margin: 0 0 5px;
+}
+
+.profileStatus {
+  color: #959595;
+}
+
+.profileHr {
+  border: none;
+  color: #959595;
+  background-color: #959595;
+  height: 1px;
+}
+
+.rightInfo {
+  display: inline-block;
+}
+
+.leftInfo {
+  display: inline-block;
+  width: 200px;
+}

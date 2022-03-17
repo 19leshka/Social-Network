@@ -1,0 +1,19 @@
+.messageItemAuthor {
+  background-color: rgb(233, 138, 196);
+  max-width: 300px;
+  border-radius: 5px 5px 0px 5px;
+  padding: 10px;
+  margin: 5px;
+  align-self: end;
+
+  position: relative;
+}
+
+.messageItemAuthor:after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  bottom: -5px;
+  border: 3px solid;
+  border-color: rgb(233, 138, 196) rgb(233, 138, 196) transparent transparent;
+}

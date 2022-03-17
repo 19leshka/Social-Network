@@ -1,0 +1,11 @@
+.messages {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+.dialogs {
+  background-color: #fff;
+  min-height: 90vh;
+  max-height: 90vh;
+  box-shadow: 4px 0px 8px 0px rgba(34, 60, 80, 0.2);
+}

@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import Profile from './components/Profile/Profile';
+import MessagesContainer from './components/Messages/MessagesContainer';
+import Header from './components/Header/Header';
+import {Routes, Route} from "react-router-dom";
 
-function App() {
+const App = (props) => {
+  const myProfile = props.appState.profileReducer; 
+  const dialogs = props.appState.dialogsReducer; 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="app-wrapper">
+          <Header />
+          <div className="wrapper main-wrapper">
+            <Navbar />
+            <Routes>
+              <Route path="/profile" element={<Profile myProfile={myProfile}
+              dispatch={props.dispatch}/>}/>
+              <Route path="/messages/*" element={<MessagesContainer dialogs={dialogs} dispatch={props.dispatch}/>}/>
+              <Route path="*" element={<div>smth wrong</div>}/>
+            </Routes>
+          </div>
+      </div>
   );
 }
 

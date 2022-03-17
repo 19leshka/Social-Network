@@ -1,0 +1,18 @@
+.messageItemCompanion {
+  background-color: rgb(194, 194, 194);
+  max-width: 300px;
+  border-radius: 5px 5px 5px 0;
+  padding: 10px;
+  margin: 5px;
+  align-self: start;
+  position: relative;
+}
+
+.messageItemCompanion:before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -5px;
+  border: 3px solid;
+  border-color: rgb(194, 194, 194) transparent transparent rgb(194, 194, 194);
+}

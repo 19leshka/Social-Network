@@ -1,0 +1,58 @@
+.createPost {
+  display: block;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.myProfileImg {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.myProfileImg img {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.createPostInput {
+  display: inline-block;
+  color: #000;
+  background-color: transparent;
+  border: none;
+  width: 94%;
+  padding: 10px;
+  vertical-align: top;
+  overflow: hidden;
+  min-height: 52px;
+  max-height: 52px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  resize: none;
+  margin-bottom: 40px;
+}
+
+.createPostInput:focus {
+  min-height: 100px;
+  outline: 0 none;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  transition: min-height 0.3s ease-out;
+}
+
+.createPostBtn {
+  position: relative;
+  float: right;
+  top: -30px;
+}
+
+.PostBtn {
+  color: #fff;
+  border: none;
+  background-color: rgb(192, 92, 154);
+  box-shadow: 2px 2px 4px 0px rgba(34, 60, 80, 0.2);
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+}

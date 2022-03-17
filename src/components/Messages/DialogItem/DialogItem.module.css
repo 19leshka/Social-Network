@@ -1,0 +1,25 @@
+.dialogItem {
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(207, 207, 207);
+  height: 60px;
+  padding: 5px;
+  background-color: #fff;
+  margin-bottom: 1px;
+}
+
+.dialogItem:hover {
+  background-color: #eee;
+}
+
+.dialogItemIcon {
+  margin-right: 10px;
+  max-height: 50px;
+}
+
+.dialogIcon {
+  border-radius: 50%;
+  max-height: 50px;
+}
