@@ -7,8 +7,8 @@ import Header from './components/Header/Header';
 import {Routes, Route} from "react-router-dom";
 
 const App = (props) => {
-  const myProfile = props.appState.profileReducer; 
-  const dialogs = props.appState.dialogsReducer; 
+  // const myProfile = props.appState.profileReducer; 
+  // const dialogs = props.appState.dialogsReducer; 
 
   return (
       <div className="app-wrapper">
@@ -16,9 +16,8 @@ const App = (props) => {
           <div className="wrapper main-wrapper">
             <Navbar />
             <Routes>
-              <Route path="/profile" element={<Profile myProfile={myProfile}
-              dispatch={props.dispatch}/>}/>
-              <Route path="/messages/*" element={<MessagesContainer dialogs={dialogs} dispatch={props.dispatch}/>}/>
+              <Route path="/profile" element={<Profile/>}/>
+              <Route path="/messages/*" element={<MessagesContainer/>}/>
               <Route path="*" element={<div>smth wrong</div>}/>
             </Routes>
           </div>

@@ -4,8 +4,8 @@ import dialogsReducer from './dialogs-reducer'
 
 
 let reducers = combineReducers({
-    profileReducer: profileReducer,
-    dialogsReducer: dialogsReducer
+    myProfile: profileReducer,
+    dialogs: dialogsReducer
 });
 
 let store = createStore(reducers);

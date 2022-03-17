@@ -6,7 +6,7 @@ const Profile = (props) => {
     return (
         <main className={s.profile}>
             <ProfileInfo />
-            <PostsAreaContainer myProfile={props.myProfile} dispatch={props.dispatch} />
+            <PostsAreaContainer/>
         </main>
     );
 }
