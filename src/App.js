@@ -7,9 +7,6 @@ import Header from './components/Header/Header';
 import {Routes, Route} from "react-router-dom";
 
 const App = (props) => {
-  // const myProfile = props.appState.profileReducer; 
-  // const dialogs = props.appState.dialogsReducer; 
-
   return (
       <div className="app-wrapper">
           <Header />

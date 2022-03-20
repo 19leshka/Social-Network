@@ -4,7 +4,7 @@ import Chat from './Chat/Chat';
 
 const Messages = (props) => {
     let dialogs = 
-            [...props.dialogs]
+            [...props.peoples]
             .map(dialog => {
                 return <DialogItem imgSrc={window.location.origin + dialog.img} name={dialog.name} id={dialog.id}/>
             })
@@ -14,7 +14,7 @@ const Messages = (props) => {
             <div className={s.dialogs}>
                 {dialogs}
             </div>
-                <Chat dialogMessages={props.dialogs[1].messages} newMessageText={props.dialogs[1].newMessageText} sendMessage={props.sendMessage} updateMessageText={props.updateMessageText}/>
+                <Chat dialogMessages={props.peoples[1].messages} newMessageText={props.peoples[1].newMessageText} sendMessage={props.sendMessage} updateMessageText={props.updateMessageText}/>
         </main>
     );
 }

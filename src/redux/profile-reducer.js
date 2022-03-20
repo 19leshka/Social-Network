@@ -32,24 +32,24 @@ let initialProfile = {
 }
 
 const profileReducer = (myProfile = initialProfile, action) => {
+    let myProfileCopy = JSON.parse(JSON.stringify(myProfile));
     switch (action.type) {
         case ADD_POST:
-            if(myProfile.newPostValue === "") return  myProfile;
+            if(myProfileCopy.newPostValue === "") return  myProfile;
             let newPost = {
                 avatarImg: (window.location.origin + '/img/myProfileImg.jpg'),
-                postText: myProfile.newPostValue,
+                postText: myProfileCopy.newPostValue,
                 date: (new Date()).toLocaleDateString(),
-                id: myProfile.posts.length + 1
+                id: myProfileCopy.posts.length + 1
             }
-        
-            myProfile.posts.push(newPost);
-            myProfile.newPostValue = "";
-            return myProfile;
+            myProfileCopy.posts.push(newPost);
+            myProfileCopy.newPostValue = "";
+            return myProfileCopy;
         case CHANGE_POST_TEXT:
-            myProfile.newPostValue = action.newText;
-            return myProfile;
+            myProfileCopy.newPostValue = action.newText;
+            return myProfileCopy;
         default: 
-            return myProfile;
+            return myProfileCopy;
     }
 }
 

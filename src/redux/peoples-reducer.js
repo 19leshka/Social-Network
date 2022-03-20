@@ -1,7 +1,7 @@
 const SEND_MESSAGE = "SEND-MESSAGE";
 const CHANGE_MESSAGE_TEXT = "CHANGE-MESSAGE-TEXT";
 
-let initialDialog = [
+let peoples = [
     {
         id: 1,
         name: "Максим Вырко",
@@ -80,24 +80,25 @@ let initialDialog = [
     }, 
 ]
 
-const dialogsReducer = (dialog = initialDialog, action) => {
+const dialogsReducer = (dialog = peoples, action) => {
+    let dialogCopy = JSON.parse(JSON.stringify(dialog));
     switch(action.type) {
         case SEND_MESSAGE:
-            if(dialog[1].newMessageText === "") return dialog;
+            if(dialogCopy[1].newMessageText === "") return dialog;
 
             let newMessage = {
                 author: 0,
-                text: dialog[1].newMessageText
+                text: dialogCopy[1].newMessageText
             }
     
-            dialog[1].messages.push(newMessage);
-            dialog[1].newMessageText = "";   
-            return dialog;
+            dialogCopy[1].messages.push(newMessage);
+            dialogCopy[1].newMessageText = "";   
+            return dialogCopy;
         case CHANGE_MESSAGE_TEXT:
-            dialog[1].newMessageText = action.newText;
-            return dialog;
+            dialogCopy[1].newMessageText = action.newText;
+            return dialogCopy;
         default:
-            return dialog;
+            return dialogCopy;
     }
 
 }
