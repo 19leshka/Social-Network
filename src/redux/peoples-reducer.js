@@ -77,7 +77,7 @@ let peoples = [
         img: "/img/MaxMalinetsProfileImg.jpg",
         messages: [],
         newMessageText: ""
-    }, 
+    }
 ]
 
 const dialogsReducer = (dialog = peoples, action) => {
