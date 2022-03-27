@@ -1,7 +1,9 @@
 import s from './Friend.module.css';
+import userPhoto from './../../../assets/userPhoto.png'
 
 const Friend = (props) => {
-    // debugger
+    const photo = window.location.origin + props.friend.img; 
+
     const onFollow = (id) => {
         props.follow(id);
     }
@@ -14,7 +16,7 @@ const Friend = (props) => {
         <div className={s.friend} key={props.friend.id}>
             <div className={s.ProfileInfo}>
                 <div className={s.ProfileImg}>
-                    <img src={window.location.origin + props.friend.img} alt="" />
+                    <img src={props.friend.img == null ? userPhoto : photo} alt="" />
                 </div>
                 <div className={s.ProfileName}>
                     <h3>{props.friend.name}</h3>

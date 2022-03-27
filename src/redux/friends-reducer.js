@@ -31,6 +31,12 @@ let myFriends = [
         name: "Максим Малинец",
         img: "/img/MaxMalinetsProfileImg.jpg",
         followed: true
+    }, 
+    {
+        id: 6,
+        name: "Игорь Шаровский",
+        img: null,
+        followed: false
     }
 ]
 

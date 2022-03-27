@@ -8,6 +8,11 @@ import Header from './components/Header/Header';
 import {Routes, Route} from "react-router-dom";
 
 const App = (props) => {
+  const WrongPage = () => {
+    document.title = "Wrong Page"
+    return (<div>smth wrong</div>)
+  }
+
   return (
       <div className="app-wrapper">
           <Header />
@@ -17,7 +22,7 @@ const App = (props) => {
               <Route path="/profile" element={<Profile/>}/>
               <Route path="/messages/*" element={<MessagesContainer/>}/>
               <Route path="/friends/*" element={<FriendsContainer/>}/>
-              <Route path="*" element={<div>smth wrong</div>}/>
+              <Route path="*" element={<WrongPage/>}/>
             </Routes>
           </div>
       </div>

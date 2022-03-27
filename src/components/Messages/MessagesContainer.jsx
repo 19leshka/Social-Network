@@ -11,6 +11,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+    document.title = "Messages"
+
     return {
         sendMessage: () => {
             dispatch(sendMessageActionCreater());
