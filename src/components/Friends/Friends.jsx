@@ -1,5 +1,6 @@
 import s from './Friends.module.css';
 import Friend from './Friend/Friend'
+import User from './Users/User'
 import * as axios from 'axios';
 
 const Friends = (props) => {
