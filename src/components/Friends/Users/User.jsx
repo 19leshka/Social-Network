@@ -2,7 +2,7 @@ import s from './User.module.css';
 import userPhoto from './../../../assets/userPhoto.png'
 
 const User = (props) => {
-    const photo = window.location.origin + props.friend.img; 
+    const photo = window.location.origin + props.user.img; 
 
     const onFollow = (id) => {
         props.follow(id);
@@ -13,19 +13,19 @@ const User = (props) => {
     }
 
     return (
-        <div className={s.friend} key={props.friend.id}>
+        <div className={s.friend} key={props.user.id}>
             <div className={s.ProfileInfo}>
                 <div className={s.ProfileImg}>
-                    <img src={props.friend.img == null ? userPhoto : photo} alt="" />
+                    <img src={props.user.img == null ? userPhoto : photo} alt="" />
                 </div>
                 <div className={s.ProfileName}>
-                    <h3>{props.friend.name}</h3>
+                    <h3>{props.user.name}</h3>
                 </div>
             </div>
             <div className={s.followBtn}>
-                {props.friend.followed ? 
-                    <button className={s.followBtnUnf} onClick={() => onUnfollow(props.friend.id)}>Followed</button> :
-                    <button className={s.followBtnF} onClick={() => onFollow(props.friend.id)}>Unfolowwed</button> 
+                {props.user.followed ? 
+                    <button className={s.followBtnUnf} onClick={() => onUnfollow(props.user.id)}>Followed</button> :
+                    <button className={s.followBtnF} onClick={() => onFollow(props.user.id)}>Unfolowwed</button> 
                 }
             </div>
         </div>

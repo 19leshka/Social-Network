@@ -1,0 +1,17 @@
+.friendsInfo,
+.usersInfo {
+  background-color: rgb(255, 239, 251);
+  min-height: 50px;
+  max-height: 50px;
+  padding-left: 30px;
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.usersInfo h3 {
+  margin: 0;
+  padding: 0;
+  align-self: center;
+}

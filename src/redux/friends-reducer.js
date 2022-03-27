@@ -12,7 +12,7 @@ let myFriends = [
         id: 2,
         name: "Никита Пуцик",
         img: "/img/NikitaPutsikProfileImg.jpg",
-        followed: false
+        followed: true
     }, 
     {
         id: 3,
@@ -36,7 +36,7 @@ let myFriends = [
         id: 6,
         name: "Игорь Шаровский",
         img: null,
-        followed: false
+        followed: true
     }
 ]
 

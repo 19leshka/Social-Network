@@ -1,11 +1,13 @@
 import Friends from './Friends';
 import { followActionCreater } from "../../redux/friends-reducer";
 import { unfollowActionCreater } from "../../redux/friends-reducer";
+import { setUsersActionCreater } from "../../redux/users-reducer";
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
     return {
-        friends: state.friends 
+        friends: state.friends,
+        users: state.users 
     }
 }
 
@@ -16,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         unfollow: (id) => {
             dispatch(unfollowActionCreater(id));
+        },
+        setUsers: (usersData) => {
+            dispatch(setUsersActionCreater(usersData))
         }
     }
 }
