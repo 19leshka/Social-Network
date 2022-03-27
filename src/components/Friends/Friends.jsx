@@ -1,26 +1,31 @@
+import React from 'react';
 import s from './Friends.module.css';
 import Friend from './Friend/Friend'
 import User from './Users/User'
 import * as axios from 'axios';
 
-const Friends = (props) => {
+class Friends extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     // if(props.friends === 0){ 
     //     axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
     //         debugger;
     //     });
     // }
 
-    let friends = 
-            [...props.friends]
-            .map(friend => {
-                return <Friend follow={props.follow} unfollow={props.unfollow} friend={friend}/>
-            })
-            
-    return (
-        <main className={s.friends}>
-            {friends}
-        </main>
-    );
+    friends = () => {
+        return ([...this.props.friends]
+        .map(friend => {
+            return <Friend follow={this.props.follow} unfollow={this.props.unfollow} friend={friend}/>
+        }))
+    } 
+
+    render() {
+        return (<main className={s.friends}>
+            {this.friends()}
+        </main>)
+    }
 }
 
 export default Friends;
