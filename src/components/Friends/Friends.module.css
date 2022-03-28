@@ -13,5 +13,20 @@
 .usersInfo h3 {
   margin: 0;
   padding: 0;
+  margin-right: 20px;
   align-self: center;
+}
+
+.pages span {
+  display: inline-block;
+  text-align: center;
+  padding: 4px;
+  min-width: 25px;
+  min-height: 25px;
+}
+
+.active {
+  font-weight: bold;
+  background-color: rgb(255, 148, 148);
+  border-radius: 50%;
 }

@@ -1,6 +1,6 @@
 .friend {
-  min-height: 70px;
-  max-height: 70px;
+  min-height: 65px;
+  max-height: 65px;
   background-color: #fff;
   border-radius: 5px;
   margin-bottom: 5px;
@@ -16,9 +16,9 @@
 
 .ProfileImg img {
   align-self: center;
-  border-radius: 50px;
-  min-height: 60px;
-  max-height: 60px;
+  border-radius: 50%;
+  min-height: 50px;
+  max-height: 50px;
 }
 
 .ProfileName h3 {
