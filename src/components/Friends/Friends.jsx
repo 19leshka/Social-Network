@@ -1,6 +1,7 @@
 import s from './Friends.module.css';
 import Friend from './Friend/Friend'
 import User from './Users/User'
+import Preloader from './../common/Preloader'
 
 const Friends = (props) => {
     const pages = (num) => {
@@ -39,7 +40,9 @@ const Friends = (props) => {
                     <span>...</span>
                 </div>
             </div>
-            {users()}
+            {props.isFetching ?   
+                (<Preloader/>) : (users())
+            }
         </main>
     )
 }
