@@ -1,7 +1,19 @@
 const ADD_POST = "ADD-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
+const SET_USER_PROFILE = "SET-USER-PROFILE";
 
 let initialProfile = {
+    myProfile: {
+        userId: 0,
+        fullName: "Alexey Balakhanov",
+        status: "Set status",
+        birthday: "19.02.2003",
+        city: "Minsk",
+        photos: {
+            large: window.location.origin + '/img/profileImg.png',
+            small: null
+        }
+    },
     posts: [
         {
             avatarImg: (window.location.origin + '/img/myProfileImg.jpg'),
@@ -28,7 +40,8 @@ let initialProfile = {
             id: 4
         }
     ],
-    newPostValue: ""
+    newPostValue: "",
+    profile: null
 }
 
 const profileReducer = (myProfile = initialProfile, action) => {
@@ -48,6 +61,21 @@ const profileReducer = (myProfile = initialProfile, action) => {
         case CHANGE_POST_TEXT:
             myProfileCopy.newPostValue = action.newText;
             return myProfileCopy;
+        case SET_USER_PROFILE:
+            let bd = "birthday" in action.value;
+            let ct = "city" in action.value;
+            let profile = {
+                userId: action.value.userId,
+                fullName: action.value.fullName,
+                status: action.value.aboutMe,
+                birthday: bd ? action.value.birthday : null,
+                city: ct ? action.value.city :null,
+                photos: {
+                    large: action.value.photos.large,
+                    small: action.value.photos.small
+                }
+            }
+            return {...myProfileCopy, profile: profile}
         default: 
             return myProfileCopy;
     }
@@ -60,6 +88,11 @@ export const addPostActionCreater = () => ({
 export const updateNewPostTextActionCreater = (text) => ({
     type: CHANGE_POST_TEXT, 
     newText: text
+})
+
+export const setUserProfileActionCreater = (profile) => ({
+    type: SET_USER_PROFILE,
+    value: profile
 })
 
 export default profileReducer;

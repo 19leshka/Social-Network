@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import MessagesContainer from './components/Messages/MessagesContainer';
 import FriendsContainer from './components/Friends/FriendsContainer'
 import Header from './components/Header/Header';
@@ -19,7 +19,7 @@ const App = (props) => {
           <div className="wrapper main-wrapper">
             <Navbar />
             <Routes>
-              <Route path="/profile" element={<Profile/>}/>
+              <Route path="/profile/*" element={<ProfileContainer/>}/>
               <Route path="/messages/*" element={<MessagesContainer/>}/>
               <Route path="/friends/*" element={<FriendsContainer/>}/>
               <Route path="*" element={<WrongPage/>}/>

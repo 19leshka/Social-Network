@@ -4,12 +4,14 @@ import User from './Users/User'
 import Preloader from './../common/Preloader'
 
 const Friends = (props) => {
+    console.log(props)
+
     const pages = (num) => {
         let pages = [];
         for(let i = 1; i <= num; i++){
             pages.push(<span onClick={(e) => props.setPage(e)} className={(i == props.currentPage ? s.active : s.disabled)}>{i}</span>)
         }
-        return pages
+        return pages;
     } 
 
     const friends = () => {

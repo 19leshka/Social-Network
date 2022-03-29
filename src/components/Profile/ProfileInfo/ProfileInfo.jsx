@@ -1,24 +1,35 @@
-import s from './ProfileInfo.module.css'
+import s from './ProfileInfo.module.css';
+import Preloader from './../../common/Preloader';
+import userPhoto from './../../../assets/userPhoto.png'
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    if(!props.profile) {
+        return <Preloader />
+    }
+
+    const src = (props.profile.photos.large !== null ? props.profile.photos.large : userPhoto);
+    const status = (props.profile.status !== null ? props.profile.status : "No status");
+    const birthday = (props.profile.birthday !== null ? props.profile.birthday : "xxx");
+    const city = (props.profile.city !== null ? props.profile.city : "xxx");
+
     return (
             <div className={s.profileInner}>
                 <div className={s.profilePhoto}>
-                    <img className={s.profileImg} src={window.location.origin + '/img/profileImg.png' } alt="" />
+                    <img className={s.profileImg} src={src} alt="" />
                     <div className={s.editPhoto}>Edit</div>
                 </div>
                 <div className={s.profileInfo}>
-                    <h1 className={s.profileName}>Alexey Balakhanov</h1>
-                    <div className={s.profileStatus}>Set status</div>
+                    <h1 className={s.profileName}>{props.profile.fullName}</h1>
+                    <div className={s.profileStatus}>{status}</div>
                     <hr className={s.profileHr}/>
                     <div className={s.info}>
                         <div className={s.birthDate}>
                             <div className={`${s.birthday} ${s.leftInfo}`}>Birthday:</div>
-                            <div className={`${s.date} ${s.rightInfo}`}>19.02.2003</div>
+                            <div className={`${s.date} ${s.rightInfo}`}>{birthday}</div>
                         </div>
                         <div className={s.cityLocation}>
                             <div className={`${s.city} ${s.leftInfo}`}>City:</div>
-                            <div className={`${s.location} ${s.rightInfo}`}>Minsk</div>
+                            <div className={`${s.location} ${s.rightInfo}`}>{city}</div>
                         </div>
                     </div>
                 </div>

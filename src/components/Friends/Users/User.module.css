@@ -46,3 +46,8 @@
 .followBtnUnf {
   background-color: rgb(240, 159, 209);
 }
+
+.userLink {
+  text-decoration: none;
+  color: #000;
+}

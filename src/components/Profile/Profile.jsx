@@ -3,12 +3,12 @@ import PostsAreaContainer from './PostsArea/PostsAreaContainer'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 const Profile = (props) => {
-    document.title = "MyProfile"
-
+    document.title = "MyProfile";
+    
     return (
         <main className={s.profile}>
-            <ProfileInfo />
-            <PostsAreaContainer/>
+            <ProfileInfo profile={props.profile}/>
+            {props.postArea ? <PostsAreaContainer/> : null}
         </main>
     );
 }

@@ -30,8 +30,3 @@
   background-color: rgb(255, 148, 148);
   border-radius: 50%;
 }
-
-.preloader {
-  display: flex;
-  justify-content: space-around;
-}
