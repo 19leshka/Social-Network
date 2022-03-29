@@ -1,9 +1,13 @@
-import s from './Profile.module.css'
-import PostsAreaContainer from './PostsArea/PostsAreaContainer'
-import ProfileInfo from './ProfileInfo/ProfileInfo'
+import s from './Profile.module.css';
+import Preloader from './../common/Preloader';
+import PostsAreaContainer from './PostsArea/PostsAreaContainer';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
-    document.title = "MyProfile";
+    if(!props.profile) {
+        return <Preloader />
+    }
+    if(props.profile.fullName !== null) document.title = props.profile.fullName;
     
     return (
         <main className={s.profile}>

@@ -1,11 +1,8 @@
 import s from './ProfileInfo.module.css';
-import Preloader from './../../common/Preloader';
 import userPhoto from './../../../assets/userPhoto.png'
 
 const ProfileInfo = (props) => {
-    if(!props.profile) {
-        return <Preloader />
-    }
+    console.log(props)
 
     const src = (props.profile.photos.large !== null ? props.profile.photos.large : userPhoto);
     const status = (props.profile.status !== null ? props.profile.status : "No status");

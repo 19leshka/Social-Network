@@ -9,21 +9,22 @@ class ProfileContainer extends React.Component {
     constructor(props) {
         super(props);
         this.isPostArea = false;
+        this.userId = this.props.match ? this.props.match.params.userId : 0;
+        // debugger
     }
-
+    
     componentDidMount() {
-        let userId = this.props.match ? this.props.match.params.userId : 0;
-        if(userId == 0){
+        if(this.userId == 0){
             this.props.setUserProfile(this.props.myProfile);
             this.isPostArea = true;
         }else{
-            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => response.data).then(response => {
+            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.userId}`).then(response => response.data).then(response => {
                 this.props.setUserProfile(response);
             });   
             this.isPostArea = false;
         }
     }
-
+    
     render() {
         return (
             <Profile profile={this.props.profile} postArea={this.isPostArea}/>
@@ -33,6 +34,7 @@ class ProfileContainer extends React.Component {
 
 const ProfileMatch = (props) => {
 	let match = useMatch("/profile/:userId/");
+    // debugger
 	return (
 		<ProfileContainer {...props} match={match} />
 	)
