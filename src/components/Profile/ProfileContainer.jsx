@@ -3,14 +3,13 @@ import Profile from "./Profile";
 import * as axios from 'axios';
 import { connect } from 'react-redux';
 import { setUserProfileActionCreater } from "../../redux/profile-reducer";
-import { useMatch } from "react-router-dom";
+import { useLocation } from "react-router"
 
 class ProfileContainer extends React.Component {
     constructor(props) {
         super(props);
         this.isPostArea = false;
-        this.userId = this.props.match ? this.props.match.params.userId : 0;
-        // debugger
+        this.userId = props.location;
     }
     
     componentDidMount() {
@@ -33,10 +32,9 @@ class ProfileContainer extends React.Component {
 }
 
 const ProfileMatch = (props) => {
-	let match = useMatch("/profile/:userId/");
-    // debugger
+    let location = useLocation().pathname.split("file/")[1];
 	return (
-		<ProfileContainer {...props} match={match} />
+		<ProfileContainer {...props} location={location} />
 	)
 }
 

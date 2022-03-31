@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import ProfileMatch from './components/Profile/ProfileContainer';
 import MessagesContainer from './components/Messages/MessagesContainer';
 import FriendsContainer from './components/Friends/FriendsContainer'
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import {Routes, Route} from "react-router-dom";
 
 const App = (props) => {
@@ -15,7 +15,7 @@ const App = (props) => {
 
   return (
       <div className="app-wrapper">
-          <Header />
+          <HeaderContainer />
           <div className="wrapper main-wrapper">
             <Navbar />
             <Routes>

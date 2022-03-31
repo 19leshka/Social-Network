@@ -15,7 +15,9 @@ class FriendsContainer extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users?count=5&page=1").then(response => response.data.items).then(response => {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users?count=5&page=1", {
+            withCredentials: true
+        }).then(response => response.data.items).then(response => {
             this.props.setUsers(response);
             this.props.setIsFetching(false);
         });
@@ -24,7 +26,9 @@ class FriendsContainer extends React.Component {
     setPage = (event) => {
         this.props.setIsFetching(true)
         let page = +event.target.textContent;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=5&page=${page}`).then(response => response.data.items).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=5&page=${page}`, {
+            withCredentials: true
+        }).then(response => response.data.items).then(response => {
             this.props.setPage(page);
             this.props.setUsers(response);
             this.props.setIsFetching(false)

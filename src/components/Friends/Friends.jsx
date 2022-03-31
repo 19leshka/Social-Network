@@ -4,8 +4,6 @@ import User from './Users/User'
 import Preloader from './../common/Preloader'
 
 const Friends = (props) => {
-    console.log(props)
-
     const pages = (num) => {
         let pages = [];
         for(let i = 1; i <= num; i++){

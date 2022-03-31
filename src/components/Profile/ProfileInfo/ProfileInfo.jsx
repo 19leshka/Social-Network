@@ -2,7 +2,6 @@ import s from './ProfileInfo.module.css';
 import userPhoto from './../../../assets/userPhoto.png'
 
 const ProfileInfo = (props) => {
-    console.log(props)
 
     const src = (props.profile.photos.large !== null ? props.profile.photos.large : userPhoto);
     const status = (props.profile.status !== null ? props.profile.status : "No status");

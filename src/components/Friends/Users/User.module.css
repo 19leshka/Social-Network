@@ -41,6 +41,7 @@
   max-width: 100px;
   min-height: 40px;
   max-height: 40px;
+  position: relative;
 }
 
 .followBtnUnf {
@@ -50,4 +51,18 @@
 .userLink {
   text-decoration: none;
   color: #000;
+}
+
+.followBtn + .ooo button::before {
+  content: url("./../../../assets/small-preloader.svg");
+  z-index: 3;
+  position: absolute;
+  left: -25px;
+  /* left: 200px; */
+  top: calc(50% - 12px);
+}
+
+.btnBefore {
+  display: none;
+  color: #fff;
 }

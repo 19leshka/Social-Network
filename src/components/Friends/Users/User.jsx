@@ -1,16 +1,41 @@
 import s from './User.module.css';
 import userPhoto from './../../../assets/userPhoto.png';
 import {NavLink} from "react-router-dom";
+import * as axios from 'axios';
+import { useRef } from 'react';
 
 const User = (props) => {
-    const photo = window.location.origin + props.user.img; 
+    const photo = window.location.origin + props.user.img;
+    let btn = useRef(null); 
 
     const onFollow = (id) => {
-        props.follow(id);
+        // btn.current.classList.toggle('btnBefore');
+        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
+            withCredentials: true,
+            headers: {
+                "API-KEY": "41b34253-2bd7-4d99-a561-15dc6a8c3c8f" 
+            }
+        }).then(response => {
+            if(response.data.resultCode == 0) {
+                btn.current.classList.toggle('btnBefore');
+                props.follow(id);
+            }
+        })
     }
 
     const onUnfollow = (id) => {
-        props.unfollow(id);
+        // btn.current.classList.toggle('btnBefore');
+        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
+            withCredentials: true,
+            headers: {
+                "API-KEY": "41b34253-2bd7-4d99-a561-15dc6a8c3c8f" 
+            }
+        }).then(response => {
+            if(response.data.resultCode == 0) {
+                // btn.current.classList.toggle('btnBefore');
+                props.unfollow(id);
+            }
+        })
     }
 
     return (
@@ -25,10 +50,10 @@ const User = (props) => {
                     </div>
                 </div>
             </NavLink>
-            <div className={s.followBtn}>
+            <div className={s.followBtn}>  
                 {props.user.followed ? 
-                    <button className={s.followBtnUnf} onClick={() => onUnfollow(props.user.id)}>Followed</button> :
-                    <button className={s.followBtnF} onClick={() => onFollow(props.user.id)}>Unfolowwed</button> 
+                    <button className={s.followBtnUnf} ref={btn} onClick={() => onUnfollow(props.user.id)}>Followed</button> :
+                    <button className={s.followBtnF} ref={btn} onClick={() => onFollow(props.user.id)}>Unfolowwed</button> 
                 }
             </div>
         </div>
