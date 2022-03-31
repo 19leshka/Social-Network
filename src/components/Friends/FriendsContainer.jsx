@@ -7,6 +7,7 @@ import { setUsersActionCreater } from "../../redux/users-reducer";
 import { toggleIsFetchingActionCreater } from "../../redux/users-reducer";
 import { setCurrentPageActionCreater } from "../../redux/users-reducer";
 import { connect } from 'react-redux';
+import {getUsersPage} from "./../../api/api"
 
 class FriendsContainer extends React.Component {
     constructor(props) {
@@ -15,9 +16,7 @@ class FriendsContainer extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users?count=5&page=1", {
-            withCredentials: true
-        }).then(response => response.data.items).then(response => {
+        getUsersPage(1).then(response => {
             this.props.setUsers(response);
             this.props.setIsFetching(false);
         });
@@ -26,9 +25,7 @@ class FriendsContainer extends React.Component {
     setPage = (event) => {
         this.props.setIsFetching(true)
         let page = +event.target.textContent;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=5&page=${page}`, {
-            withCredentials: true
-        }).then(response => response.data.items).then(response => {
+        getUsersPage(page).then(response => {
             this.props.setPage(page);
             this.props.setUsers(response);
             this.props.setIsFetching(false)

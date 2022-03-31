@@ -3,6 +3,8 @@ import userPhoto from './../../../assets/userPhoto.png';
 import {NavLink} from "react-router-dom";
 import * as axios from 'axios';
 import { useRef } from 'react';
+import { followUser } from '../../../api/api';
+import { unfollowUser } from '../../../api/api';
 
 const User = (props) => {
     const photo = window.location.origin + props.user.img;
@@ -10,12 +12,7 @@ const User = (props) => {
 
     const onFollow = (id) => {
         // btn.current.classList.toggle('btnBefore');
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "41b34253-2bd7-4d99-a561-15dc6a8c3c8f" 
-            }
-        }).then(response => {
+        followUser(id).then(response => {
             if(response.data.resultCode == 0) {
                 btn.current.classList.toggle('btnBefore');
                 props.follow(id);
@@ -25,12 +22,7 @@ const User = (props) => {
 
     const onUnfollow = (id) => {
         // btn.current.classList.toggle('btnBefore');
-        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "41b34253-2bd7-4d99-a561-15dc6a8c3c8f" 
-            }
-        }).then(response => {
+        unfollowUser(id).then(response => {
             if(response.data.resultCode == 0) {
                 // btn.current.classList.toggle('btnBefore');
                 props.unfollow(id);
