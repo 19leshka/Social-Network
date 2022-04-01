@@ -6,6 +6,7 @@ import { unfollowActionCreater } from "../../redux/friends-reducer";
 import { setUsersActionCreater } from "../../redux/users-reducer";
 import { toggleIsFetchingActionCreater } from "../../redux/users-reducer";
 import { setCurrentPageActionCreater } from "../../redux/users-reducer";
+import { toggleIsFollowingProgressActionCreater } from "../../redux/users-reducer";
 import { connect } from 'react-redux';
 import {getUsersPage} from "./../../api/api"
 
@@ -42,6 +43,8 @@ class FriendsContainer extends React.Component {
             users={this.props.users.users}
             setPage={this.setPage}
             isFetching={this.props.isFetching}
+            isFollowing={this.props.isFollowing}
+            setIsFollowing={this.props.setIsFollowing}
         />)
     }
 }
@@ -52,7 +55,8 @@ const mapStateToProps = (state) => {
         users: state.users,
         pageCount:  Math.ceil(state.users.totalUsersCount / state.users.pageSize),
         currentPage: state.users.currentPage,
-        isFetching: state.users.isFetching
+        isFetching: state.users.isFetching,
+        isFollowing: state.users.followingInProgress
     }
 }
 
@@ -72,6 +76,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setIsFetching: (value) => {
             dispatch(toggleIsFetchingActionCreater(value))
+        },
+        setIsFollowing: (value, id) => {
+            dispatch(toggleIsFollowingProgressActionCreater(value, id))
         }
     }
 }

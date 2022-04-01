@@ -1,32 +1,29 @@
 import s from './User.module.css';
 import userPhoto from './../../../assets/userPhoto.png';
 import {NavLink} from "react-router-dom";
-import * as axios from 'axios';
-import { useRef } from 'react';
 import { followUser } from '../../../api/api';
 import { unfollowUser } from '../../../api/api';
 
 const User = (props) => {
     const photo = window.location.origin + props.user.img;
-    let btn = useRef(null); 
 
     const onFollow = (id) => {
-        // btn.current.classList.toggle('btnBefore');
+        props.setIsFollowing(true, id);
         followUser(id).then(response => {
             if(response.data.resultCode == 0) {
-                btn.current.classList.toggle('btnBefore');
                 props.follow(id);
             }
+            props.setIsFollowing(false, id);
         })
     }
 
     const onUnfollow = (id) => {
-        // btn.current.classList.toggle('btnBefore');
+        props.setIsFollowing(true, id);
         unfollowUser(id).then(response => {
             if(response.data.resultCode == 0) {
-                // btn.current.classList.toggle('btnBefore');
                 props.unfollow(id);
             }
+            props.setIsFollowing(false, id);
         })
     }
 
@@ -44,8 +41,8 @@ const User = (props) => {
             </NavLink>
             <div className={s.followBtn}>  
                 {props.user.followed ? 
-                    <button className={s.followBtnUnf} ref={btn} onClick={() => onUnfollow(props.user.id)}>Followed</button> :
-                    <button className={s.followBtnF} ref={btn} onClick={() => onFollow(props.user.id)}>Unfolowwed</button> 
+                    <button disabled={props.isFollowing.some(id => id === props.user.id)} className={s.followBtnUnf} onClick={() => onUnfollow(props.user.id)}>Followed</button> :
+                    <button disabled={props.isFollowing.some(id => id === props.user.id)} className={s.followBtnF} onClick={() => onFollow(props.user.id)}>Unfolowwed</button> 
                 }
             </div>
         </div>

@@ -1,15 +1,17 @@
-const SET_USERS = "SET_USERS";
+const SET_USERS = "SET-USERS";
 const UNFOLLOW = "UNFOLLOW";
 const FOLLOW = "FOLLOW";
-const SET_PAGE = "SET_PAGE";
-const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+const SET_PAGE = "SET-PAGE";
+const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING";
+const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS-FOLLOWING-PROGRESS";
 
 let initialUsers = {
     users: [],
     pageSize: 5,
     totalUsersCount: 100,
     currentPage: 1,
-    isFetching: true
+    isFetching: true,
+    followingInProgress: []
 }
 
 const usersReducer = (users = initialUsers, action) => {
@@ -49,6 +51,13 @@ const usersReducer = (users = initialUsers, action) => {
                 ...usersCopy,
                 isFetching: action.value
             }
+        case TOGGLE_IS_FOLLOWING_PROGRESS:
+            return {
+                ...usersCopy,
+                followingInProgress: action.value 
+                    ? [...usersCopy.followingInProgress, action.id] 
+                    : [...usersCopy.followingInProgress.filter(id => id != action.id)]
+            }
         default:
             return usersCopy;
     }
@@ -67,6 +76,12 @@ export const setCurrentPageActionCreater = (page = 1) => ({
 export const toggleIsFetchingActionCreater = (value = true) => ({
     type: TOGGLE_IS_FETCHING,
     value: value
+})
+
+export const toggleIsFollowingProgressActionCreater = (value = true, id) => ({
+    type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    value: value,
+    id: id
 })
 
 export default usersReducer;
