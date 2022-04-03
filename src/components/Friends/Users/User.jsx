@@ -5,8 +5,8 @@ import { followUser } from '../../../api/api';
 import { unfollowUser } from '../../../api/api';
 
 const User = (props) => {
-    const photo = window.location.origin + props.user.img;
-
+    const photo = props.user.img;
+    
     const onFollow = (id) => {
         props.setIsFollowing(true, id);
         followUser(id).then(response => {

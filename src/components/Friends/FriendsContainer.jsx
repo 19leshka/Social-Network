@@ -1,6 +1,5 @@
 import React from 'react';
 import Friends from './Friends';
-import * as axios from 'axios';
 import { followActionCreater } from "../../redux/friends-reducer";
 import { unfollowActionCreater } from "../../redux/friends-reducer";
 import { setUsersActionCreater } from "../../redux/users-reducer";
@@ -17,6 +16,7 @@ class FriendsContainer extends React.Component {
     }
 
     componentDidMount() {
+        this.props.setIsFetching(true);
         getUsersPage(1).then(response => {
             this.props.setUsers(response);
             this.props.setIsFetching(false);
@@ -24,7 +24,7 @@ class FriendsContainer extends React.Component {
     }
 
     setPage = (event) => {
-        this.props.setIsFetching(true)
+        this.props.setIsFetching(true);
         let page = +event.target.textContent;
         getUsersPage(page).then(response => {
             this.props.setPage(page);
