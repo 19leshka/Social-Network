@@ -1,12 +1,12 @@
 import React from 'react';
 import Friends from './Friends';
-import { followActionCreater } from "../../redux/friends-reducer";
-import { unfollowActionCreater } from "../../redux/friends-reducer";
-import { toggleIsFollowingProgressActionCreater } from "../../redux/users-reducer";
-import { getUsersThunkCreator } from "../../redux/users-reducer";
-import { getFollowUserThunkCreator } from "../../redux/users-reducer";
-import { getUnfollowUserThunkCreator } from "../../redux/users-reducer";
-import { connect } from 'react-redux';
+import {followActionCreator} from '../../redux/friends-reducer';
+import {unfollowActionCreator} from '../../redux/friends-reducer';
+import {toggleIsFollowingProgressActionCreator} from '../../redux/users-reducer';
+import {getUsersThunkCreator} from '../../redux/users-reducer';
+import {getFollowUserThunkCreator} from '../../redux/users-reducer';
+import {getUnfollowUserThunkCreator} from '../../redux/users-reducer';
+import {connect} from 'react-redux';
 
 class FriendsContainer extends React.Component {
     constructor(props) {
@@ -55,13 +55,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         follow: (id) => {
-            dispatch(followActionCreater(id));
+            dispatch(followActionCreator(id));
         },
         unfollow: (id) => {
-            dispatch(unfollowActionCreater(id));
+            dispatch(unfollowActionCreator(id));
         },
         setIsFollowing: (value, id) => {
-            dispatch(toggleIsFollowingProgressActionCreater(value, id))
+            dispatch(toggleIsFollowingProgressActionCreator(value, id))
         },
         getUsers: (currentPage, pageSize) => {
             dispatch(getUsersThunkCreator(currentPage, pageSize))

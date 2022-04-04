@@ -3,9 +3,9 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import ProfileMatch from './components/Profile/ProfileContainer';
 import MessagesContainer from './components/Messages/MessagesContainer';
-import FriendsContainer from './components/Friends/FriendsContainer'
+import FriendsContainer from './components/Friends/FriendsContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route} from 'react-router-dom';
 
 const App = (props) => {
   const WrongPage = () => {

@@ -1,7 +1,7 @@
-import { addPostActionCreater } from "../../../redux/profile-reducer";
-import { updateNewPostTextActionCreater } from "../../../redux/profile-reducer";
-import PostArea from "./PostsArea";
-import { connect } from 'react-redux';
+import {addPostActionCreator} from '../../../redux/profile-reducer';
+import {updateNewPostTextActionCreator} from '../../../redux/profile-reducer';
+import PostArea from './PostsArea';
+import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => {
     return {
@@ -13,10 +13,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addPost: () => {
-            dispatch(addPostActionCreater());
+            dispatch(addPostActionCreator());
         },
         updatePostText: (text) => {
-            dispatch(updateNewPostTextActionCreater(text));
+            dispatch(updateNewPostTextActionCreator(text));
         }
     }
 }

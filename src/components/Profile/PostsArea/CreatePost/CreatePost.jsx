@@ -1,4 +1,4 @@
-import s from './CreatePost.module.css'
+import s from './CreatePost.module.css';
 
 const CreatePost = (props) => {
     return (

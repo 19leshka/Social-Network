@@ -103,11 +103,11 @@ const dialogsReducer = (dialog = peoples, action) => {
 
 }
 
-export const sendMessageActionCreater = () => ({
+export const sendMessageActionCreator = () => ({
     type: SEND_MESSAGE
 })
 
-export const updateNewMessageTextActionCreater = (text) => ({
+export const updateNewMessageTextActionCreator = (text) => ({
     type: CHANGE_MESSAGE_TEXT, 
     newText: text
 })

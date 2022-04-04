@@ -1,4 +1,4 @@
-import s from './MessageItemAuthor.module.css'
+import s from './MessageItemAuthor.module.css';
 
 const MessageItemAuthor = (props) => {
     return(

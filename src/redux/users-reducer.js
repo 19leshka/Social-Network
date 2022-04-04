@@ -1,8 +1,8 @@
-import { followActionCreater } from "./friends-reducer";
-import { unfollowActionCreater } from "./friends-reducer";
-import {getUsersPage} from './../api/api'
-import {followUser} from './../api/api'
-import {unfollowUser} from './../api/api'
+import {followActionCreator} from './friends-reducer';
+import {unfollowActionCreator} from './friends-reducer';
+import {getUsersPage} from './../api/api';
+import {followUser} from './../api/api';
+import {unfollowUser} from './../api/api';
 
 const SET_USERS = "SET-USERS";
 const UNFOLLOW = "UNFOLLOW";
@@ -69,22 +69,22 @@ const usersReducer = (users = initialUsers, action) => {
     }
 }
 
-export const setUsersActionCreater = (users = []) => ({
+export const setUsersActionCreator = (users = []) => ({
     type: SET_USERS,
     users: users   
 });
 
-export const setCurrentPageActionCreater = (page = 1) => ({
+export const setCurrentPageActionCreator = (page = 1) => ({
     type: SET_PAGE,
     value: page
 });
 
-export const toggleIsFetchingActionCreater = (value = true) => ({
+export const toggleIsFetchingActionCreator = (value = true) => ({
     type: TOGGLE_IS_FETCHING,
     value: value
 })
 
-export const toggleIsFollowingProgressActionCreater = (value = true, id) => ({
+export const toggleIsFollowingProgressActionCreator = (value = true, id) => ({
     type: TOGGLE_IS_FOLLOWING_PROGRESS,
     value: value,
     id: id
@@ -92,35 +92,35 @@ export const toggleIsFollowingProgressActionCreater = (value = true, id) => ({
 
 export const getUsersThunkCreator = (currentPage = 1, pageSize = 5) => {
     return (dispatch) => {
-        dispatch(toggleIsFetchingActionCreater(true));
+        dispatch(toggleIsFetchingActionCreator(true));
         getUsersPage(currentPage, pageSize).then(response => {
-            dispatch(setCurrentPageActionCreater(currentPage));
-            dispatch(setUsersActionCreater(response));
-            dispatch(toggleIsFetchingActionCreater(false));
+            dispatch(setCurrentPageActionCreator(currentPage));
+            dispatch(setUsersActionCreator(response));
+            dispatch(toggleIsFetchingActionCreator(false));
         });
     }
 }
 
 export const getFollowUserThunkCreator = (id) => {
     return (dispatch) => {
-        dispatch(toggleIsFollowingProgressActionCreater(true, id));
+        dispatch(toggleIsFollowingProgressActionCreator(true, id));
         followUser(id).then(response => {
             if(response.data.resultCode == 0) {
-               dispatch(followActionCreater(id));
+               dispatch(followActionCreator(id));
             }
-            dispatch(toggleIsFollowingProgressActionCreater(false, id));
+            dispatch(toggleIsFollowingProgressActionCreator(false, id));
         })
     }
 }
 
 export const getUnfollowUserThunkCreator = (id) => {
     return (dispatch) => {
-        dispatch(toggleIsFollowingProgressActionCreater(true, id));
+        dispatch(toggleIsFollowingProgressActionCreator(true, id));
         unfollowUser(id).then(response => {
             if(response.data.resultCode == 0) {
-                dispatch(unfollowActionCreater(id));
+                dispatch(unfollowActionCreator(id));
             }
-            dispatch(toggleIsFollowingProgressActionCreater(false, id));
+            dispatch(toggleIsFollowingProgressActionCreator(false, id));
         })
     }
 }

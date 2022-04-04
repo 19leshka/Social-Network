@@ -1,5 +1,5 @@
-import s from './Preloader.module.css'
-import preloader from './../../assets/preloader.svg'
+import s from './Preloader.module.css';
+import preloader from './../../assets/preloader.svg';
 
 const Preloader = () => {
     return (

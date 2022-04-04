@@ -1,8 +1,8 @@
-import React  from "react";
-import Header from "./Header";
-import {getAuthThunkCreator} from './../../redux/auth-reducer'
-import { connect } from 'react-redux';
-import { setUserDataActionCreater } from "./../../redux/auth-reducer"
+import React  from 'react';
+import Header from './Header';
+import {getAuthThunkCreator} from './../../redux/auth-reducer';
+import {connect} from 'react-redux';
+import {setUserDataActionCreator} from './../../redux/auth-reducer';
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
@@ -24,7 +24,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
     return {
         setAuthUserData: (id, email, login) => {
-            dispatch(setUserDataActionCreater(id, email, login));
+            dispatch(setUserDataActionCreator(id, email, login));
         },
         getAuth: () => {
             dispatch(getAuthThunkCreator())

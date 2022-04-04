@@ -1,6 +1,6 @@
-import Post from "./Post/Post";
+import Post from './Post/Post';
 import s from './PostsArea.module.css';
-import { useRef } from 'react';
+import {useRef} from 'react';
 
 
 const PostsArea = (props) => {

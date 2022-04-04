@@ -1,7 +1,7 @@
 import s from './Friends.module.css';
-import Friend from './Friend/Friend'
-import User from './Users/User'
-import Preloader from './../common/Preloader'
+import Friend from './Friend/Friend';
+import User from './Users/User';
+import Preloader from './../common/Preloader';
 
 const Friends = (props) => {
     const pages = (num) => {

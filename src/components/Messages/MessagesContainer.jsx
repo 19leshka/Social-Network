@@ -1,7 +1,7 @@
 import Messages from './Messages';
-import { sendMessageActionCreater } from "../../redux/peoples-reducer";
-import { updateNewMessageTextActionCreater } from "../../redux/peoples-reducer";
-import { connect } from 'react-redux';
+import {sendMessageActionCreator} from '../../redux/peoples-reducer';
+import {updateNewMessageTextActionCreator} from '../../redux/peoples-reducer';
+import {connect} from 'react-redux';
 
 
 const mapStateToProps = (state) => {
@@ -15,10 +15,10 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         sendMessage: () => {
-            dispatch(sendMessageActionCreater());
+            dispatch(sendMessageActionCreator());
         },
         updateMessageText: (text) => {
-            dispatch(updateNewMessageTextActionCreater(text));
+            dispatch(updateNewMessageTextActionCreator(text));
         }
     }
 }

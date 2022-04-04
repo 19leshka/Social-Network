@@ -1,6 +1,6 @@
 import s from './Friend.module.css';
 import userPhoto from './../../../assets/userPhoto.png';
-import {NavLink} from "react-router-dom";
+import {NavLink} from 'react-router-dom';
 
 const Friend = (props) => {
     const photo = window.location.origin + props.friend.img; 

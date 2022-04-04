@@ -1,4 +1,4 @@
-import s from './MessageItemCompanion.module.css'
+import s from './MessageItemCompanion.module.css';
 
 const MessageItemCompanion = (props) => {
     return(

@@ -1,4 +1,4 @@
-import {getUserProfile} from './../api/api'
+import {getUserProfile} from './../api/api';
 
 const ADD_POST = "ADD-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
@@ -84,16 +84,16 @@ const profileReducer = (myProfile = initialProfile, action) => {
     }
 }
 
-export const addPostActionCreater = () => ({
+export const addPostActionCreator = () => ({
     type: ADD_POST
 })
 
-export const updateNewPostTextActionCreater = (text) => ({
+export const updateNewPostTextActionCreator = (text) => ({
     type: CHANGE_POST_TEXT, 
     newText: text
 })
 
-export const setUserProfileActionCreater = (profile) => ({
+export const setUserProfileActionCreator = (profile) => ({
     type: SET_USER_PROFILE,
     value: profile
 })
@@ -102,11 +102,11 @@ export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
         debugger
         if(userId == 0){
-            dispatch(setUserProfileActionCreater(initialProfile.myProfile));
+            dispatch(setUserProfileActionCreator(initialProfile.myProfile));
             initialProfile.isPostArea = true;
         }else{
             getUserProfile(userId).then(response => {
-                dispatch(setUserProfileActionCreater(response));
+                dispatch(setUserProfileActionCreator(response));
             });   
             initialProfile.isPostArea = false;
         }

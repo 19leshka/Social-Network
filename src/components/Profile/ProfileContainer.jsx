@@ -1,9 +1,9 @@
-import React from "react";
-import Profile from "./Profile";
-import { connect } from 'react-redux';
-import { setUserProfileActionCreater } from "../../redux/profile-reducer";
-import { useLocation } from "react-router"
-import {getUserProfileThunkCreator} from './../../redux/profile-reducer'
+import React from 'react';
+import Profile from './Profile';
+import {connect} from 'react-redux';
+import {setUserProfileActionCreator} from '../../redux/profile-reducer';
+import {useLocation} from 'react-router';
+import {getUserProfileThunkCreator} from './../../redux/profile-reducer';
 
 class ProfileContainer extends React.Component {
     constructor(props) {
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setUserProfile: (profile) => {
-            dispatch(setUserProfileActionCreater(profile))
+            dispatch(setUserProfileActionCreator(profile))
         },
         getUserProfile: (id) => {
             debugger

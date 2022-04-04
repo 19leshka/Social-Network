@@ -58,12 +58,12 @@ const friendsReducer = (friends = myFriends, action) => {
     }
 }
 
-export const followActionCreater = (id) => ({
+export const followActionCreator = (id) => ({
     type: FOLLOW,
     id: id
 })
 
-export const unfollowActionCreater = (id) => ({
+export const unfollowActionCreator = (id) => ({
     type: UNFOLLOW,
     id: id
 })

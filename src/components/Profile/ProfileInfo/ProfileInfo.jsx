@@ -1,5 +1,5 @@
 import s from './ProfileInfo.module.css';
-import userPhoto from './../../../assets/userPhoto.png'
+import userPhoto from './../../../assets/userPhoto.png';
 
 const ProfileInfo = (props) => {
 

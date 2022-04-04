@@ -1,7 +1,7 @@
 import s from './Chat.module.css';
-import MessageItemAuthor from "./MessageItemAuthor/MessageItemAuthor";
-import MessageItemCompanion from "./MessageItemCompanion/MessageItemCompanion";
-import { useRef } from 'react';
+import MessageItemAuthor from './MessageItemAuthor/MessageItemAuthor';
+import MessageItemCompanion from './MessageItemCompanion/MessageItemCompanion';
+import {useRef} from 'react';
 
 const Chat = (props) => {
     let textarea = useRef(null);
