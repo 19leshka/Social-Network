@@ -2,12 +2,11 @@ import React from 'react';
 import Friends from './Friends';
 import { followActionCreater } from "../../redux/friends-reducer";
 import { unfollowActionCreater } from "../../redux/friends-reducer";
-import { setUsersActionCreater } from "../../redux/users-reducer";
-import { toggleIsFetchingActionCreater } from "../../redux/users-reducer";
-import { setCurrentPageActionCreater } from "../../redux/users-reducer";
 import { toggleIsFollowingProgressActionCreater } from "../../redux/users-reducer";
+import { getUsersThunkCreator } from "../../redux/users-reducer";
+import { getFollowUserThunkCreator } from "../../redux/users-reducer";
+import { getUnfollowUserThunkCreator } from "../../redux/users-reducer";
 import { connect } from 'react-redux';
-import {getUsersPage} from "./../../api/api"
 
 class FriendsContainer extends React.Component {
     constructor(props) {
@@ -16,21 +15,12 @@ class FriendsContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.setIsFetching(true);
-        getUsersPage(1).then(response => {
-            this.props.setUsers(response);
-            this.props.setIsFetching(false);
-        });
+        this.props.getUsers();
     }
 
     setPage = (event) => {
-        this.props.setIsFetching(true);
         let page = +event.target.textContent;
-        getUsersPage(page).then(response => {
-            this.props.setPage(page);
-            this.props.setUsers(response);
-            this.props.setIsFetching(false)
-        });
+        this.props.getUsers(page);
     }
 
     render() {
@@ -39,6 +29,8 @@ class FriendsContainer extends React.Component {
             currentPage={this.props.currentPage}
             follow={this.props.follow}
             unfollow={this.props.unfollow}
+            followUser={this.props.followUser}
+            unfollowUser={this.props.unfollowUser}
             friends={this.props.friends}
             users={this.props.users.users}
             setPage={this.setPage}
@@ -68,17 +60,17 @@ const mapDispatchToProps = (dispatch) => {
         unfollow: (id) => {
             dispatch(unfollowActionCreater(id));
         },
-        setUsers: (usersData) => {
-            dispatch(setUsersActionCreater(usersData))
-        },
-        setPage: (page) => {
-            dispatch(setCurrentPageActionCreater(page))
-        },
-        setIsFetching: (value) => {
-            dispatch(toggleIsFetchingActionCreater(value))
-        },
         setIsFollowing: (value, id) => {
             dispatch(toggleIsFollowingProgressActionCreater(value, id))
+        },
+        getUsers: (currentPage, pageSize) => {
+            dispatch(getUsersThunkCreator(currentPage, pageSize))
+        },
+        followUser: (id) => {
+            dispatch(getFollowUserThunkCreator(id))
+        },
+        unfollowUser: (id) => {
+            dispatch(getUnfollowUserThunkCreator(id))
         }
     }
 }

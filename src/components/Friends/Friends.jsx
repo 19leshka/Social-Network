@@ -23,7 +23,12 @@ const Friends = (props) => {
     const users = () => {
         return ([...props.users])
         .map(user => {
-            return <User follow={props.follow} isFollowing={props.isFollowing} unfollow={props.unfollow} setIsFollowing={props.setIsFollowing} user={user}/>
+            return <User
+                isFollowing={props.isFollowing}
+                user={user}
+                followUser={props.followUser}
+                unfollowUser={props.unfollowUser}
+                />
         })
     }
 

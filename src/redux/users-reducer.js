@@ -1,3 +1,9 @@
+import { followActionCreater } from "./friends-reducer";
+import { unfollowActionCreater } from "./friends-reducer";
+import {getUsersPage} from './../api/api'
+import {followUser} from './../api/api'
+import {unfollowUser} from './../api/api'
+
 const SET_USERS = "SET-USERS";
 const UNFOLLOW = "UNFOLLOW";
 const FOLLOW = "FOLLOW";
@@ -83,5 +89,40 @@ export const toggleIsFollowingProgressActionCreater = (value = true, id) => ({
     value: value,
     id: id
 })
+
+export const getUsersThunkCreator = (currentPage = 1, pageSize = 5) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetchingActionCreater(true));
+        getUsersPage(currentPage, pageSize).then(response => {
+            dispatch(setCurrentPageActionCreater(currentPage));
+            dispatch(setUsersActionCreater(response));
+            dispatch(toggleIsFetchingActionCreater(false));
+        });
+    }
+}
+
+export const getFollowUserThunkCreator = (id) => {
+    return (dispatch) => {
+        dispatch(toggleIsFollowingProgressActionCreater(true, id));
+        followUser(id).then(response => {
+            if(response.data.resultCode == 0) {
+               dispatch(followActionCreater(id));
+            }
+            dispatch(toggleIsFollowingProgressActionCreater(false, id));
+        })
+    }
+}
+
+export const getUnfollowUserThunkCreator = (id) => {
+    return (dispatch) => {
+        dispatch(toggleIsFollowingProgressActionCreater(true, id));
+        unfollowUser(id).then(response => {
+            if(response.data.resultCode == 0) {
+                dispatch(unfollowActionCreater(id));
+            }
+            dispatch(toggleIsFollowingProgressActionCreater(false, id));
+        })
+    }
+}
 
 export default usersReducer;

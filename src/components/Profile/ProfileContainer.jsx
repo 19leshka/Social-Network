@@ -1,9 +1,9 @@
 import React from "react";
 import Profile from "./Profile";
-import * as axios from 'axios';
 import { connect } from 'react-redux';
 import { setUserProfileActionCreater } from "../../redux/profile-reducer";
 import { useLocation } from "react-router"
+import {getUserProfileThunkCreator} from './../../redux/profile-reducer'
 
 class ProfileContainer extends React.Component {
     constructor(props) {
@@ -13,15 +13,7 @@ class ProfileContainer extends React.Component {
     }
     
     componentDidMount() {
-        if(this.userId == 0){
-            this.props.setUserProfile(this.props.myProfile);
-            this.isPostArea = true;
-        }else{
-            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.userId}`).then(response => response.data).then(response => {
-                this.props.setUserProfile(response);
-            });   
-            this.isPostArea = false;
-        }
+        this.props.getUserProfile(this.userId)
     }
     
     render() {
@@ -49,6 +41,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setUserProfile: (profile) => {
             dispatch(setUserProfileActionCreater(profile))
+        },
+        getUserProfile: (id) => {
+            debugger
+            dispatch(getUserProfileThunkCreator(id))
         }
     }
 }

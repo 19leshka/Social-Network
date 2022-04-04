@@ -1,3 +1,5 @@
+import {getUserProfile} from './../api/api'
+
 const ADD_POST = "ADD-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
@@ -41,7 +43,8 @@ let initialProfile = {
         }
     ],
     newPostValue: "",
-    profile: null
+    profile: null,
+    isPostArea: false
 }
 
 const profileReducer = (myProfile = initialProfile, action) => {
@@ -94,5 +97,20 @@ export const setUserProfileActionCreater = (profile) => ({
     type: SET_USER_PROFILE,
     value: profile
 })
+
+export const getUserProfileThunkCreator = (userId) => {
+    return (dispatch) => {
+        debugger
+        if(userId == 0){
+            dispatch(setUserProfileActionCreater(initialProfile.myProfile));
+            initialProfile.isPostArea = true;
+        }else{
+            getUserProfile(userId).then(response => {
+                dispatch(setUserProfileActionCreater(response));
+            });   
+            initialProfile.isPostArea = false;
+        }
+    }
+}
 
 export default profileReducer;

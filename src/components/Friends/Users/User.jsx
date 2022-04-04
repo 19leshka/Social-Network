@@ -1,30 +1,16 @@
 import s from './User.module.css';
 import userPhoto from './../../../assets/userPhoto.png';
 import {NavLink} from "react-router-dom";
-import { followUser } from '../../../api/api';
-import { unfollowUser } from '../../../api/api';
 
 const User = (props) => {
     const photo = props.user.img;
     
     const onFollow = (id) => {
-        props.setIsFollowing(true, id);
-        followUser(id).then(response => {
-            if(response.data.resultCode == 0) {
-                props.follow(id);
-            }
-            props.setIsFollowing(false, id);
-        })
+        props.followUser(id);
     }
 
     const onUnfollow = (id) => {
-        props.setIsFollowing(true, id);
-        unfollowUser(id).then(response => {
-            if(response.data.resultCode == 0) {
-                props.unfollow(id);
-            }
-            props.setIsFollowing(false, id);
-        })
+        props.unfollowUser(id);
     }
 
     return (
