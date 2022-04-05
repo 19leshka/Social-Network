@@ -44,7 +44,7 @@ let initialProfile = {
     ],
     newPostValue: "",
     profile: null,
-    isPostArea: false
+    isPostArea: true
 }
 
 const profileReducer = (myProfile = initialProfile, action) => {
@@ -100,7 +100,6 @@ export const setUserProfileActionCreator = (profile) => ({
 
 export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
-        debugger
         if(userId == 0){
             dispatch(setUserProfileActionCreator(initialProfile.myProfile));
             initialProfile.isPostArea = true;
