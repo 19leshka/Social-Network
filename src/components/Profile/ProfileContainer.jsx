@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {setUserProfileActionCreator} from '../../redux/profile-reducer';
 import {useLocation} from 'react-router';
 import {getUserProfileThunkCreator} from './../../redux/profile-reducer';
+import {withAuthRedirect} from './../hoc/withAuthRedirect';
 
 class ProfileContainer extends React.Component {
     constructor(props) {
@@ -25,9 +26,11 @@ class ProfileContainer extends React.Component {
 const ProfileMatch = (props) => {
     let location = useLocation().pathname.split("file/")[1];
 	return (
-		<ProfileContainer {...props} location={location} />
+		<AuthRedirectToLogin {...props} location={location} />
 	)
 }
+
+const AuthRedirectToLogin = withAuthRedirect(ProfileContainer);
 
 const mapStateToProps = (state) => {
     return {

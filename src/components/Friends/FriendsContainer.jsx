@@ -7,6 +7,7 @@ import {getUsersThunkCreator} from '../../redux/users-reducer';
 import {getFollowUserThunkCreator} from '../../redux/users-reducer';
 import {getUnfollowUserThunkCreator} from '../../redux/users-reducer';
 import {connect} from 'react-redux';
+import {withAuthRedirect} from './../hoc/withAuthRedirect'
 
 class FriendsContainer extends React.Component {
     constructor(props) {
@@ -40,6 +41,8 @@ class FriendsContainer extends React.Component {
         />)
     }
 }
+
+const AuthRedirectToLogin = withAuthRedirect(FriendsContainer);
 
 const mapStateToProps = (state) => {
     return {
@@ -76,4 +79,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirectToLogin);

@@ -2,11 +2,13 @@ import Messages from './Messages';
 import {sendMessageActionCreator} from '../../redux/peoples-reducer';
 import {updateNewMessageTextActionCreator} from '../../redux/peoples-reducer';
 import {connect} from 'react-redux';
+import {withAuthRedirect} from './../hoc/withAuthRedirect'
 
+const AuthRedirectToLogin = withAuthRedirect(Messages);
 
 const mapStateToProps = (state) => {
     return {
-        peoples: state.peoples 
+        peoples: state.peoples
     }
 }
 
@@ -23,6 +25,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
+const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectToLogin);
 
 export default MessagesContainer;

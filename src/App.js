@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
 import ProfileMatch from './components/Profile/ProfileContainer';
 import MessagesContainer from './components/Messages/MessagesContainer';
@@ -12,7 +13,7 @@ const App = (props) => {
     document.title = "Wrong Page"
     return (<div>smth wrong</div>)
   }
-
+  console.log(props)
   return (
       <div className="app-wrapper">
           <HeaderContainer />
@@ -22,6 +23,7 @@ const App = (props) => {
               <Route path="/profile/*" element={<ProfileMatch/>}/>
               <Route path="/messages/*" element={<MessagesContainer/>}/>
               <Route path="/friends/*" element={<FriendsContainer/>}/>
+              {<Route path="/login" element={<Login/>}/>}
               <Route path="*" element={<WrongPage/>}/>
             </Routes>
           </div>
