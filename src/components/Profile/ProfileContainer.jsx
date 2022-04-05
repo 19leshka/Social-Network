@@ -5,6 +5,7 @@ import {setUserProfileActionCreator} from '../../redux/profile-reducer';
 import {useLocation} from 'react-router';
 import {getUserProfileThunkCreator} from './../../redux/profile-reducer';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ const ProfileMatch = (props) => {
 	)
 }
 
-const AuthRedirectToLogin = withAuthRedirect(ProfileContainer);
+const AuthRedirectToLogin = compose(withAuthRedirect)(ProfileContainer);
 
 const mapStateToProps = (state) => {
     return {
@@ -50,7 +51,5 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileMatch);
