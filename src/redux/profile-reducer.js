@@ -3,6 +3,7 @@ import {getUserProfile} from './../api/api';
 const ADD_POST = "ADD-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
+const SET_IS_POST_AREA = "SET-IS-POST-AREA";
 
 let initialProfile = {
     myProfile: {
@@ -44,7 +45,7 @@ let initialProfile = {
     ],
     newPostValue: "",
     profile: null,
-    isPostArea: false
+    isPostArea: null
 }
 
 const profileReducer = (myProfile = initialProfile, action) => {
@@ -65,6 +66,7 @@ const profileReducer = (myProfile = initialProfile, action) => {
             myProfileCopy.newPostValue = action.newText;
             return myProfileCopy;
         case SET_USER_PROFILE:
+            if(action.value === null) return {...myProfileCopy, profile: null};
             let bd = "birthday" in action.value;
             let ct = "city" in action.value;
             let profile = {
@@ -79,6 +81,8 @@ const profileReducer = (myProfile = initialProfile, action) => {
                 }
             }
             return {...myProfileCopy, profile: profile}
+        case SET_IS_POST_AREA:
+            return {...myProfileCopy, isPostArea: action.value}
         default: 
             return myProfileCopy;
     }
@@ -98,17 +102,22 @@ export const setUserProfileActionCreator = (profile) => ({
     value: profile
 })
 
+export const setIsPostAreaActionCreator = (value) => ({
+    type: SET_IS_POST_AREA,
+    value: value
+})
+
 export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
-        debugger
+        dispatch(setUserProfileActionCreator(null));
         if(userId == 0){
             dispatch(setUserProfileActionCreator(initialProfile.myProfile));
-            initialProfile.isPostArea = true;
+            dispatch(setIsPostAreaActionCreator(true));
         }else{
             getUserProfile(userId).then(response => {
                 dispatch(setUserProfileActionCreator(response));
             });   
-            initialProfile.isPostArea = false;
+            dispatch(setIsPostAreaActionCreator(false));
         }
     }
 }

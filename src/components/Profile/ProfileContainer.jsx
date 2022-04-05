@@ -8,7 +8,6 @@ import {getUserProfileThunkCreator} from './../../redux/profile-reducer';
 class ProfileContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.isPostArea = false;
         this.userId = props.location;
     }
     
@@ -18,7 +17,7 @@ class ProfileContainer extends React.Component {
     
     render() {
         return (
-            <Profile profile={this.props.profile} postArea={this.isPostArea}/>
+            <Profile profile={this.props.profile} postArea={this.props.isPostArea}/>
         )    
     }
 }
@@ -33,7 +32,8 @@ const ProfileMatch = (props) => {
 const mapStateToProps = (state) => {
     return {
         profile: state.myProfile.profile,
-        myProfile: state.myProfile.myProfile
+        myProfile: state.myProfile.myProfile,
+        isPostArea: state.myProfile.isPostArea
     }
 } 
 
@@ -43,7 +43,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(setUserProfileActionCreator(profile))
         },
         getUserProfile: (id) => {
-            debugger
             dispatch(getUserProfileThunkCreator(id))
         }
     }
