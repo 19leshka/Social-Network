@@ -2,8 +2,10 @@ import React from 'react';
 import Profile from './Profile';
 import {connect} from 'react-redux';
 import {setUserProfileActionCreator} from '../../redux/profile-reducer';
+import {setMyProfileStatusActionCreator} from '../../redux/profile-reducer';
 import {useLocation} from 'react-router';
 import {getUserProfileThunkCreator} from './../../redux/profile-reducer';
+import {getProfileStatusThunkCreator} from './../../redux/profile-reducer';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
@@ -14,12 +16,13 @@ class ProfileContainer extends React.Component {
     }
     
     componentDidMount() {
-        this.props.getUserProfile(this.userId)
+        if(this.userId == 0) this.props.getUserStatus(22932);
+        this.props.getUserProfile(this.userId);
     }
     
     render() {
         return (
-            <Profile profile={this.props.profile} postArea={this.props.isPostArea}/>
+            <Profile profile={this.props.profile} myStatus={this.props.myStatus} setMyStatus={this.props.setMyStatus} postArea={this.props.isPostArea}/>
         )    
     }
 }
@@ -37,7 +40,8 @@ const mapStateToProps = (state) => {
     return {
         profile: state.myProfile.profile,
         myProfile: state.myProfile.myProfile,
-        isPostArea: state.myProfile.isPostArea
+        isPostArea: state.myProfile.isPostArea,
+        myStatus: state.myProfile.myStatus
     }
 } 
 
@@ -48,6 +52,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         getUserProfile: (id) => {
             dispatch(getUserProfileThunkCreator(id))
+        },
+        getUserStatus: (id) => {
+            dispatch(getProfileStatusThunkCreator(id))
+        },
+        setMyStatus: (value) => {
+            dispatch(setMyProfileStatusActionCreator(value))
         }
     }
 }

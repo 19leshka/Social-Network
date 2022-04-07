@@ -11,7 +11,7 @@ const Profile = (props) => {
     
     return (
         <main className={s.profile}>
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo profile={props.profile} myStatus={props.myStatus} setMyStatus={props.setMyStatus}/>
             {props.postArea ? <PostsAreaContainer/> : null}
         </main>
     );

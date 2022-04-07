@@ -1,5 +1,6 @@
 import s from './ProfileInfo.module.css';
 import userPhoto from './../../../assets/userPhoto.png';
+import ProfileStatus from './ProfileStatus/ProfileStatus'
 
 const ProfileInfo = (props) => {
 
@@ -16,7 +17,10 @@ const ProfileInfo = (props) => {
                 </div>
                 <div className={s.profileInfo}>
                     <h1 className={s.profileName}>{props.profile.fullName}</h1>
-                    <div className={s.profileStatus}>{status}</div>
+                    {props.profile.userId === 0
+                        ? <ProfileStatus status={props.myStatus} setMyStatus={props.setMyStatus}/>
+                        : <div className={s.profileStatus}>{status}</div>
+                    }
                     <hr className={s.profileHr}/>
                     <div className={s.info}>
                         <div className={s.birthDate}>

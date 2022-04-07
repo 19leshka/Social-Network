@@ -1,15 +1,17 @@
 import {getUserProfile} from './../api/api';
+import {profileAPI} from './../api/api';
 
 const ADD_POST = "ADD-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_IS_POST_AREA = "SET-IS-POST-AREA";
+const SET_MY_STATUS = "SET-MY-STATUS";
 
 let initialProfile = {
     myProfile: {
         userId: 0,
         fullName: "Alexey Balakhanov",
-        status: "Set status",
+        aboutMe: null,
         birthday: "19.02.2003",
         city: "Minsk",
         photos: {
@@ -44,29 +46,30 @@ let initialProfile = {
         }
     ],
     newPostValue: "",
+    myStatus: "",
     profile: null,
     isPostArea: null
 }
 
-const profileReducer = (myProfile = initialProfile, action) => {
-    let myProfileCopy = JSON.parse(JSON.stringify(myProfile));
+const profileReducer = (profile = initialProfile, action) => {
+    let profileCopy = JSON.parse(JSON.stringify(profile));
     switch (action.type) {
         case ADD_POST:
-            if(myProfileCopy.newPostValue === "") return  myProfile;
+            if(profileCopy.newPostValue === "") return  profile;
             let newPost = {
                 avatarImg: (window.location.origin + '/img/myProfileImg.jpg'),
-                postText: myProfileCopy.newPostValue,
+                postText: profileCopy.newPostValue,
                 date: (new Date()).toLocaleDateString(),
-                id: myProfileCopy.posts.length + 1
+                id: profileCopy.posts.length + 1
             }
-            myProfileCopy.posts.push(newPost);
-            myProfileCopy.newPostValue = "";
-            return myProfileCopy;
+            profileCopy.posts.push(newPost);
+            profileCopy.newPostValue = "";
+            return profileCopy;
         case CHANGE_POST_TEXT:
-            myProfileCopy.newPostValue = action.newText;
-            return myProfileCopy;
+            profileCopy.newPostValue = action.newText;
+            return profileCopy;
         case SET_USER_PROFILE:
-            if(action.value === null) return {...myProfileCopy, profile: null};
+            if(action.value === null) return {...profileCopy, profile: null};
             let bd = "birthday" in action.value;
             let ct = "city" in action.value;
             let profile = {
@@ -80,11 +83,14 @@ const profileReducer = (myProfile = initialProfile, action) => {
                     small: action.value.photos.small
                 }
             }
-            return {...myProfileCopy, profile: profile}
+            return {...profileCopy, profile: profile}
         case SET_IS_POST_AREA:
-            return {...myProfileCopy, isPostArea: action.value}
+            return {...profileCopy, isPostArea: action.value}
+        case SET_MY_STATUS:
+            profileCopy.myStatus = action.value;
+            return {...profileCopy}
         default: 
-            return myProfileCopy;
+            return profileCopy;
     }
 }
 
@@ -107,6 +113,11 @@ export const setIsPostAreaActionCreator = (value) => ({
     value: value
 })
 
+export const setMyProfileStatusActionCreator = (value) => ({
+    type: SET_MY_STATUS,
+    value: value
+})
+
 export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
         dispatch(setUserProfileActionCreator(null));
@@ -119,6 +130,17 @@ export const getUserProfileThunkCreator = (userId) => {
             });   
             dispatch(setIsPostAreaActionCreator(false));
         }
+    }
+}
+
+export const getProfileStatusThunkCreator = (userId) => {
+    return (dispatch) => {
+        profileAPI.getUserStatus(userId).then((response) => {
+            if(response.data !== null) return response.data;
+            else return "Set sss"
+        }).then((response) => {
+            dispatch(setMyProfileStatusActionCreator(response));
+        })
     }
 }
 

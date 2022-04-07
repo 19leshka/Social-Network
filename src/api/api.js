@@ -25,5 +25,17 @@ export const unfollowUser = (id) => {
 }
 
 export const getUserProfile = (id) => {
-    return instance.get(`profile/${id}`).then(response => response.data);
+    return profileAPI.getUserProfile(id);
+}
+
+export const profileAPI = {
+    getUserProfile(id) {
+        return instance.get(`profile/${id}`).then(response => response.data);
+    },
+    getUserStatus(id) {
+        return instance.get(`profile/status/${id}`)
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, {status: status})
+    }
 }
