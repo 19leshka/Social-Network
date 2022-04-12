@@ -40,8 +40,8 @@ class ProfileContainer extends React.Component {
     
     render() {
         return (
-            <Profile profile={this.props.profile} myStatus={this.props.myStatus} setMyStatus={this.props.setMyStatus} postArea={this.props.isPostArea}/>
-        )    
+            <Profile profile={this.props.profile} myStatus={this.props.myStatus} setMyStatus={this.props.setMyStatus} postArea={this.props.isPostArea}/>  
+        )
     }
 }
 
