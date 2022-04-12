@@ -1,5 +1,6 @@
 import {addPostActionCreator} from '../../../redux/profile-reducer';
 import {updateNewPostTextActionCreator} from '../../../redux/profile-reducer';
+import {deletePostActionCreater} from '../../../redux/profile-reducer';
 import PostArea from './PostsArea';
 import {connect} from 'react-redux';
 
@@ -17,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         updatePostText: (text) => {
             dispatch(updateNewPostTextActionCreator(text));
+        },
+        deletePost: (id) => {
+            dispatch(deletePostActionCreater(id));
         }
     }
 }

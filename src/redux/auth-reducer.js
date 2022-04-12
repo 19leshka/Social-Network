@@ -35,6 +35,8 @@ export const getAuthThunkCreator = () => {
     return (dispatch) => {
         getAuth().then(response => {
             if(response.data.resultCode === 0) {
+
+                window.sessionStorage.auth = true;
                 let {id, email, login} = response.data.data;
                 dispatch(setUserDataActionCreator(id, email, login));
             }

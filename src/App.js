@@ -13,7 +13,7 @@ const App = (props) => {
     document.title = "Wrong Page"
     return (<div>smth wrong</div>)
   }
-  console.log(props)
+  
   return (
       <div className="app-wrapper">
           <HeaderContainer />

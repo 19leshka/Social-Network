@@ -4,6 +4,8 @@ import PostsAreaContainer from './PostsArea/PostsAreaContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
+    // console.log("load " + JSON.stringify(props.profile));
+
     if(!props.profile) {
         return <Preloader />
     }

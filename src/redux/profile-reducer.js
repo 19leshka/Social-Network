@@ -6,6 +6,8 @@ const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_IS_POST_AREA = "SET-IS-POST-AREA";
 const SET_MY_STATUS = "SET-MY-STATUS";
+const DELETE_POST = "DELETE-POST";
+const SET_CURRENT_PAGE_ID = "SET-CURRENT-PAGE-ID";
 
 let initialProfile = {
     myProfile: {
@@ -48,7 +50,8 @@ let initialProfile = {
     newPostValue: "",
     myStatus: "",
     profile: null,
-    isPostArea: null
+    isPostArea: null,
+    currentPageId: 0
 }
 
 const profileReducer = (profile = initialProfile, action) => {
@@ -69,6 +72,7 @@ const profileReducer = (profile = initialProfile, action) => {
             profileCopy.newPostValue = action.newText;
             return profileCopy;
         case SET_USER_PROFILE:
+            // debugger
             if(action.value === null) return {...profileCopy, profile: null};
             let bd = "birthday" in action.value;
             let ct = "city" in action.value;
@@ -89,6 +93,13 @@ const profileReducer = (profile = initialProfile, action) => {
         case SET_MY_STATUS:
             profileCopy.myStatus = action.value;
             return {...profileCopy}
+        case DELETE_POST:
+            let withDeletedPost = profileCopy.posts.filter(post => {
+                if(post.id != action.value) return post;
+            })
+            return {...profileCopy, posts: withDeletedPost}
+        case SET_CURRENT_PAGE_ID:
+            return {...profileCopy, currentPageId: action.value}
         default: 
             return profileCopy;
     }
@@ -118,9 +129,20 @@ export const setMyProfileStatusActionCreator = (value) => ({
     value: value
 })
 
+export const setCurrentPageIdActionCreator = (value) => ({
+    type: SET_CURRENT_PAGE_ID,
+    value: value
+})
+
+export const deletePostActionCreater = (value) => ({
+    type: DELETE_POST,
+    value: value
+})
+
 export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
         dispatch(setUserProfileActionCreator(null));
+        // debugger
         if(userId == 0){
             dispatch(setUserProfileActionCreator(initialProfile.myProfile));
             dispatch(setIsPostAreaActionCreator(true));

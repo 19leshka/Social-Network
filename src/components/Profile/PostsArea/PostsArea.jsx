@@ -11,9 +11,9 @@ const PostsArea = (props) => {
             .reverse()
             .map(p => {
                 if(typeof p.date == 'string'){
-                    return    <Post text={p.postText} imgSrc={p.avatarImg} date={p.date} />;
+                    return    <Post deletePost={props.deletePost} id={p.id} text={p.postText} imgSrc={p.avatarImg} date={p.date} />;
                 }else{
-                    return <Post text={p.postText} imgSrc={p.avatarImg} date={p.date.toLocaleDateString()} />
+                    return <Post deletePost={props.deletePost} id={p.id} text={p.postText} imgSrc={p.avatarImg} date={p.date.toLocaleDateString()} />
                 }
             });
 
