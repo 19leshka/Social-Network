@@ -31,13 +31,13 @@ const validate = (values) => {
 const LoginForm = (props) => {
     const navigate = useNavigate();
 
-    const onSubmit = (values, submitProps) => {
+    const onSubmit = (values) => {
         let formData = {
             email: values.email,
             password: values.password, 
             rememberMe: values.rememberMe
         }
-        login(formData, submitProps);
+        login(formData);
     }
 
     let formik = useFormik({
@@ -46,8 +46,8 @@ const LoginForm = (props) => {
         validate
     })
 
-    const login = async (formData, submitProps) => {
-        props.login(formData, submitProps.setStatus);
+    const login = (formData) => {
+        props.login(formData);
         navigate('/profile/0');
     }
 
@@ -103,8 +103,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: (formData, setStatus) => {
-            dispatch(loginThunkCreator(formData, setStatus));
+        login: (formData) => {
+            dispatch(loginThunkCreator(formData));
         },
         logout: () => {
             dispatch(logoutThunkCreator());

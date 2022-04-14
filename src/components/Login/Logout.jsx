@@ -13,8 +13,6 @@ const Logout = (props) => {
         navigate('/login');
     }
 
-    console.log(quitSvg);
-
     return (
         <>
             <div className={s.logoutContainer}>

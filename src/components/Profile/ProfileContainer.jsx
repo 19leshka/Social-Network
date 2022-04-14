@@ -15,27 +15,11 @@ class ProfileContainer extends React.Component {
     constructor(props) {
         super(props);
         this.userId = props.location;
-        // console.log(this.props.location)
     }
     
     componentDidMount() {
         if(this.userId == 0) this.props.getUserStatus(22932);
         this.props.getUserProfile(this.userId);
-
-        // (this.userId == 0) 
-        //     ? this.props.getUserProfile(this.userId)
-        //     : this.props.getUserProfile(0)
-    }
-
-    componentDidUpdate( prevProps ) {
-        // debugger
-        // if(prevProps.location != prevProps.profile.userId) {
-        //     if(this.userId == 0) prevProps.getUserStatus(22932);
-        //     prevProps.getUserProfile(prevProps.location);
-        // }
-        let a = this.props;
-        // console.log("update " + this.props.location)
-        // this.props.getUserProfile(this.props.location)
     }
     
     render() {
@@ -47,8 +31,6 @@ class ProfileContainer extends React.Component {
 
 const ProfileMatch = (props) => {
     let location = useLocation().pathname.split("file/")[1];
-    // debugger
-    // if(props.location != location) props.setLocation(location);
 
 	return (
 		<AuthRedirectToLogin {...props} location={location} />

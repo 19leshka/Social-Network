@@ -8,14 +8,21 @@ import MessagesContainer from './components/Messages/MessagesContainer';
 import FriendsContainer from './components/Friends/FriendsContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import {Routes, Route} from 'react-router-dom';
+import {initializeAppThunkCreator} from './redux/app-reducer';
+import {connect} from 'react-redux';
+import Preloader from './components/common/Preloader';
 
-const App = (props) => {
-  const WrongPage = () => {
-    document.title = "Wrong Page"
-    return (<div>smth wrong</div>)
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initializeApp()
   }
   
-  return (
+  render() {
+    if(!this.props.initialized){
+      return <Preloader/>
+    }
+    
+    return(
       <div className="app-wrapper">
           <HeaderContainer />
           <div className="wrapper main-wrapper">
@@ -30,7 +37,27 @@ const App = (props) => {
             </Routes>
           </div>
       </div>
-  );
+    )
+  }
 }
 
-export default App;
+const WrongPage = () => {
+  document.title = "Wrong Page"
+  return (<div>smth wrong</div>)
+}
+
+const mapStateToProps = (state) => {
+  return {
+    initialized: state.app.initialized
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      initializeApp: () => {
+          dispatch(initializeAppThunkCreator())
+      }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

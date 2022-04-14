@@ -45,7 +45,7 @@ export const setCorrectLoginActionCreator = (value) => ({
 
 export const getAuthThunkCreator = () => {
     return (dispatch) => {
-        authAPI.me().then(response => {
+        return authAPI.me().then(response => {
             if(response.data.resultCode === 0) {
                 let {id, email, login} = response.data.data;
                 dispatch(setUserDataActionCreator(id, email, login, true));
@@ -54,15 +54,14 @@ export const getAuthThunkCreator = () => {
     }
 }
 
-export const loginThunkCreator = (formData, setStatus) => {
-    return async (dispatch) => {
-        await authAPI.login(formData.email, formData.password, formData.rememberMe = false).then(response => {
+export const loginThunkCreator = (formData) => {
+    return (dispatch) => {
+        authAPI.login(formData.email, formData.password, formData.rememberMe = false).then(response => {
             if(response.data.resultCode === 0) {
                 dispatch(getAuthThunkCreator());
                 dispatch(setCorrectLoginActionCreator(true));
             }else{
                 dispatch(setCorrectLoginActionCreator(false));
-                // setStatus({error: response.data.messages});
             }
         })
     }
