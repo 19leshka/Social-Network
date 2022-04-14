@@ -1,15 +1,112 @@
-.loginPageBtn {
-    /* display: inline; */
-    cursor: pointer;
-    background-color:#ffffff;
-	border-radius:5px;
-	border:1px solid #cccccc;
-	display:inline-block;
-	cursor:pointer;
-	color:#000000;
-	font-family:Arial;
-	font-size:17px;
-	padding:12px 20px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #000000;
+.loginFormContainer{
+	font-family: Open Sans Condensed;
+	max-width: 350px;
+	border: 1px solid rgb(255, 188, 225);
+	border-radius: 5px;
+	margin: 0 auto;
+	padding: 40px 20px;
+}
+
+.loginInput {
+	position: relative;
+	margin-bottom: 25px;
+}
+
+.emailInput, .passwordInput {
+	font-size: 16px;
+	padding: 10px;
+	display: block;
+	width: 300px;
+	border: none;
+	border-bottom: 1px solid #ccc;
+}
+
+input:focus {
+	outline: none;
+}
+
+/* LABEL ======================================= */
+.textInputLabel {
+	color: #999;
+	font-size: 18px;
+	position: absolute;
+	pointer-events: none;
+	left: 10px;
+	top: 10px;
+	transition: 0.2s ease all;
+	-moz-transition: 0.2s ease all;
+	-webkit-transition: 0.2s ease all;
+}
+  
+	/* active state */
+input:focus ~ .textInputLabel,
+input:valid ~ .textInputLabel {
+	top: -20px;
+	left: 1px;
+	font-size: 14px;
+	color: #5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+	position: relative;
+	display: block;
+	width: 300px;
+}
+.bar:before, .bar:after {
+	content: "";
+	height: 2px;
+	width: 0;
+	bottom: 0;
+	position: absolute;
+	background: #5264AE;
+	transition: 0.2s ease all;
+	-moz-transition: 0.2s ease all;
+	-webkit-transition: 0.2s ease all;
+}
+.bar:before {
+	left: 50%;
+}
+.bar:after {
+	right: 50%;
+}
+
+	/* active state */
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+	width: 50%;
+}
+
+/* REMEMBER ================================= */
+
+.rememberInput {
+	position: absolute;
+}
+
+/* ERRORS ================================= */
+
+.error {
+	position: absolute;
+	top: -20px;
+	right: 10px;
+	color: red;
+}
+
+.incorrectLogin {
+	color: red;
+	border: 1px solid red;
+	border-radius: 5px;
+	text-align: center;
+	padding: 5px;
+	margin-bottom: 15px;
+}
+
+/* SUBMIT BUTTON ================================= */
+
+.submitBtn {
+	border: none;
+	border-radius: 5px;
+	width: 100%;
+	height: 40px;
+	background-color: rgb(255, 188, 225);
 }

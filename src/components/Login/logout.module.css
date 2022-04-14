@@ -1,0 +1,26 @@
+.logoutContainer {
+    width: 350px;
+	border: 1px solid rgb(255, 188, 225);
+	border-radius: 5px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.quitImg {
+    position: relative;
+    left: 20px;
+    fill:rgb(255, 188, 225);
+}
+
+.logoutContainer h3 {
+    text-align: center;
+}
+
+.logoutButton {
+    border: none;
+	border-radius: 5px;
+	width: 100%;
+	height: 40px;
+	background-color: rgb(255, 188, 225);
+}

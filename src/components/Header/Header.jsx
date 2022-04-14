@@ -18,7 +18,11 @@ const Header = (props) => {
             </div>
             <div className={s.headerRight}>
               <div className={s.myProfile}>
-                {props.isAuth ? <img className={s.myProfileImg} src={window.location.origin + '/img/myProfileImg.jpg' } alt="" /> : <NavLink to="/login">Login</NavLink>}
+                {props.isAuth 
+                  ? <NavLink to="/logout">Logout</NavLink>
+                  : <NavLink to="/login">Login</NavLink>
+                }
+                {/* <img onClick={() => alert()} className={s.myProfileImg} src={window.location.origin + '/img/myProfileImg.jpg' } alt="" />  */}
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login/Login';
+import Logout from './components/Login/Logout';
 import Navbar from './components/Navbar/Navbar';
 import ProfileMatch from './components/Profile/ProfileContainer';
 import MessagesContainer from './components/Messages/MessagesContainer';
@@ -23,7 +24,8 @@ const App = (props) => {
               <Route path="/profile/*" element={<ProfileMatch/>}/>
               <Route path="/messages/*" element={<MessagesContainer/>}/>
               <Route path="/friends/*" element={<FriendsContainer/>}/>
-              {<Route path="/login" element={<Login/>}/>}
+              <Route path="/login" element={<Login/>}/>
+              <Route path="/logout" element={<Logout/>}/>
               <Route path="*" element={<WrongPage/>}/>
             </Routes>
           </div>
