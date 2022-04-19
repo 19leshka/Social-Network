@@ -10,6 +10,8 @@ import {getUserProfileThunkCreator} from './../../redux/profile-reducer';
 import {getProfileStatusThunkCreator} from './../../redux/profile-reducer';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
 import { compose } from 'redux';
+/* selectors */
+import {getProfile,  getMyProfile, getIsPostArea, getMyStatus, getLocation} from './../../redux/selectors/profile-selector';
 
 class ProfileContainer extends React.Component {
     constructor(props) {
@@ -41,11 +43,11 @@ const AuthRedirectToLogin = compose(withAuthRedirect)(ProfileContainer);
 
 const mapStateToProps = (state) => {
     return {
-        profile: state.myProfile.profile,
-        myProfile: state.myProfile.myProfile,
-        isPostArea: state.myProfile.isPostArea,
-        myStatus: state.myProfile.myStatus,
-        location: state.myProfile.currentPageId
+        profile: getProfile(state),
+        myProfile: getMyProfile(state),
+        isPostArea: getIsPostArea(state),
+        myStatus: getMyStatus(state),
+        location: getLocation(state)
     }
 } 
 
