@@ -2,16 +2,9 @@ import s from './Friends.module.css';
 import Friend from './Friend/Friend';
 import User from './Users/User';
 import Preloader from './../common/Preloader';
+import Paginator from './../common/Paginator/Paginator';
 
 const Friends = (props) => {
-    const pages = (num) => {
-        let pages = [];
-        for(let i = 1; i <= num; i++){
-            pages.push(<span onClick={(e) => props.setPage(e)} className={(i == props.currentPage ? s.active : s.disabled)}>{i}</span>)
-        }
-        return pages;
-    } 
-
     const friends = () => {
         return ([...props.friends]
         .map(friend => {
@@ -41,8 +34,8 @@ const Friends = (props) => {
             <div className={s.usersInfo}>
                 <h3>Find Friends:</h3>
                 <div className={s.pages}>
-                    {pages(props.pageCount)}
-                    <span>...</span>
+                    {/* {pages(props.pageCount)} */}
+                    {<Paginator num={props.pageCount} currentPage={props.currentPage} setPage={props.setPage}/>}
                 </div>
             </div>
             {props.isFetching ?   
