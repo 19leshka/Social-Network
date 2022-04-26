@@ -13,12 +13,10 @@ const ProfileStatus = (props) => {
 
     return (
         <>
-            {!editMode && <div onClick={() => setEditMode(true)} className={s.profileStatus}>
-                <span>{props.status}</span>
-            </div>}
-            {editMode && <div className={s.editProfileStatus}>
-                <input ref={status} onChange={() => props.setMyStatus(status.current.value)} autoFocus={true} onBlur={() => onInputBlur()} type="text" value={props.status} />
-            </div>}
+            {!editMode && <span onClick={() => setEditMode(true)} className={s.profileStatus}>
+                {props.status}
+            </span>}
+            {editMode && <input className={s.editProfileStatus} ref={status} onChange={() => props.setMyStatus(status.current.value)} autoFocus={true} onBlur={() => onInputBlur()} type="text" value={props.status} />}
         </>
     )
 }

@@ -72,7 +72,6 @@ const profileReducer = (profile = initialProfile, action) => {
             profileCopy.newPostValue = action.newText;
             return profileCopy;
         case SET_USER_PROFILE:
-            // debugger
             if(action.value === null) return {...profileCopy, profile: null};
             let bd = "birthday" in action.value;
             let ct = "city" in action.value;
