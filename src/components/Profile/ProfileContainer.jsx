@@ -16,12 +16,21 @@ import {getProfile,  getMyProfile, getIsPostArea, getMyStatus, getLocation} from
 class ProfileContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.userId = props.location;
+    }
+
+    refreshProfile() {
+        if(this.props.location == 0) this.props.getUserStatus(22932);
+        this.props.getUserProfile(this.props.location);
     }
     
     componentDidMount() {
-        if(this.userId == 0) this.props.getUserStatus(22932);
-        this.props.getUserProfile(this.userId);
+       this.refreshProfile();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.location != prevProps.location) {
+            this.refreshProfile();
+        }
     }
     
     render() {
