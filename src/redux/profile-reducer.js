@@ -141,7 +141,6 @@ export const deletePostActionCreater = (value) => ({
 export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
         dispatch(setUserProfileActionCreator(null));
-        // debugger
         if(userId == 0){
             dispatch(setUserProfileActionCreator(initialProfile.myProfile));
             dispatch(setIsPostAreaActionCreator(true));

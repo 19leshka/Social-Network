@@ -6,6 +6,7 @@ import {toggleIsFollowingProgressActionCreator} from '../../redux/users-reducer'
 import {getUsersThunkCreator} from '../../redux/users-reducer';
 import {getFollowUserThunkCreator} from '../../redux/users-reducer';
 import {getUnfollowUserThunkCreator} from '../../redux/users-reducer';
+import {setCurrentPageActionCreator} from '../../redux/users-reducer';
 import {connect} from 'react-redux';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
 import { compose } from 'redux';
@@ -17,17 +18,16 @@ class FriendsContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getUsers();
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
     setPage = (event) => {
         let page = +event.target.textContent;
-        this.props.getUsers(page);
+        this.props.getUsers(page, this.props.pageSize);
     }
 
     render() {
-        return (<Friends 
-            pageCount={this.props.pageCount}
+        return (<Friends
             currentPage={this.props.currentPage}
             follow={this.props.follow}
             unfollow={this.props.unfollow}
@@ -39,6 +39,8 @@ class FriendsContainer extends React.Component {
             isFetching={this.props.isFetching}
             isFollowing={this.props.isFollowing}
             setIsFollowing={this.props.setIsFollowing}
+            totalUsersCount={this.props.totalUsersCount}
+            pageSize={this.props.pageSize}
         />)
     }
 }
@@ -47,7 +49,8 @@ const mapStateToProps = (state) => {
     return {
         friends: state.friends,
         users: state.users,
-        pageCount:  Math.ceil(state.users.totalUsersCount / state.users.pageSize),
+        totalUsersCount: state.users.totalUsersCount,
+        pageSize: state.users.pageSize,
         currentPage: state.users.currentPage,
         isFetching: state.users.isFetching,
         isFollowing: state.users.followingInProgress
@@ -64,6 +67,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setIsFollowing: (value, id) => {
             dispatch(toggleIsFollowingProgressActionCreator(value, id))
+        },
+        setCurrentPage: (page) => {
+            dispatch(setCurrentPageActionCreator(page))
         },
         getUsers: (currentPage, pageSize) => {
             dispatch(getUsersThunkCreator(currentPage, pageSize))

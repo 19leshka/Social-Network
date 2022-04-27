@@ -34,8 +34,13 @@ const Friends = (props) => {
             <div className={s.usersInfo}>
                 <h3>Find Friends:</h3>
                 <div className={s.pages}>
-                    {/* {pages(props.pageCount)} */}
-                    {<Paginator num={props.pageCount} currentPage={props.currentPage} setPage={props.setPage}/>}
+                    {<Paginator
+                        totalItemsCount={props.totalUsersCount} 
+                        pageSize={props.pageSize}
+                        currentPage={props.currentPage} 
+                        setPage={props.setPage}
+                        portionSize={15}
+                        />}
                 </div>
             </div>
             {props.isFetching ?   

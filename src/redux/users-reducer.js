@@ -8,13 +8,14 @@ const SET_USERS = "SET-USERS";
 const UNFOLLOW = "UNFOLLOW";
 const FOLLOW = "FOLLOW";
 const SET_PAGE = "SET-PAGE";
+const SET_TOTAL_USERS_COUNT = "SET-TOTAL-USERS-COUNT";
 const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING";
 const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS-FOLLOWING-PROGRESS";
 
 let initialUsers = {
     users: [],
-    pageSize: 5,
-    totalUsersCount: 100,
+    pageSize: 10,
+    totalUsersCount: null,
     currentPage: 1,
     isFetching: true,
     followingInProgress: []
@@ -64,6 +65,11 @@ const usersReducer = (users = initialUsers, action) => {
                     ? [...usersCopy.followingInProgress, action.id] 
                     : [...usersCopy.followingInProgress.filter(id => id != action.id)]
             }
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...usersCopy,
+                totalUsersCount: action.value
+            }
         default:
             return usersCopy;
     }
@@ -77,6 +83,11 @@ export const setUsersActionCreator = (users = []) => ({
 export const setCurrentPageActionCreator = (page = 1) => ({
     type: SET_PAGE,
     value: page
+});
+
+export const setTotalUsersCountActionCreator = (count) => ({
+    type: SET_TOTAL_USERS_COUNT,
+    value: count
 });
 
 export const toggleIsFetchingActionCreator = (value = true) => ({
@@ -94,6 +105,9 @@ export const getUsersThunkCreator = (currentPage = 1, pageSize = 5) => {
     return (dispatch) => {
         dispatch(toggleIsFetchingActionCreator(true));
         getUsersPage(currentPage, pageSize).then(response => {
+            dispatch(setTotalUsersCountActionCreator(response.totalCount));
+            return response.items;
+        }).then(response => {
             dispatch(setCurrentPageActionCreator(currentPage));
             dispatch(setUsersActionCreator(response));
             dispatch(toggleIsFetchingActionCreator(false));

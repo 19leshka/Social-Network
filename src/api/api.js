@@ -25,7 +25,8 @@ export const getAuth = () => {
 }
 
 export const getUsersPage = (page, count = 5) => {
-    return instance.get(`users?count=${count}&page=${page}`).then(response => response.data.items);
+    return instance.get(`users?count=${count}&page=${page}`).then(response => {
+        return response.data});
 }
 
 export const followUser = (id) => {

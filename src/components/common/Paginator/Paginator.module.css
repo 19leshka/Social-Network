@@ -1,3 +1,8 @@
+.pages{
+    display: flex;
+    align-items: center;
+}
+
 .pages span {
     display: inline-block;
     text-align: center;
