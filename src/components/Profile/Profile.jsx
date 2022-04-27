@@ -8,10 +8,17 @@ const Profile = (props) => {
         return <Preloader />
     }
     if(props.profile.fullName !== null) document.title = props.profile.fullName;
+
+    const isMyProfile = (props.location == props.userId ? true : false);
     
     return (
         <main className={s.profile}>
-            <ProfileInfo profile={props.profile} myStatus={props.myStatus} setMyStatus={props.setMyStatus}/>
+            <ProfileInfo 
+                profile={props.profile} 
+                myStatus={props.myStatus} 
+                setMyStatus={props.setMyStatus}
+                isMyProfile={isMyProfile}
+            />
             {props.postArea ? <PostsAreaContainer/> : null}
         </main>
     );

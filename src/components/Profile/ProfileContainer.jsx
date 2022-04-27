@@ -19,8 +19,12 @@ class ProfileContainer extends React.Component {
     }
 
     refreshProfile() {
-        if(this.props.location == 0) this.props.getUserStatus(22932);
-        this.props.getUserProfile(this.props.location);
+        if(this.props.location == this.props.userId) {
+            this.props.getUserStatus(this.props.userId);
+            this.props.getUserProfile(0);
+        }else{
+            this.props.getUserProfile(this.props.location);
+        }
     }
     
     componentDidMount() {
@@ -35,7 +39,14 @@ class ProfileContainer extends React.Component {
     
     render() {
         return (
-            <Profile profile={this.props.profile} myStatus={this.props.myStatus} setMyStatus={this.props.setMyStatus} postArea={this.props.isPostArea}/>  
+            <Profile 
+                profile={this.props.profile} 
+                myStatus={this.props.myStatus} 
+                setMyStatus={this.props.setMyStatus} 
+                postArea={this.props.isPostArea}
+                location={this.props.location}
+                userId={this.props.userId}
+            />  
         )
     }
 }
@@ -56,7 +67,8 @@ const mapStateToProps = (state) => {
         myProfile: getMyProfile(state),
         isPostArea: getIsPostArea(state),
         myStatus: getMyStatus(state),
-        location: getLocation(state)
+        location: getLocation(state),
+        userId: state.auth.userId
     }
 } 
 

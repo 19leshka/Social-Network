@@ -13,7 +13,9 @@ const ProfileInfo = (props) => {
             <div className={s.profileInner}>
                 <div className={s.profilePhoto}>
                     <img className={s.profileImg} src={src} alt="" />
-                    <div className={s.editPhoto}>Edit</div>
+                    {
+                        props.isMyProfile && <div className={s.editPhoto}>Edit</div>
+                    }
                 </div>
                 <div className={s.profileInfo}>
                     <h1 className={s.profileName}>{props.profile.fullName}</h1>

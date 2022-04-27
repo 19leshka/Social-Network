@@ -30,7 +30,7 @@ class App extends React.Component {
       <div className="app-wrapper">
           <HeaderContainer />
           <div className="wrapper main-wrapper">
-            <Navbar />
+            <Navbar userId={this.props.userId}/>
             <Suspense fallback={<Preloader/>}>
               <Routes>
                 <Route path="/profile/*" element={<ProfileMatch/>}/>
@@ -54,7 +54,8 @@ const WrongPage = () => {
 
 const mapStateToProps = (state) => {
   return {
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
+    userId: state.auth.userId
   }
 }
 
