@@ -18,6 +18,7 @@ const Profile = (props) => {
                 myStatus={props.myStatus} 
                 setMyStatus={props.setMyStatus}
                 isMyProfile={isMyProfile}
+                savePhoto={props.savePhoto}
             />
             {props.postArea ? <PostsAreaContainer/> : null}
         </main>

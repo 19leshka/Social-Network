@@ -8,6 +8,7 @@ import {setCurrentPageIdActionCreator} from '../../redux/profile-reducer';
 import {useLocation} from 'react-router';
 import {getUserProfileThunkCreator} from './../../redux/profile-reducer';
 import {getProfileStatusThunkCreator} from './../../redux/profile-reducer';
+import {savePhotoThunkCreator} from './../../redux/profile-reducer';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
 import { compose } from 'redux';
 /* selectors */
@@ -21,7 +22,7 @@ class ProfileContainer extends React.Component {
     refreshProfile() {
         if(this.props.location == this.props.userId) {
             this.props.getUserStatus(this.props.userId);
-            this.props.getUserProfile(0);
+            this.props.getUserProfile(this.props.userId);
         }else{
             this.props.getUserProfile(this.props.location);
         }
@@ -46,6 +47,7 @@ class ProfileContainer extends React.Component {
                 postArea={this.props.isPostArea}
                 location={this.props.location}
                 userId={this.props.userId}
+                savePhoto={this.props.savePhoto}
             />  
         )
     }
@@ -91,6 +93,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         deletePost: (id) => {
             dispatch(deletePostActionCreater(id));
+        },
+        savePhoto: (photo) => {
+            dispatch(savePhotoThunkCreator(photo));
         }
     }
 }

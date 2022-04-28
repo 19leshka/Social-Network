@@ -1,5 +1,6 @@
 import {getUserProfile} from './../api/api';
 import {profileAPI} from './../api/api';
+import {store} from './redux-store';
 
 const ADD_POST = "ADD-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
@@ -8,10 +9,11 @@ const SET_IS_POST_AREA = "SET-IS-POST-AREA";
 const SET_MY_STATUS = "SET-MY-STATUS";
 const DELETE_POST = "DELETE-POST";
 const SET_CURRENT_PAGE_ID = "SET-CURRENT-PAGE-ID";
+const SET_MY_PROFILE_IMG = "SET-MY-PROFILE-IMG";
 
 let initialProfile = {
     myProfile: {
-        userId: 0,
+        userId: 22932,
         fullName: "Alexey Balakhanov",
         aboutMe: null,
         birthday: "19.02.2003",
@@ -99,6 +101,11 @@ const profileReducer = (profile = initialProfile, action) => {
             return {...profileCopy, posts: withDeletedPost}
         case SET_CURRENT_PAGE_ID:
             return {...profileCopy, currentPageId: action.value}
+        case SET_MY_PROFILE_IMG:
+            let photos = JSON.parse(JSON.stringify(action.value));
+            profileCopy.myProfile.photos = photos;
+            let newProfile = profileCopy;
+            return {...newProfile};
         default: 
             return profileCopy;
     }
@@ -138,12 +145,20 @@ export const deletePostActionCreater = (value) => ({
     value: value
 })
 
+export const setMyProfileImgActionCreator = (value) => ({
+    type: SET_MY_PROFILE_IMG,
+    value: value
+})
+
 export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
         dispatch(setUserProfileActionCreator(null));
-        if(userId == 0){
-            dispatch(setUserProfileActionCreator(initialProfile.myProfile));
-            dispatch(setIsPostAreaActionCreator(true));
+        if(userId == 22932){
+            getUserProfile(userId).then(response => {
+                dispatch(setMyProfileImgActionCreator(response.photos));
+                dispatch(setUserProfileActionCreator(store.getState().myProfile.myProfile));
+                dispatch(setIsPostAreaActionCreator(true));
+            });
         }else{
             getUserProfile(userId).then(response => {
                 dispatch(setUserProfileActionCreator(response));
@@ -161,6 +176,17 @@ export const getProfileStatusThunkCreator = (userId) => {
         }).then((response) => {
             dispatch(setMyProfileStatusActionCreator(response));
         })
+    }
+}
+
+export const savePhotoThunkCreator = (file) => {
+    return async (dispatch) => {
+        let response = await profileAPI.setPhoto(file);
+        if(response.data.resultCode === 0) {
+            console.log(response.data.data.photos)
+            dispatch(setMyProfileImgActionCreator(response.data.data.photos));
+            dispatch(setUserProfileActionCreator(store.getState().myProfile.myProfile));
+        }
     }
 }
 

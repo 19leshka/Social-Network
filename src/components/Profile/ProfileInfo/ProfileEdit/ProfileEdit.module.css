@@ -1,0 +1,37 @@
+.background {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.85);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.exitBtn {
+    color: #fff;
+    opacity: 0.3;
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.editFormWrapper {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    opacity: 2;
+    width: 500px;
+    height: 700px;
+}
+
+.changePhoto {
+    border: 1px solid #eee;
+    border-radius: 3px;
+    padding: 5px;
+}

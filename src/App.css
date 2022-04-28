@@ -22,3 +22,20 @@ body {
 .active.navLink {
   background-color: rgb(226, 226, 226);
 }
+
+/* profile edit mode */
+
+.profile-edit-mode-enter {
+  opacity: 0;
+}
+.profile-edit-mode-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.profile-edit-mode-exit {
+  opacity: 1;
+}
+.profile-edit-mode-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
