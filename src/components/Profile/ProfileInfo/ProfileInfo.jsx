@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import FullInfo from './FullInfo/FullInfo';
 import s from './ProfileInfo.module.css';
 import userPhoto from './../../../assets/userPhoto.png';
 import ProfileStatus from './ProfileStatus/ProfileStatus'
@@ -12,6 +13,7 @@ const ProfileInfo = (props) => {
     const city = (props.profile.city !== null ? props.profile.city : "xxx");
 
     const [editMode, setEditMode] = useState(false);
+    const [fullInfo, setFullInfo] = useState(false)
 
     return (
             <div className={s.profileInner}>
@@ -43,6 +45,15 @@ const ProfileInfo = (props) => {
                             <div className={`${s.location} ${s.rightInfo}`}>{city}</div>
                         </div>
                     </div>
+                </div>
+                <div className={s.fullInfoContainer}>
+                    {fullInfo 
+                        ? <div onClick={() => setFullInfo(!fullInfo)} className={s.showFullInfo}>Close full information</div>
+                        : <div onClick={() => setFullInfo(!fullInfo)} className={s.showFullInfo}>Show full information</div>
+                    }
+                    <CSSTransition in={fullInfo} timeout={200} classNames="profile-edit-mode" unmountOnExit>
+                            <FullInfo/>
+                    </CSSTransition>
                 </div>
             </div>
     );

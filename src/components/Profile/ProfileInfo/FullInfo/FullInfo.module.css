@@ -1,0 +1,36 @@
+.fullInfo {
+    padding: 10px;
+}
+
+.fullInfo span {
+    font-size: 16px;
+}
+
+.fullInfo h3 {
+    position: relative;
+    margin: 5px;
+}
+
+.lookingFor > div, .contacts > div {
+    margin: 3px 0;
+}
+
+.lookingFor h3::after {
+    position: absolute;
+    content: "";
+    background-color: rgb(185, 185, 185);
+    width: 90%;
+    height: 1.3px;
+    top: 11px;
+    right: 0;
+}
+
+.contacts h3::after {
+    position: absolute;
+    content: "";
+    background-color: rgb(185, 185, 185);
+    width: 88%;
+    height: 1.3px;
+    top: 11px;
+    right: 0;
+}
