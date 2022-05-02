@@ -52,7 +52,11 @@ const ProfileInfo = (props) => {
                         : <div onClick={() => setFullInfo(!fullInfo)} className={s.showFullInfo}>Show full information</div>
                     }
                     <CSSTransition in={fullInfo} timeout={200} classNames="profile-edit-mode" unmountOnExit>
-                            <FullInfo/>
+                            <FullInfo 
+                                lookingForAJob={props.profile.lookingForAJob}
+                                lookingForAJobDescription={props.profile.lookingForAJobDescription}
+                                contacts={props.profile.contacts}
+                            />
                     </CSSTransition>
                 </div>
             </div>

@@ -14,6 +14,8 @@ const SET_MY_PROFILE_IMG = "SET-MY-PROFILE-IMG";
 let initialProfile = {
     myProfile: {
         userId: 22932,
+        lookingForAJob: null,
+        lookingForAJobDescription: null,
         fullName: "Alexey Balakhanov",
         aboutMe: null,
         birthday: "19.02.2003",
@@ -21,6 +23,16 @@ let initialProfile = {
         photos: {
             large: window.location.origin + '/img/profileImg.png',
             small: null
+        },
+        contacts: {
+            github: null,
+            vk: null,
+            facebook: null,
+            instagram: null,
+            twitter: null,
+            website: null,
+            youtube: null,
+            mainLink: null
         }
     },
     posts: [
@@ -79,6 +91,8 @@ const profileReducer = (profile = initialProfile, action) => {
             let ct = "city" in action.value;
             let profile = {
                 userId: action.value.userId,
+                lookingForAJob: (action.value.lookingForAJob != null) ? action.value.lookingForAJob : null,
+                lookingForAJobDescription: (action.value.lookingForAJobDescription != null) ? action.value.lookingForAJob : null,
                 fullName: action.value.fullName,
                 status: action.value.aboutMe,
                 birthday: bd ? action.value.birthday : null,
@@ -86,6 +100,16 @@ const profileReducer = (profile = initialProfile, action) => {
                 photos: {
                     large: action.value.photos.large,
                     small: action.value.photos.small
+                },
+                contacts: {
+                    github: (action.value.contacts.github != null) ? action.value.contacts.github : null,
+                    vk: (action.value.contacts.vk != null) ? action.value.contacts.vk : null,
+                    facebook: (action.value.contacts.facebook != null) ? action.value.contacts.facebook : null,
+                    instagram: (action.value.contacts.instagram != null) ? action.value.contacts.instagram : null,
+                    twitter: (action.value.contacts.twitter != null) ? action.value.contacts.twitter : null,
+                    website: (action.value.contacts.website != null) ? action.value.contacts.website : null,
+                    youtube: (action.value.contacts.youtube != null) ? action.value.contacts.youtube : null,
+                    mainLink: (action.value.contacts.mainLink != null) ? action.value.contacts.mainLink : null
                 }
             }
             return {...profileCopy, profile: profile}
