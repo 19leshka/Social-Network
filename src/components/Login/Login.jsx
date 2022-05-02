@@ -48,7 +48,7 @@ const LoginForm = (props) => {
 
     const login = (formData) => {
         props.login(formData);
-        navigate('/profile/0');
+        navigate(`/profile/${props.userId}`);
     }
 
     return (
@@ -81,8 +81,8 @@ const LoginForm = (props) => {
 
 const Login = (props) => {
     const navigate = useNavigate();
-    if(props.isAuth){
-        navigate('/profile/0')
+    if(props.isAuth && props.userId != null){
+        navigate(`/profile/${props.userId}`)
     }
 
     return (
@@ -96,6 +96,7 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
     return {
+        userId: state.auth.userId,
         isAuth: state.auth.isAuth,
         correctLogin: state.auth.correctLogin
     }
