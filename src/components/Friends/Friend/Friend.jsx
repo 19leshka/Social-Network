@@ -3,7 +3,7 @@ import userPhoto from './../../../assets/userPhoto.png';
 import {NavLink} from 'react-router-dom';
 
 const Friend = (props) => {
-    const photo = window.location.origin + props.friend.img; 
+    const photo = props.friend.img; 
 
     const onFollow = (id) => {
         props.follow(id);

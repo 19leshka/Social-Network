@@ -4,10 +4,10 @@ import Chat from './Chat/Chat';
 
 const Messages = (props) => {
     let dialogs = 
-            [...props.peoples]
-            .map(dialog => {
-                return <DialogItem imgSrc={window.location.origin + dialog.img} name={dialog.name} id={dialog.id}/>
-            })
+    [...props.peoples]
+    .map(dialog => {
+        return <DialogItem imgSrc={dialog.img} name={dialog.name} id={dialog.id}/>
+    })
             
     return (
         <main className={s.messages}>

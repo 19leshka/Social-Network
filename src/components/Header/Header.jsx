@@ -1,13 +1,15 @@
 import s from './Header.module.css'
 import {NavLink} from 'react-router-dom';
 
+import icon from './../../assets/icon.png';
+
 const Header = (props) => {
     return (
         <header className={s.header}>
           <div className={`wrapper ${s.headerWrapper}`}>
             <div className={s.headerLeft}>
               <div className={s.headerIcon}>
-                <img src={window.location.origin + '/img/icon.png'} alt="" />
+                <img src={icon} alt="" />
               </div>
               <div className={s.search}>
                 <input className={s.searchInput} type="text" placeholder="Search"/>

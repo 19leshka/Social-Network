@@ -1,3 +1,9 @@
+import maxVirko from './../assets/friends/MaxVyrkoProfileImg.jpg';
+import nikPutsik from './../assets/friends/NikitaPutsikProfileImg.jpg';
+import ivanLuzinov from './../assets/friends/IvanLuzinovProfileImg.jpg';
+import umarBhat from './../assets/friends/UmarBhatProfileImg.jpg';
+import maxMalinets from './../assets/friends/MaxMalinetsProfileImg.jpg';
+
 const SEND_MESSAGE = "SEND-MESSAGE";
 const CHANGE_MESSAGE_TEXT = "CHANGE-MESSAGE-TEXT";
 
@@ -5,14 +11,14 @@ let peoples = [
     {
         id: 1,
         name: "Максим Вырко",
-        img: "/img/MaxVyrkoProfileImg.jpg",
+        img: maxVirko,
         messages: [],
         newMessageText: ""
     }, 
     {
         id: 2,
         name: "Никита Пуцик",
-        img: "/img/NikitaPutsikProfileImg.jpg",
+        img: nikPutsik,
         messages: [
             {
                 author: 0,
@@ -60,21 +66,21 @@ let peoples = [
     {
         id: 3,
         name: "Иван Лузинов",
-        img: "/img/IvanLuzinovProfileImg.jpg",
+        img: ivanLuzinov,
         messages: [],
         newMessageText: ""
     }, 
     {
         id: 4,
         name: "Умар Бхат",
-        img: "/img/UmarBhatProfileImg.jpg",
+        img: umarBhat,
         messages: [],
         newMessageText: ""
     }, 
     {
         id: 5,
         name: "Максим Малинец",
-        img: "/img/MaxMalinetsProfileImg.jpg",
+        img: maxMalinets,
         messages: [],
         newMessageText: ""
     }

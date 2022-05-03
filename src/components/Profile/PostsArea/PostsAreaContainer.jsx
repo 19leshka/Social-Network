@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => {
     return {
+        userImg: state.myProfile.myProfile.photos.large, 
         posts: state.myProfile.posts,
         newPostValue: state.myProfile.newPostValue
     }

@@ -1,3 +1,9 @@
+import maxVirko from './../assets/friends/MaxVyrkoProfileImg.jpg';
+import nikPutsik from './../assets/friends/NikitaPutsikProfileImg.jpg';
+import ivanLuzinov from './../assets/friends/IvanLuzinovProfileImg.jpg';
+import umarBhat from './../assets/friends/UmarBhatProfileImg.jpg';
+import maxMalinets from './../assets/friends/MaxMalinetsProfileImg.jpg';
+
 const UNFOLLOW = "UNFOLLOW";
 const FOLLOW = "FOLLOW";
 
@@ -5,31 +11,31 @@ let myFriends = [
     {
         id: 1,
         name: "Максим Вырко",
-        img: "/img/MaxVyrkoProfileImg.jpg",
+        img: maxVirko,
         followed: true
     }, 
     {
         id: 2,
         name: "Никита Пуцик",
-        img: "/img/NikitaPutsikProfileImg.jpg",
+        img: nikPutsik,
         followed: true
     }, 
     {
         id: 3,
         name: "Иван Лузинов",
-        img: "/img/IvanLuzinovProfileImg.jpg",
+        img: ivanLuzinov,
         followed: true
     }, 
     {
         id: 4,
         name: "Умар Бхат",
-        img: "/img/UmarBhatProfileImg.jpg",
+        img: umarBhat,
         followed: true
     }, 
     {
         id: 5,
         name: "Максим Малинец",
-        img: "/img/MaxMalinetsProfileImg.jpg",
+        img: maxMalinets,
         followed: true
     }, 
     {

@@ -71,7 +71,7 @@ let AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
 let SocialNet = (props) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <AppContainer />
       </Provider>
