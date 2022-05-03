@@ -11,7 +11,7 @@ import Preloader from './components/common/Preloader';
 
 import {Provider} from 'react-redux';
 import store from './redux/redux-store';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, HashRouter} from 'react-router-dom';
 
 const ProfileMatch = lazy(() => import('./components/Profile/ProfileContainer'));
 const MessagesContainer = lazy(() => import('./components/Messages/MessagesContainer'));
@@ -71,11 +71,11 @@ let AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
 let SocialNet = (props) => {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
