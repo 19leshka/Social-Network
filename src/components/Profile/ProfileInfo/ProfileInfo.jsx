@@ -20,7 +20,14 @@ const ProfileInfo = (props) => {
                 <CSSTransition in={editMode} timeout={200} classNames="profile-edit-mode" unmountOnExit>
                     <ProfileEdit 
                         setEditMode={setEditMode}
+                        saveFullInfo={props.saveFullInfo}
                         savePhoto={props.savePhoto}
+                        lookingForAJob={props.profile.lookingForAJob}
+                        lookingForAJobDescription={props.profile.lookingForAJobDescription}
+                        contacts={props.profile.contacts}
+                        fullName={props.profile.fullName}
+                        userId={props.profile.userId}
+                        status={props.myStatus}
                     />
                 </CSSTransition>
                 <div className={s.profilePhoto}>

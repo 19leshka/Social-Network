@@ -10,6 +10,8 @@ import {getUserProfileThunkCreator} from './../../redux/profile-reducer';
 import {getProfileStatusThunkCreator} from './../../redux/profile-reducer';
 import {savePhotoThunkCreator} from './../../redux/profile-reducer';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
+import {saveFullInfoThunkCreator} from './../../redux/profile-reducer';
+import {setIsPostAreaActionCreator} from './../../redux/profile-reducer';
 import { compose } from 'redux';
 /* selectors */
 import {getProfile,  getMyProfile, getIsPostArea, getMyStatus, getLocation} from './../../redux/selectors/profile-selector';
@@ -22,9 +24,9 @@ class ProfileContainer extends React.Component {
     refreshProfile() {
         if(this.props.location == this.props.userId) {
             this.props.getUserStatus(this.props.userId);
-            this.props.getUserProfile(this.props.userId);
+            this.props.getUserProfile(this.props.userId, this.props.userId);
         }else{
-            this.props.getUserProfile(this.props.location);
+            this.props.getUserProfile(this.props.location, this.props.userId);
         }
     }
     
@@ -48,6 +50,8 @@ class ProfileContainer extends React.Component {
                 location={this.props.location}
                 userId={this.props.userId}
                 savePhoto={this.props.savePhoto}
+                saveFullInfo={this.props.saveFullInfo}
+                setPostArea={this.props.setPostArea}
             />  
         )
     }
@@ -66,7 +70,6 @@ const AuthRedirectToLogin = compose(withAuthRedirect)(ProfileContainer);
 const mapStateToProps = (state) => {
     return {
         profile: getProfile(state),
-        myProfile: getMyProfile(state),
         isPostArea: getIsPostArea(state),
         myStatus: getMyStatus(state),
         location: getLocation(state),
@@ -79,8 +82,8 @@ const mapDispatchToProps = (dispatch) => {
         setUserProfile: (profile) => {
             dispatch(setUserProfileActionCreator(profile))
         },
-        getUserProfile: (id) => {
-            dispatch(getUserProfileThunkCreator(id))
+        getUserProfile: (id, currentId) => {
+            dispatch(getUserProfileThunkCreator(id, currentId))
         },
         getUserStatus: (id) => {
             dispatch(getProfileStatusThunkCreator(id))
@@ -96,6 +99,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         savePhoto: (photo) => {
             dispatch(savePhotoThunkCreator(photo));
+        },
+        saveFullInfo: (fullInfo) => {
+            dispatch(saveFullInfoThunkCreator(fullInfo));
+        },
+        setPostArea: (value) => {
+            dispatch(setIsPostAreaActionCreator(value));
         }
     }
 }

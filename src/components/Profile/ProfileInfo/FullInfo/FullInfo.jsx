@@ -42,56 +42,56 @@ const FullInfo = ({lookingForAJob, lookingForAJobDescription, contacts}) => {
             {isHaveContacts
                 ? <div className={s.contacts}>
                     <h3>Contacts</h3>
-                    {contacts.github != null
+                    {contacts.github != null && contacts.github != ""
                         ? <div className={s.github}>
                             <span>Github: </span>
                             <span>{contacts.github}</span>
                         </div>
                         : null
                     }
-                    {contacts.vk != null
+                    {contacts.vk != null && contacts.vk != ""
                         ? <div className={s.vk}>
                             <span>Vk: </span>    
                             <span>{contacts.vk}</span>
                         </div>
                         : null    
                     }
-                    {contacts.facebook != null
+                    {contacts.facebook != null && contacts.facebook != ""
                         ? <div className={s.facebook}>
                             <span>Facebook: </span>
                             <span>{contacts.facebook}</span>
                         </div>
                         : null
                     }
-                    {contacts.instagram != null
+                    {contacts.instagram != null && contacts.instagram != ""
                         ? <div className={s.instagram}>
                             <span>Instagram: </span>
                             <span>{contacts.instagram}</span>
                         </div>
                         : null
                     }
-                    {contacts.twitter != null
+                    {contacts.twitter != null && contacts.twitter != ""
                         ? <div className={s.twitter}>
                             <span>Twitter: </span>
                             <span>{contacts.twitter}</span>
                         </div>
                         : null
                     }
-                    {contacts.website != null
+                    {contacts.website != null && contacts.website != ""
                         ? <div className={s.website}>
                             <span>Website: </span>
                             <span>{contacts.website}</span>
                         </div>
                         : null
                     }
-                    {contacts.youtube != null
+                    {contacts.youtube != null && contacts.youtube != ""
                         ? <div className={s.youtube}>
                             <span>Youtube: </span>
                             <span>{contacts.youtube}</span>
                         </div>
                         : null    
                     }
-                    {contacts.mainLink != null
+                    {contacts.mainLink != null && contacts.mainLink != ""
                         ? <div className={s.mainLink}>
                             <span>Main link: </span>
                             <span>{contacts.mainLink}</span>

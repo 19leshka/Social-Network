@@ -8,10 +8,6 @@ export const getProfile = createSelector( getProfileSuper, (profile) => {
     return profile;
 })
 
-export const getMyProfile = (state) => {
-    return state.myProfile.myProfile;
-}
-
 export const getIsPostArea = (state) => {
     return state.myProfile.isPostArea;
 }

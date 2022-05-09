@@ -71,7 +71,7 @@ let AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
 let SocialNet = (props) => {
   return (
-    <HashRouter>
+    <HashRouter> 
       <Provider store={store}>
         <AppContainer />
       </Provider>

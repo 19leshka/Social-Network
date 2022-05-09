@@ -35,3 +35,20 @@
     border-radius: 3px;
     padding: 5px;
 }
+
+.fullInfoInputs div{
+    margin: 5px 0;
+}
+
+.contactsInputs {
+    position: relative;
+}
+
+.contactsInputs input {
+    position: absolute;
+    left: 80px;
+}
+
+.contactsInputs div{
+    margin: 5px 0;
+}

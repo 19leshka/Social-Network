@@ -10,31 +10,9 @@ const SET_MY_STATUS = "SET-MY-STATUS";
 const DELETE_POST = "DELETE-POST";
 const SET_CURRENT_PAGE_ID = "SET-CURRENT-PAGE-ID";
 const SET_MY_PROFILE_IMG = "SET-MY-PROFILE-IMG";
+const SET_FULL_INFO = "SET-FULL-INFO";
 
 let initialProfile = {
-    myProfile: {
-        userId: 22932,
-        lookingForAJob: null,
-        lookingForAJobDescription: null,
-        fullName: "Alexey Balakhanov",
-        aboutMe: null,
-        birthday: "19.02.2003",
-        city: "Minsk",
-        photos: {
-            large: window.location.origin + '/img/profileImg.png',
-            small: null
-        },
-        contacts: {
-            github: null,
-            vk: null,
-            facebook: null,
-            instagram: null,
-            twitter: null,
-            website: null,
-            youtube: null,
-            mainLink: null
-        }
-    },
     posts: [
         {
             avatarImg: null,
@@ -63,9 +41,31 @@ let initialProfile = {
     ],
     newPostValue: "",
     myStatus: "",
-    profile: null,
+    profile: {
+        birthday: null,
+        city: null,
+        contacts: {
+            facebook: null,
+            github: null,
+            instagram: null,
+            mainLink: null,
+            twitter: null,
+            vk: null,
+            website: null,
+            youtube: null
+        },
+        fullName: null,
+        lookingForAJob: null,
+        lookingForAJobDescription: null,
+        photos: {
+            large: null, 
+            small: null
+        },
+        status: null,
+        userId: null
+    },
     isPostArea: null,
-    currentPageId: 0
+    currentPageId: null
 }
 
 const profileReducer = (profile = initialProfile, action) => {
@@ -86,13 +86,35 @@ const profileReducer = (profile = initialProfile, action) => {
             profileCopy.newPostValue = action.newText;
             return profileCopy;
         case SET_USER_PROFILE:
-            if(action.value === null) return {...profileCopy, profile: null};
+            if(action.value === null) return {...profileCopy, profile: {
+                birthday: null,
+                city: null,
+                contacts: {
+                    facebook: null,
+                    github: null,
+                    instagram: null,
+                    mainLink: null,
+                    twitter: null,
+                    vk: null,
+                    website: null,
+                    youtube: null
+                },
+                fullName: null,
+                lookingForAJob: null,
+                lookingForAJobDescription: null,
+                photos: {
+                    large: null, 
+                    small: null
+                },
+                status: null,
+                userId: null
+            }};
             let bd = "birthday" in action.value;
             let ct = "city" in action.value;
             let profile = {
                 userId: action.value.userId,
-                lookingForAJob: (action.value.lookingForAJob != null) ? action.value.lookingForAJob : null,
-                lookingForAJobDescription: (action.value.lookingForAJobDescription != null) ? action.value.lookingForAJob : null,
+                lookingForAJob: (action.value.lookingForAJob != null) ? !!action.value.lookingForAJob : null,
+                lookingForAJobDescription: (action.value.lookingForAJobDescription != null) ? !!action.value.lookingForAJob : null,
                 fullName: action.value.fullName,
                 status: action.value.aboutMe,
                 birthday: bd ? action.value.birthday : null,
@@ -127,9 +149,15 @@ const profileReducer = (profile = initialProfile, action) => {
             return {...profileCopy, currentPageId: action.value}
         case SET_MY_PROFILE_IMG:
             let photos = JSON.parse(JSON.stringify(action.value));
-            profileCopy.myProfile.photos = photos;
+            profileCopy.profile.photos = photos;
             let newProfile = profileCopy;
             return {...newProfile};
+        case SET_FULL_INFO: 
+            let profileFullInfo = profileCopy.profile;
+            profileFullInfo.lookingForAJob = action.value.lookingForAJob;
+            profileFullInfo.lookingForAJobDescription = action.value.lookingForAJobDescription;
+            profileFullInfo.contacts = action.value.contacts;
+            return {...profileCopy, profile: profileFullInfo};
         default: 
             return profileCopy;
     }
@@ -174,19 +202,19 @@ export const setMyProfileImgActionCreator = (value) => ({
     value: value
 })
 
-export const getUserProfileThunkCreator = (userId) => {
-    return (dispatch) => {
+export const setFullInfoActionCreator = (value) => ({
+    type: SET_FULL_INFO,
+    value: value
+})
+
+export const getUserProfileThunkCreator = (userId, currentId) => {
+    return async (dispatch) => {
         dispatch(setUserProfileActionCreator(null));
-        if(userId == 22932){
-            getUserProfile(userId).then(response => {
-                dispatch(setMyProfileImgActionCreator(response.photos));
-                dispatch(setUserProfileActionCreator(store.getState().myProfile.myProfile));
-                dispatch(setIsPostAreaActionCreator(true));
-            });
+        let response = await getUserProfile(userId)
+        dispatch(setUserProfileActionCreator(response));
+        if(userId == currentId) {
+            dispatch(setIsPostAreaActionCreator(true));
         }else{
-            getUserProfile(userId).then(response => {
-                dispatch(setUserProfileActionCreator(response));
-            });   
             dispatch(setIsPostAreaActionCreator(false));
         }
     }
@@ -207,9 +235,17 @@ export const savePhotoThunkCreator = (file) => {
     return async (dispatch) => {
         let response = await profileAPI.setPhoto(file);
         if(response.data.resultCode === 0) {
-            console.log(response.data.data.photos)
             dispatch(setMyProfileImgActionCreator(response.data.data.photos));
-            dispatch(setUserProfileActionCreator(store.getState().myProfile.myProfile));
+        }
+    }
+}
+
+export const saveFullInfoThunkCreator = (value) => {
+    return async (dispatch) => {
+        let response = await profileAPI.saveFullInfo(value);
+        if (response.data.resultCode === 0) {
+            dispatch(setFullInfoActionCreator(value));
+            dispatch(getUserProfileThunkCreator(value.userId, value.userId))
         }
     }
 }

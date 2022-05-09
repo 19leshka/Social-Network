@@ -46,10 +46,10 @@ export const profileAPI = {
         return instance.get(`profile/${id}`).then(response => response.data);
     },
     getUserStatus(id) {
-        return instance.get(`profile/status/${id}`)
+        return instance.get(`profile/status/${id}`);
     },
     updateStatus(status) {
-        return instance.put(`profile/status`, {status: status})
+        return instance.put(`profile/status`, {status: status});
     },
     setPhoto(photo) {
         const formData = new FormData();
@@ -59,5 +59,8 @@ export const profileAPI = {
             'Content-Type': 'multipart/form-data'
             }
         })
+    },
+    saveFullInfo(info) {
+        return instance.put(`profile`, info);
     }
 }
