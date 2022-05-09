@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/Social-Network/static/css/main.cf56b5c3.css",
-    "main.js": "/Social-Network/static/js/main.38f82404.js",
-    "static/css/604.58be646b.chunk.css": "/Social-Network/static/css/604.58be646b.chunk.css",
-    "static/js/604.281a2b3e.chunk.js": "/Social-Network/static/js/604.281a2b3e.chunk.js",
+    "main.js": "/Social-Network/static/js/main.e06ab28c.js",
+    "static/css/604.901b0fe5.chunk.css": "/Social-Network/static/css/604.901b0fe5.chunk.css",
+    "static/js/604.336d32cd.chunk.js": "/Social-Network/static/js/604.336d32cd.chunk.js",
     "static/css/918.7358d4e6.chunk.css": "/Social-Network/static/css/918.7358d4e6.chunk.css",
     "static/js/918.adf5ab55.chunk.js": "/Social-Network/static/js/918.adf5ab55.chunk.js",
     "static/css/273.4f3a497c.chunk.css": "/Social-Network/static/css/273.4f3a497c.chunk.css",
@@ -13,9 +13,9 @@
     "index.html": "/Social-Network/index.html",
     "static/media/quit.svg": "/Social-Network/static/media/quit.f5496f4e977828c40adf12914ba203c3.svg",
     "main.cf56b5c3.css.map": "/Social-Network/static/css/main.cf56b5c3.css.map",
-    "main.38f82404.js.map": "/Social-Network/static/js/main.38f82404.js.map",
-    "604.58be646b.chunk.css.map": "/Social-Network/static/css/604.58be646b.chunk.css.map",
-    "604.281a2b3e.chunk.js.map": "/Social-Network/static/js/604.281a2b3e.chunk.js.map",
+    "main.e06ab28c.js.map": "/Social-Network/static/js/main.e06ab28c.js.map",
+    "604.901b0fe5.chunk.css.map": "/Social-Network/static/css/604.901b0fe5.chunk.css.map",
+    "604.336d32cd.chunk.js.map": "/Social-Network/static/js/604.336d32cd.chunk.js.map",
     "918.7358d4e6.chunk.css.map": "/Social-Network/static/css/918.7358d4e6.chunk.css.map",
     "918.adf5ab55.chunk.js.map": "/Social-Network/static/js/918.adf5ab55.chunk.js.map",
     "273.4f3a497c.chunk.css.map": "/Social-Network/static/css/273.4f3a497c.chunk.css.map",
@@ -23,6 +23,6 @@
   },
   "entrypoints": [
     "static/css/main.cf56b5c3.css",
-    "static/js/main.38f82404.js"
+    "static/js/main.e06ab28c.js"
   ]
 }
