@@ -12,13 +12,18 @@
 	margin-bottom: 25px;
 }
 
-.emailInput, .passwordInput {
+.emailInput, .passwordInput, .captchaInput {
 	font-size: 16px;
 	padding: 10px;
 	display: block;
 	width: 300px;
 	border: none;
 	border-bottom: 1px solid #ccc;
+}
+
+.captchaImg {
+	/* text-align: center; */
+	margin-bottom: 20px;
 }
 
 input:focus {

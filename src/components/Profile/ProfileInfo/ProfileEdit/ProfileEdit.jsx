@@ -30,7 +30,7 @@ const ProfileEdit = (props) => {
         initialValues,
         onSubmit
     });
-    console.log(formik.values.contacts)
+    
     const onProfilePhotoSelected = (e) => {
         if(e.target.files.length) {
             props.savePhoto(e.target.files[0]);
@@ -50,11 +50,11 @@ const ProfileEdit = (props) => {
                             <h4>Full Info: </h4>
                             <div>
                                 <label>Looking for a job: </label>
-                                <input type="checkbox" name="lookingForAJob" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.lookingForAJob}/>
+                                <input type="checkbox" name="lookingForAJob" onBlur={formik.handleBlur} onChange={formik.handleChange} checked={formik.values.lookingForAJob}/>
                             </div>
                             <div>
                                 <label>Looking for a job description: </label>
-                                <input type="checkbox" name="lookingForAJobDescription" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.lookingForAJobDescription}/>
+                                <input type="checkbox" name="lookingForAJobDescription" onBlur={formik.handleBlur} onChange={formik.handleChange} checked={formik.values.lookingForAJobDescription}/>
                             </div>
                             <div> 
                                 <label>Status: </label>

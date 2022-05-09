@@ -35,7 +35,8 @@ const LoginForm = (props) => {
         let formData = {
             email: values.email,
             password: values.password, 
-            rememberMe: values.rememberMe
+            rememberMe: values.rememberMe,
+            captcha: values.captcha
         }
         login(formData);
     }
@@ -70,6 +71,13 @@ const LoginForm = (props) => {
                     <label>Remember me:</label>
                     <input className={s.rememberInput} name="rememberMe" type="checkbox" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.rememberMe}/>
                 </div>
+                {props.captchaUrl && <div className={s.captchaImg}><img src={props.captchaUrl}/></div>}
+                {props.captchaUrl && <div className={s.loginInput}>
+                    <input className={s.captchaInput} name="captcha" required="true" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.captcha}/>
+                    <span className={s.bar}></span>
+                    <label className={s.textInputLabel}>Captcha</label>
+                    {formik.errors.email && formik.touched.email ? <div className={s.error}>{formik.errors.email}</div> : null}
+                </div>}
                 {props.correctLogin
                     ? null
                     : <div className={s.incorrectLogin}>Incorrect email or password</div>}
@@ -98,7 +106,8 @@ const mapStateToProps = (state) => {
     return {
         userId: state.auth.userId,
         isAuth: state.auth.isAuth,
-        correctLogin: state.auth.correctLogin
+        correctLogin: state.auth.correctLogin,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 
