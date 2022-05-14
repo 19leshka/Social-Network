@@ -92,14 +92,13 @@ export const getCaptchaUrlCreator = () => {
 }
 
 export const logoutThunkCreator = () => {
-    return (dispatch) => {
-        authAPI.logout().then(response => {
-            if(response.data.resultCode === 0) {
-                dispatch(setUserDataActionCreator(null, null, null, false));
-                dispatch(setCorrectLoginActionCreator(true));
-                dispatch(setCaptchaUrlActionCreator(null))
-            }
-        })
+    return async (dispatch) => {
+        const response = await authAPI.logout();
+        if(response.data.resultCode === 0) {
+            dispatch(setUserDataActionCreator(null, null, null, false));
+            dispatch(setCorrectLoginActionCreator(true));
+            dispatch(setCaptchaUrlActionCreator(null))
+        }
     }
 }
 

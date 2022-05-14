@@ -24,9 +24,12 @@ export const getAuth = () => {
     return instance.get('auth/me');
 }
 
-export const getUsersPage = (page, count = 5) => {
-    return instance.get(`users?count=${count}&page=${page}`).then(response => {
-        return response.data});
+export const getUsers = (page, count = 5) => {
+    return instance.get(`users?count=${count}&page=${page}`).then(response => response.data);
+}
+
+export const getFriends = (page, count = 5) => {
+    return instance.get(`users?count=${count}&page=${page}&friend=true`).then(response => response.data);
 }
 
 export const followUser = (id) => {

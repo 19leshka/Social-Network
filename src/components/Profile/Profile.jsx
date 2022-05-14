@@ -5,11 +5,10 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
 const Profile = (props) => {
-    if(!props.profile) {
-        return <Preloader />
-    }
+    if(!props.profile)  return <Preloader />;
     if(props.profile.fullName !== null) document.title = props.profile.fullName;
-
+    if(props.profile.userId == null) return <Preloader />;
+    
     const isMyProfile = (props.location == props.userId ? true : false);
 
     return (
@@ -22,7 +21,6 @@ const Profile = (props) => {
                 savePhoto={props.savePhoto}
                 saveFullInfo={props.saveFullInfo}
             />
-            {/* {props.postArea ? <div>asddddddddddddddddddddddddddddddddddd</div> : null} */}
             {props.postArea ? <PostsAreaContainer/> : null}
         </main>
     );

@@ -20,45 +20,55 @@ let peoples = [
         name: "Никита Пуцик",
         img: nikPutsik,
         messages: [
-            {
+            {   
                 author: 0,
-                text: "Нужно нам сходить в бар за Виталюром"
-            },
-            {
-                author: 0,
-                text: "Бокал"
-            },
-            {
-                author: 1,
-                text: "Я там был с иваном"
-            },
-            {
-                author: 1,
-                text: "После понедельника у меня есть лот на вечер"
-            },
-            {
-                author: 1,
-                text: "Так усе"
+                text: "Нужно нам сходить в бар за Виталюром",
+                id: 1
             },
             {
                 author: 0,
-                text: "Чё?"
+                text: "Бокал",
+                id: 2
             },
             {
                 author: 1,
-                text: "Ну завтра вечером брик"
+                text: "Я там был с иваном",
+                id: 3
             },
             {
                 author: 1,
-                text: "Юрик"
+                text: "После понедельника у меня есть лот на вечер",
+                id: 4
             },
             {
                 author: 1,
-                text: "Во вторник гоу"
+                text: "Так усе",
+                id: 5
             },
             {
                 author: 0,
-                text: "Ок"
+                text: "Чё?",
+                id: 6
+            },
+            {
+                author: 1,
+                text: "Ну завтра вечером брик",
+                id: 7
+            },
+            {
+                author: 1,
+                text: "Юрик",
+                id: 8
+            },
+            {
+                author: 1,
+                text: "Во вторник гоу",
+                id: 9
+            },
+            {
+                author: 0,
+                text: "Ок",
+                id: 10
             }
         ],
         newMessageText: ""

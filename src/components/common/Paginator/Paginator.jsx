@@ -15,7 +15,7 @@ const Paginator = ({totalItemsCount, pageSize, currentPage, setPage, portionSize
         let pages = [];
         for(let i = 1; i <= pagesCount; i++) pages.push(i);
         pages = pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber).map((p) => {
-                return <span onClick={(e) => setPage(e)} className={(p == currentPage ? s.active : s.disabled)}>{p}</span>
+                return <span key={p} onClick={(e) => setPage(e)} className={(p == currentPage ? s.active : s.disabled)}>{p}</span>
             })
         return pages;
     }

@@ -4,14 +4,13 @@ import Login from './components/Login/Login';
 import Logout from './components/Login/Logout';
 import Navbar from './components/Navbar/Navbar';
 import HeaderContainer from './components/Header/HeaderContainer';
-import {Routes, Route} from 'react-router-dom';
+import {BrowserRouter, HashRouter, Routes, Route} from 'react-router-dom';
 import {initializeAppThunkCreator} from './redux/app-reducer';
 import {connect} from 'react-redux';
 import Preloader from './components/common/Preloader';
 
 import {Provider} from 'react-redux';
 import store from './redux/redux-store';
-import {BrowserRouter, HashRouter} from 'react-router-dom';
 
 const ProfileMatch = lazy(() => import('./components/Profile/ProfileContainer'));
 const MessagesContainer = lazy(() => import('./components/Messages/MessagesContainer'));

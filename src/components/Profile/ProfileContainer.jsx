@@ -14,7 +14,7 @@ import {saveFullInfoThunkCreator} from './../../redux/profile-reducer';
 import {setIsPostAreaActionCreator} from './../../redux/profile-reducer';
 import { compose } from 'redux';
 /* selectors */
-import {getProfile,  getMyProfile, getIsPostArea, getMyStatus, getLocation} from './../../redux/selectors/profile-selector';
+import {getProfile, getIsPostArea, getMyStatus, getLocation} from './../../redux/selectors/profile-selector';
 
 class ProfileContainer extends React.Component {
     constructor(props) {

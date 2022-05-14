@@ -56,13 +56,13 @@ const LoginForm = (props) => {
         <>
             <form className={s.loginForm} onSubmit={formik.handleSubmit}>
                 <div className={s.loginInput}>
-                    <input className={s.emailInput} name="email" required="true" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.login}/>
+                    <input className={s.emailInput} name="email" required={true} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.login}/>
                     <span className={s.bar}></span>
                     <label className={s.textInputLabel}>Email</label>
                     {formik.errors.email && formik.touched.email ? <div className={s.error}>{formik.errors.email}</div> : null}
                 </div>
                 <div className={s.loginInput}>
-                    <input className={s.passwordInput} name="password" required="true" type="password" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password}/>
+                    <input className={s.passwordInput} name="password" required={true} type="password" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password}/>
                     <span className={s.bar}></span>
                     <label className={s.textInputLabel}>Password</label>
                     {formik.errors.password && formik.touched.password ? <div className={s.error}>{formik.errors.password}</div> : null}
@@ -73,7 +73,7 @@ const LoginForm = (props) => {
                 </div>
                 {props.captchaUrl && <div className={s.captchaImg}><img src={props.captchaUrl}/></div>}
                 {props.captchaUrl && <div className={s.loginInput}>
-                    <input className={s.captchaInput} name="captcha" required="true" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.captcha}/>
+                    <input className={s.captchaInput} name="captcha" required={true} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.captcha}/>
                     <span className={s.bar}></span>
                     <label className={s.textInputLabel}>Captcha</label>
                     {formik.errors.email && formik.touched.email ? <div className={s.error}>{formik.errors.email}</div> : null}

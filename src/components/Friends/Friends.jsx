@@ -8,15 +8,20 @@ const Friends = (props) => {
     const friends = () => {
         return ([...props.friends]
         .map(friend => {
-            return <Friend follow={props.follow} unfollow={props.unfollow} friend={friend}/>
+            return <Friend 
+                key={friend.id} 
+                isFollowing={props.isFollowing}
+                follow={props.followUser} 
+                unfollow={props.unfollowUser} 
+                friend={friend}/>
         }))
     } 
 
-    
     const users = () => {
         return ([...props.users])
         .map(user => {
             return <User
+                key={user.id}
                 isFollowing={props.isFollowing}
                 user={user}
                 followUser={props.followUser}
@@ -29,21 +34,31 @@ const Friends = (props) => {
         <main className={s.friends}>
             <div className={s.friendsInfo}>
                 <h3>Your Friends:</h3>
-            </div>
-            {friends()}
+                <div className={s.pages}>
+                    {<Paginator
+                        totalItemsCount={props.totalFriendsCount} 
+                        pageSize={props.pageSize}
+                        currentPage={props.currentFriendsPage} 
+                        setPage={props.setFriendsPage}
+                        portionSize={15}
+                        />}
+                </div>
+            </div>{props.isFetchingFriends ?   
+                (<Preloader/>) : (friends())
+            }
             <div className={s.usersInfo}>
                 <h3>Find Friends:</h3>
                 <div className={s.pages}>
                     {<Paginator
                         totalItemsCount={props.totalUsersCount} 
                         pageSize={props.pageSize}
-                        currentPage={props.currentPage} 
-                        setPage={props.setPage}
+                        currentPage={props.currentUsersPage} 
+                        setPage={props.setUsersPage}
                         portionSize={15}
                         />}
                 </div>
             </div>
-            {props.isFetching ?   
+            {props.isFetchingUsers ?   
                 (<Preloader/>) : (users())
             }
         </main>

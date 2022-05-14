@@ -27,8 +27,8 @@ const Friend = (props) => {
             </NavLink>
             <div className={s.followBtn}>
                 {props.friend.followed ? 
-                    <button className={s.followBtnUnf} onClick={() => onUnfollow(props.friend.id)}>Followed</button> :
-                    <button className={s.followBtnF} onClick={() => onFollow(props.friend.id)}>Unfolowwed</button> 
+                    <button disabled={props.isFollowing.some(id => id === props.friend.id)} className={s.followBtnUnf} onClick={() => onUnfollow(props.friend.id)}>Followed</button> :
+                    <button  disabled={props.isFollowing.some(id => id === props.friend.id)} className={s.followBtnF} onClick={() => onFollow(props.friend.id)}>Unfolowwed</button> 
                 }
             </div>
         </div>

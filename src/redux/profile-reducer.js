@@ -12,6 +12,30 @@ const SET_CURRENT_PAGE_ID = "SET-CURRENT-PAGE-ID";
 const SET_MY_PROFILE_IMG = "SET-MY-PROFILE-IMG";
 const SET_FULL_INFO = "SET-FULL-INFO";
 
+const nullProfile = JSON.stringify({
+    birthday: null,
+    city: null,
+    contacts: {
+        facebook: null,
+        github: null,
+        instagram: null,
+        mainLink: null,
+        twitter: null,
+        vk: null,
+        website: null,
+        youtube: null
+    },
+    fullName: null,
+    lookingForAJob: null,
+    lookingForAJobDescription: null,
+    photos: {
+        large: null, 
+        small: null
+    },
+    status: null,
+    userId: null
+})
+
 let initialProfile = {
     posts: [
         {
@@ -41,29 +65,7 @@ let initialProfile = {
     ],
     newPostValue: "",
     myStatus: "",
-    profile: {
-        birthday: null,
-        city: null,
-        contacts: {
-            facebook: null,
-            github: null,
-            instagram: null,
-            mainLink: null,
-            twitter: null,
-            vk: null,
-            website: null,
-            youtube: null
-        },
-        fullName: null,
-        lookingForAJob: null,
-        lookingForAJobDescription: null,
-        photos: {
-            large: null, 
-            small: null
-        },
-        status: null,
-        userId: null
-    },
+    profile: JSON.parse(nullProfile),
     isPostArea: null,
     currentPageId: null
 }
@@ -86,29 +88,7 @@ const profileReducer = (profile = initialProfile, action) => {
             profileCopy.newPostValue = action.newText;
             return profileCopy;
         case SET_USER_PROFILE:
-            if(action.value === null) return {...profileCopy, profile: {
-                birthday: null,
-                city: null,
-                contacts: {
-                    facebook: null,
-                    github: null,
-                    instagram: null,
-                    mainLink: null,
-                    twitter: null,
-                    vk: null,
-                    website: null,
-                    youtube: null
-                },
-                fullName: null,
-                lookingForAJob: null,
-                lookingForAJobDescription: null,
-                photos: {
-                    large: null, 
-                    small: null
-                },
-                status: null,
-                userId: null
-            }};
+            if(action.value === null) return {...profileCopy, profile: JSON.parse(nullProfile)};
             let bd = "birthday" in action.value;
             let ct = "city" in action.value;
             let profile = {

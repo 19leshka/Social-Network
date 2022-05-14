@@ -5,8 +5,8 @@ import Chat from './Chat/Chat';
 const Messages = (props) => {
     let dialogs = 
     [...props.peoples]
-    .map(dialog => {
-        return <DialogItem imgSrc={dialog.img} name={dialog.name} id={dialog.id}/>
+    .map((dialog, index) => {
+        return <DialogItem key={index} imgSrc={dialog.img} name={dialog.name} id={dialog.id}/>
     })
             
     return (
