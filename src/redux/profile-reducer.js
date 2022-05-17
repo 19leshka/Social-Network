@@ -1,6 +1,5 @@
 import {getUserProfile} from './../api/api';
 import {profileAPI} from './../api/api';
-import {store} from './redux-store';
 
 const ADD_POST = "ADD-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
@@ -187,46 +186,35 @@ export const setFullInfoActionCreator = (value) => ({
     value: value
 })
 
-export const getUserProfileThunkCreator = (userId, currentId) => {
-    return async (dispatch) => {
-        dispatch(setUserProfileActionCreator(null));
-        let response = await getUserProfile(userId)
-        dispatch(setUserProfileActionCreator(response));
-        if(userId == currentId) {
-            dispatch(setIsPostAreaActionCreator(true));
-        }else{
-            dispatch(setIsPostAreaActionCreator(false));
-        }
+export const getUserProfileThunkCreator = (userId, currentId) => async (dispatch) => {
+    dispatch(setUserProfileActionCreator(null));
+    let response = await getUserProfile(userId)
+    dispatch(setUserProfileActionCreator(response));
+    if(userId == currentId) {
+        dispatch(setIsPostAreaActionCreator(true));
+    }else{
+        dispatch(setIsPostAreaActionCreator(false));
     }
 }
 
-export const getProfileStatusThunkCreator = (userId) => {
-    return (dispatch) => {
-        profileAPI.getUserStatus(userId).then((response) => {
-            if(response.data !== null) return response.data;
-            else return "Set sss"
-        }).then((response) => {
-            dispatch(setMyProfileStatusActionCreator(response));
-        })
+export const getProfileStatusThunkCreator = (userId) => async (dispatch) => {
+    const response = await profileAPI.getUserStatus(userId);
+    if(response.data !== null) dispatch(setMyProfileStatusActionCreator(response.data));
+    else dispatch(setMyProfileStatusActionCreator("Set status"));
+}
+
+export const savePhotoThunkCreator = (file) => async (dispatch) => {
+    let response = await profileAPI.setPhoto(file);
+    if(response.data.resultCode === 0) {
+        dispatch(setMyProfileImgActionCreator(response.data.data.photos));
     }
 }
 
-export const savePhotoThunkCreator = (file) => {
-    return async (dispatch) => {
-        let response = await profileAPI.setPhoto(file);
-        if(response.data.resultCode === 0) {
-            dispatch(setMyProfileImgActionCreator(response.data.data.photos));
-        }
-    }
-}
-
-export const saveFullInfoThunkCreator = (value) => {
-    return async (dispatch) => {
-        let response = await profileAPI.saveFullInfo(value);
-        if (response.data.resultCode === 0) {
-            dispatch(setFullInfoActionCreator(value));
-            dispatch(getUserProfileThunkCreator(value.userId, value.userId))
-        }
+export const saveFullInfoThunkCreator = (value) => async (dispatch) => {
+    let response = await profileAPI.saveFullInfo(value);
+    if (response.data.resultCode === 0) {
+        dispatch(setFullInfoActionCreator(value));
+        dispatch(getUserProfileThunkCreator(value.userId, value.userId))
     }
 }
 

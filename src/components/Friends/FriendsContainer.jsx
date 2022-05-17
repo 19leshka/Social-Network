@@ -1,13 +1,10 @@
 import React from 'react';
 import Friends from './Friends';
-import {followActionCreator} from '../../redux/friends-reducer';
-import {unfollowActionCreator} from '../../redux/friends-reducer';
 import {toggleIsFollowingProgressActionCreator} from '../../redux/users-reducer';
 import {getUsersThunkCreator} from '../../redux/users-reducer';
 import {getFriendsThunkCreator} from '../../redux/users-reducer';
 import {getFollowUserThunkCreator} from '../../redux/users-reducer';
 import {getUnfollowUserThunkCreator} from '../../redux/users-reducer';
-import {setCurrentUsersPageActionCreator} from '../../redux/users-reducer';
 import {connect} from 'react-redux';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
 import { compose } from 'redux';
@@ -73,12 +70,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        follow: (id) => {
-            dispatch(followActionCreator(id));
-        },
-        unfollow: (id) => {
-            dispatch(unfollowActionCreator(id));
-        },
         setIsFollowing: (value, id) => {
             dispatch(toggleIsFollowingProgressActionCreator(value, id))
         },

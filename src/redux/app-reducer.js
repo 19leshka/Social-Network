@@ -23,12 +23,10 @@ export const setInitializedActionCreator = (value) => ({
     value: value
 })
 
-export const initializeAppThunkCreator = () => {
-    return (dispatch) => {
-        let dispatchPromise = dispatch(getAuthThunkCreator());
-        dispatchPromise.then(() => {
-            dispatch(setInitializedActionCreator(true));
-        })
-    }
+export const initializeAppThunkCreator = () => async (dispatch) => {
+    const dispatchPromise = await dispatch(getAuthThunkCreator());
+    const response = await dispatchPromise;
+    dispatch(setInitializedActionCreator(true));
 }
+
 export default appReducer;

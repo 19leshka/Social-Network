@@ -1,5 +1,3 @@
-import {followActionCreator} from './friends-reducer';
-import {unfollowActionCreator} from './friends-reducer';
 import {getUsers} from './../api/api';
 import {getFriends} from './../api/api';
 import {followUser} from './../api/api';
@@ -162,53 +160,50 @@ export const toggleIsFollowingProgressActionCreator = (value = true, id) => ({
     id: id
 })
 
-export const getUsersThunkCreator = (currentPage = 1, pageSize = 5) => {
-    return (dispatch) => {
-        dispatch(toggleIsFetchingUsersActionCreator(true));
-        getUsers(currentPage, pageSize).then(response => {
-            dispatch(setTotalUsersCountActionCreator(response.totalCount));
-            return response.items;
-        }).then(response => {
-            dispatch(setCurrentUsersPageActionCreator(currentPage));
-            dispatch(setUsersActionCreator(response));
-            dispatch(toggleIsFetchingUsersActionCreator(false));
-        });
-    }
+export const followActionCreator = (id) => ({
+    type: FOLLOW,
+    id: id
+})
+
+export const unfollowActionCreator = (id) => ({
+    type: UNFOLLOW,
+    id: id
+})
+
+export const getUsersThunkCreator = (currentPage = 1, pageSize = 5) => async (dispatch) => {
+    dispatch(toggleIsFetchingUsersActionCreator(true));
+    const response = await getUsers(currentPage, pageSize);
+    dispatch(setTotalUsersCountActionCreator(response.totalCount));
+    dispatch(setCurrentUsersPageActionCreator(currentPage));
+    dispatch(setUsersActionCreator(response.items));
+    dispatch(toggleIsFetchingUsersActionCreator(false));
 }
 
-export const getFriendsThunkCreator = (currentPage = 1, pageSize = 5) => {
-    return async (dispatch) => {
-        dispatch(toggleIsFetchingFriendsActionCreator(true));
-        const response = await getFriends(currentPage, pageSize);
-        dispatch(setTotalFriendsCountActionCreator(response.totalCount));
-        dispatch(setCurrentFriendsPageActionCreator(currentPage));
-        dispatch(setFriendsActionCreator(response.items));
-        dispatch(toggleIsFetchingFriendsActionCreator(false));
-    } 
+export const getFriendsThunkCreator = (currentPage = 1, pageSize = 5) => async (dispatch) => {
+    dispatch(toggleIsFetchingFriendsActionCreator(true));
+    const response = await getFriends(currentPage, pageSize);
+    dispatch(setTotalFriendsCountActionCreator(response.totalCount));
+    dispatch(setCurrentFriendsPageActionCreator(currentPage));
+    dispatch(setFriendsActionCreator(response.items));
+    dispatch(toggleIsFetchingFriendsActionCreator(false));
 }
 
-export const getFollowUserThunkCreator = (id) => {
-    return (dispatch) => {
-        dispatch(toggleIsFollowingProgressActionCreator(true, id));
-        followUser(id).then(response => {
-            if(response.data.resultCode == 0) {
-               dispatch(followActionCreator(id));
-            }
-            dispatch(toggleIsFollowingProgressActionCreator(false, id));
-        })
+export const getFollowUserThunkCreator = (id) => async (dispatch) => {
+    dispatch(toggleIsFollowingProgressActionCreator(true, id));
+    const response = await followUser(id)
+    if(response.data.resultCode == 0) {
+        dispatch(followActionCreator(id));
     }
+    dispatch(toggleIsFollowingProgressActionCreator(false, id));
 }
 
-export const getUnfollowUserThunkCreator = (id) => {
-    return (dispatch) => {
-        dispatch(toggleIsFollowingProgressActionCreator(true, id));
-        unfollowUser(id).then(response => {
-            if(response.data.resultCode == 0) {
-                dispatch(unfollowActionCreator(id));
-            }
-            dispatch(toggleIsFollowingProgressActionCreator(false, id));
-        })
+export const getUnfollowUserThunkCreator = (id) => async (dispatch) => {
+    dispatch(toggleIsFollowingProgressActionCreator(true, id));
+    const response = await unfollowUser(id);
+    if(response.data.resultCode == 0) {
+        dispatch(unfollowActionCreator(id));
     }
+    dispatch(toggleIsFollowingProgressActionCreator(false, id));
 }
 
 export default usersReducer;
