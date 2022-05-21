@@ -16,7 +16,11 @@ const Post = (props) => {
                         <p>{props.date}</p>
                     </div>
                 </div>
-                <div className={s.delPost} onClick={() => onDeletePost()}>x</div>
+                {
+                    props.isMyProfile
+                    ? <div className={s.delPost} onClick={() => onDeletePost()}>x</div>
+                    : null
+                }
             </div>
             <div className={s.postText}>
                 <p>{props.text}</p>    

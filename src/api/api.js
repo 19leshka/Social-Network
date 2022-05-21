@@ -73,3 +73,9 @@ export const securityAPI = {
         return instance.get(`security/get-captcha-url`);
     }
 }
+
+export const newsAPI = {
+    getPosts() {
+        return axios.get(`https://jsonplaceholder.typicode.com/posts`);
+    }
+}

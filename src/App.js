@@ -15,6 +15,7 @@ import store from './redux/redux-store';
 const ProfileMatch = lazy(() => import('./components/Profile/ProfileContainer'));
 const MessagesContainer = lazy(() => import('./components/Messages/MessagesContainer'));
 const FriendsContainer = lazy(() => import('./components/Friends/FriendsContainer'));
+const NewsContainer = lazy(() => import('./components/News/NewsContainer'));
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp()
@@ -33,6 +34,7 @@ class App extends React.Component {
             <Suspense fallback={<Preloader/>}>
               <Routes>
                 <Route path="/profile/*" element={<ProfileMatch/>}/>
+                <Route path="/news" element={<NewsContainer/>}/>
                 <Route path="/messages/*" element={<MessagesContainer/>}/>
                 <Route path="/friends/*" element={<FriendsContainer/>}/>
                 <Route path="/login" element={<Login/>}/>

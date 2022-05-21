@@ -1,20 +1,22 @@
-import Post from './Post/Post';
+import Post from './../../common/Post/Post';
 import s from './PostsArea.module.css';
 import userPhoto from './../../../assets/userPhoto.png';
-import {useRef} from 'react';
+import {useRef, useContext} from 'react';
+import {IsMyProfile} from './../Profile';
 
 
 const PostsArea = (props) => {
     let textarea = useRef(null);
+    const isMyProfile = useContext(IsMyProfile);
 
     let postsElements =
         [...props.posts]
             .reverse()
             .map((p) => {
                 if(typeof p.date == 'string'){
-                    return  <Post key={p.id} deletePost={props.deletePost} id={p.id} text={p.postText} imgSrc={(props.userImg == null ? userPhoto : props.userImg)} date={p.date} />
+                    return  <Post key={p.id} isMyProfile={isMyProfile} deletePost={props.deletePost} id={p.id} text={p.postText} imgSrc={(props.userImg == null ? userPhoto : props.userImg)} date={p.date} />
                 }else{
-                    return <Post key={p.id} deletePost={props.deletePost} id={p.id} text={p.postText} imgSrc={(props.userImg == null ? userPhoto : props.userImg)} date={p.date.toLocaleDateString()} />
+                    return <Post key={p.id} isMyProfile={isMyProfile} deletePost={props.deletePost} id={p.id} text={p.postText} imgSrc={(props.userImg == null ? userPhoto : props.userImg)} date={p.date.toLocaleDateString()} />
                 }
             });
 

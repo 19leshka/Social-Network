@@ -4,6 +4,7 @@ import peoplesReducer from './peoples-reducer';
 import usersReducer from './users-reducer';
 import authReducer from './auth-reducer';
 import appReducer from './app-reducer';
+import newsReducer from './news-reducer';
 import thunkMiddleware from 'redux-thunk';
 
 
@@ -12,7 +13,8 @@ let reducers = combineReducers({
     peoples: peoplesReducer,
     users: usersReducer,
     auth: authReducer,
-    app: appReducer
+    app: appReducer,
+    news: newsReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

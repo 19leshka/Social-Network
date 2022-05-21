@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
     const city = (props.profile.city !== null ? props.profile.city : "xxx");
 
     const [editMode, setEditMode] = useState(false);
-    const [fullInfo, setFullInfo] = useState(false)
+    const [fullInfo, setFullInfo] = useState(false);
 
     return (
             <div className={s.profileInner}>

@@ -1,8 +1,9 @@
+import {createContext} from 'react';
 import s from './Profile.module.css';
 import Preloader from './../common/Preloader';
 import PostsAreaContainer from './PostsArea/PostsAreaContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-
+export const IsMyProfile = createContext();
 
 const Profile = (props) => {
     if(!props.profile)  return <Preloader />;
@@ -21,7 +22,9 @@ const Profile = (props) => {
                 savePhoto={props.savePhoto}
                 saveFullInfo={props.saveFullInfo}
             />
-            {props.postArea ? <PostsAreaContainer/> : null}
+            <IsMyProfile.Provider value={isMyProfile}>
+                {props.postArea ? <PostsAreaContainer/> : null}
+            </IsMyProfile.Provider>
         </main>
     );
 }
