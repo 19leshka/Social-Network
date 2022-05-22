@@ -7,7 +7,8 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import {BrowserRouter, HashRouter, Routes, Route} from 'react-router-dom';
 import {initializeAppThunkCreator} from './redux/app-reducer';
 import {connect} from 'react-redux';
-import Preloader from './components/common/Preloader';
+import Preloader from './components/common/Preloader/Preloader';
+import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
 
 import {Provider} from 'react-redux';
 import store from './redux/redux-store';
@@ -28,6 +29,7 @@ class App extends React.Component {
     
     return(
       <div className="app-wrapper">
+          <ScrollToTop/>
           <HeaderContainer />
           <div className="wrapper main-wrapper">
             <Navbar userId={this.props.userId}/>

@@ -1,0 +1,19 @@
+.scrollToTop {
+    position: fixed;
+    cursor: pointer;
+  
+    background-color: rgb(192, 92, 154, 0.6);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+  
+    top: 90vh;
+    left: 30px;
+  }
+  
+  .scrollToTop img {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    
+  }

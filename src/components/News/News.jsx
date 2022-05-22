@@ -1,6 +1,6 @@
 import s from './News.module.css';
 import Post from './../common/Post/Post';
-import userPhoto from './../../assets/userPhoto.png'
+import userPhoto from './../../assets/userPhoto.png';
 
 const News = (props) => {
     let postsElements =

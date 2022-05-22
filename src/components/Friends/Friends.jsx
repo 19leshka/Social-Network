@@ -1,7 +1,7 @@
 import s from './Friends.module.css';
 import Friend from './Friend/Friend';
 import User from './Users/User';
-import Preloader from './../common/Preloader';
+import Preloader from '../common/Preloader/Preloader';
 import Paginator from './../common/Paginator/Paginator';
 
 const Friends = (props) => {
@@ -43,7 +43,8 @@ const Friends = (props) => {
                         portionSize={15}
                         />}
                 </div>
-            </div>{props.isFetchingFriends ?   
+            </div>
+            {props.isFetchingFriends ?   
                 (<Preloader/>) : (friends())
             }
             <div className={s.usersInfo}>

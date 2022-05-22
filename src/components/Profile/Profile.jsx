@@ -1,6 +1,6 @@
 import {createContext} from 'react';
 import s from './Profile.module.css';
-import Preloader from './../common/Preloader';
+import Preloader from '../common/Preloader/Preloader';
 import PostsAreaContainer from './PostsArea/PostsAreaContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 export const IsMyProfile = createContext();

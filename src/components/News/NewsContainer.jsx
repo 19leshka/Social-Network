@@ -4,6 +4,8 @@ import News from './News';
 import {getPostsThunkCreator} from './../../redux/news-reducer';
 
 const NewsContainer = (props) => {
+    document.title = "News";
+
     useEffect(() => {
         props.getNews();
     }, [])
