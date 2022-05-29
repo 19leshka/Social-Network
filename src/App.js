@@ -9,6 +9,7 @@ import {initializeAppThunkCreator} from './redux/app-reducer';
 import {connect} from 'react-redux';
 import Preloader from './components/common/Preloader/Preloader';
 import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
+import NotFound from './components/common/NotFound/NotFound';
 
 import {Provider} from 'react-redux';
 import store from './redux/redux-store';
@@ -41,7 +42,7 @@ class App extends React.Component {
                 <Route path="/friends/*" element={<FriendsContainer/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/logout" element={<Logout/>}/>
-                <Route path="*" element={<WrongPage/>}/>
+                <Route path="*" element={<NotFound/>}/>
               </Routes>
             </Suspense>
           </div>

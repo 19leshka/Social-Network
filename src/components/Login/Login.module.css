@@ -115,3 +115,17 @@ input:focus ~ .bar:after {
 	height: 40px;
 	background-color: rgb(255, 188, 225);
 }
+
+/* FOR TEST ================================= */
+
+.forTest {
+	border: 1px solid rgb(255, 188, 225);
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 5px;
+}
+
+.forTest p {
+	padding: 0;
+	margin: 5px 0 0;
+}

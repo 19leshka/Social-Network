@@ -82,6 +82,11 @@ const LoginForm = (props) => {
                     ? null
                     : <div className={s.incorrectLogin}>Incorrect email or password</div>}
                 <button className={s.submitBtn} type="submit">Login</button>
+                <div className={s.forTest}>
+                    <span><b>FOR TEST</b></span>
+                    <p><b>Email:</b> free@samuraijs.com</p>
+                    <p><b>Pass:</b> free</p>
+                </div>
             </form>
         </>
     )

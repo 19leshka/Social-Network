@@ -4,9 +4,8 @@ import News from './News';
 import {getPostsThunkCreator} from './../../redux/news-reducer';
 
 const NewsContainer = (props) => {
-    document.title = "News";
-
     useEffect(() => {
+        document.title = "News";
         props.getNews();
     }, [])
 
@@ -28,5 +27,4 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }    
-
 export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer);
