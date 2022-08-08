@@ -7,6 +7,9 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "@types/prop-types": "^15.7.5",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "axios": "^0.26.1",
     "final-form": "^4.20.6",
     "formik": "^2.2.9",
@@ -51,7 +54,9 @@
     ]
   },
   "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
     "gh-pages": "^3.2.3",
-    "react-test-renderer": "^17.0.2"
+    "react-test-renderer": "^17.0.2",
+    "typescript": "^4.7.4"
   }
 }

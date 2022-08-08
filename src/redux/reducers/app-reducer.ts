@@ -1,17 +1,16 @@
 import {getAuthThunkCreator} from './auth-reducer';
+import {AppAction, AppActionTypes, AppState} from "../types/app";
 
-const SET_INITIALIZED = 'SET_INITIALIZED';
-
-let initialState = {
+const initialState: AppState = {
     initialized: false
 }
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: AppAction): AppState => {
     switch (action.type) {
-        case SET_INITIALIZED:
+        case AppActionTypes.SET_INITIALIZED:
             return {
                 ...state,
-                initialized: action.value
+                initialized: action.payload
             }
         default: 
             return state;
@@ -19,8 +18,8 @@ const appReducer = (state = initialState, action) => {
 }
 
 export const setInitializedActionCreator = (value) => ({
-    type: SET_INITIALIZED,
-    value: value
+    type: AppActionTypes.SET_INITIALIZED,
+    payload: value
 })
 
 export const initializeAppThunkCreator = () => async (dispatch) => {

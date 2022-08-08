@@ -1,15 +1,6 @@
-import {getUserProfile} from './../api/api';
-import {profileAPI} from './../api/api';
-
-const ADD_POST = "ADD-POST";
-const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
-const SET_USER_PROFILE = "SET-USER-PROFILE";
-const SET_IS_POST_AREA = "SET-IS-POST-AREA";
-const SET_MY_STATUS = "SET-MY-STATUS";
-const DELETE_POST = "DELETE-POST";
-const SET_CURRENT_PAGE_ID = "SET-CURRENT-PAGE-ID";
-const SET_MY_PROFILE_IMG = "SET-MY-PROFILE-IMG";
-const SET_FULL_INFO = "SET-FULL-INFO";
+import {getUserProfile} from '../../api/api';
+import {profileAPI} from '../../api/api';
+import {IProfile, ProfileActions, ProfileActionTypes, ProfileState} from '../types/profile'
 
 const nullProfile = JSON.stringify({
     birthday: null,
@@ -35,7 +26,7 @@ const nullProfile = JSON.stringify({
     userId: null
 })
 
-let initialProfile = {
+let initialProfile: ProfileState = {
     posts: [
         {
             avatarImg: null,
@@ -69,11 +60,11 @@ let initialProfile = {
     currentPageId: null
 }
 
-const profileReducer = (profile = initialProfile, action) => {
+const profileReducer = (profile = initialProfile, action: ProfileActions): ProfileState => {
     let profileCopy = JSON.parse(JSON.stringify(profile));
     switch (action.type) {
-        case ADD_POST:
-            if(profileCopy.newPostValue === "") return  profile;
+        case ProfileActionTypes.ADD_POST:
+            if(profileCopy.newPostValue === "") return profileCopy;
             let newPost = {
                 avatarImg: (window.location.origin + '/img/myProfileImg.jpg'),
                 postText: profileCopy.newPostValue,
@@ -83,10 +74,10 @@ const profileReducer = (profile = initialProfile, action) => {
             profileCopy.posts.push(newPost);
             profileCopy.newPostValue = "";
             return profileCopy;
-        case CHANGE_POST_TEXT:
+        case ProfileActionTypes.CHANGE_POST_TEXT:
             profileCopy.newPostValue = action.newText;
             return profileCopy;
-        case SET_USER_PROFILE:
+        case ProfileActionTypes.SET_USER_PROFILE:
             if(action.value === null) return {...profileCopy, profile: JSON.parse(nullProfile)};
             let bd = "birthday" in action.value;
             let ct = "city" in action.value;
@@ -114,24 +105,24 @@ const profileReducer = (profile = initialProfile, action) => {
                 }
             }
             return {...profileCopy, profile: profile}
-        case SET_IS_POST_AREA:
+        case ProfileActionTypes.SET_IS_POST_AREA:
             return {...profileCopy, isPostArea: action.value}
-        case SET_MY_STATUS:
+        case ProfileActionTypes.SET_MY_STATUS:
             profileCopy.myStatus = action.value;
             return {...profileCopy}
-        case DELETE_POST:
+        case ProfileActionTypes.DELETE_POST:
             let withDeletedPost = profileCopy.posts.filter(post => {
                 if(post.id != action.value) return post;
             })
             return {...profileCopy, posts: withDeletedPost}
-        case SET_CURRENT_PAGE_ID:
+        case ProfileActionTypes.SET_CURRENT_PAGE_ID:
             return {...profileCopy, currentPageId: action.value}
-        case SET_MY_PROFILE_IMG:
+        case ProfileActionTypes.SET_MY_PROFILE_IMG:
             let photos = JSON.parse(JSON.stringify(action.value));
             profileCopy.profile.photos = photos;
             let newProfile = profileCopy;
             return {...newProfile};
-        case SET_FULL_INFO: 
+        case ProfileActionTypes.SET_FULL_INFO:
             let profileFullInfo = profileCopy.profile;
             profileFullInfo.lookingForAJob = action.value.lookingForAJob;
             profileFullInfo.lookingForAJobDescription = action.value.lookingForAJobDescription;
@@ -143,46 +134,46 @@ const profileReducer = (profile = initialProfile, action) => {
 }
 
 export const addPostActionCreator = () => ({
-    type: ADD_POST
+    type: ProfileActionTypes.ADD_POST
 })
 
 export const updateNewPostTextActionCreator = (text) => ({
-    type: CHANGE_POST_TEXT, 
+    type: ProfileActionTypes.CHANGE_POST_TEXT,
     newText: text
 })
 
 export const setUserProfileActionCreator = (profile) => ({
-    type: SET_USER_PROFILE,
+    type: ProfileActionTypes.SET_USER_PROFILE,
     value: profile
 })
 
 export const setIsPostAreaActionCreator = (value) => ({
-    type: SET_IS_POST_AREA,
+    type: ProfileActionTypes.SET_IS_POST_AREA,
     value: value
 })
 
 export const setMyProfileStatusActionCreator = (value) => ({
-    type: SET_MY_STATUS,
+    type: ProfileActionTypes.SET_MY_STATUS,
     value: value
 })
 
 export const setCurrentPageIdActionCreator = (value) => ({
-    type: SET_CURRENT_PAGE_ID,
+    type: ProfileActionTypes.SET_CURRENT_PAGE_ID,
     value: value
 })
 
 export const deletePostActionCreater = (value) => ({
-    type: DELETE_POST,
+    type: ProfileActionTypes.DELETE_POST,
     value: value
 })
 
 export const setMyProfileImgActionCreator = (value) => ({
-    type: SET_MY_PROFILE_IMG,
+    type: ProfileActionTypes.SET_MY_PROFILE_IMG,
     value: value
 })
 
 export const setFullInfoActionCreator = (value) => ({
-    type: SET_FULL_INFO,
+    type: ProfileActionTypes.SET_FULL_INFO,
     value: value
 })
 

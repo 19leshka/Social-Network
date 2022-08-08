@@ -1,21 +1,10 @@
-import {getUsers} from './../api/api';
-import {getFriends} from './../api/api';
-import {followUser} from './../api/api';
-import {unfollowUser} from './../api/api';
+import {getUsers} from '../../api/api';
+import {getFriends} from '../../api/api';
+import {followUser} from '../../api/api';
+import {unfollowUser} from '../../api/api';
+import {UsersAction, UsersActionTypes, UsersState} from "../types/users";
 
-const SET_USERS = "SET-USERS";
-const SET_FRIENDS = "SET_FRIENDS";
-const UNFOLLOW = "UNFOLLOW";
-const FOLLOW = "FOLLOW";
-const SET_USERS_PAGE = "SET-USERS-PAGE";
-const SET_FRIENDS_PAGE = "SET-FRIENDS-PAGE";
-const SET_TOTAL_USERS_COUNT = "SET-TOTAL-USERS-COUNT";
-const SET_TOTAL_FRIENDS_COUNT = "SET-TOTAL-FRIENDS-COUNT";
-const TOGGLE_IS_FETCHING_USERS = "TOGGLE-IS-FETCHING-USERS";
-const TOGGLE_IS_FETCHING_FRIENDS = "TOGGLE-IS-FETCHING-FRIENDS";
-const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS-FOLLOWING-PROGRESS";
-
-let initialUsers = {
+let initialUsers: UsersState = {
     friends: [],
     users: [],
     pageSize: 5,
@@ -28,10 +17,10 @@ let initialUsers = {
     followingInProgress: []
 }
 
-const usersReducer = (users = initialUsers, action) => {
+const usersReducer = (users = initialUsers, action: UsersAction): UsersState => {
     let usersCopy = JSON.parse(JSON.stringify(users));
     switch (action.type) {
-        case SET_USERS:
+        case UsersActionTypes.SET_USERS:
             let apiUsers = JSON.parse(JSON.stringify(action.value));
             let newUsers = apiUsers.map(user => ({
                 id: user.id,
@@ -44,7 +33,7 @@ const usersReducer = (users = initialUsers, action) => {
                 ...usersCopy,
                 users: newUsers
             };
-        case SET_FRIENDS:
+        case UsersActionTypes.SET_FRIENDS:
             let apiFriends = JSON.parse(JSON.stringify(action.value));
             let newFriens = apiFriends.map(friend => ({
                 id: friend.id,
@@ -56,7 +45,7 @@ const usersReducer = (users = initialUsers, action) => {
                 ...usersCopy,
                 friends: newFriens
             };
-        case UNFOLLOW:
+        case UsersActionTypes.UNFOLLOW:
             usersCopy.users.forEach(user => {
                 if(user.id === action.id) user.followed = false;
             });
@@ -64,7 +53,7 @@ const usersReducer = (users = initialUsers, action) => {
                 if(user.id === action.id) user.followed = false;
             });
             return {...usersCopy};
-        case FOLLOW:
+        case UsersActionTypes.FOLLOW:
             usersCopy.users.forEach(user => {
                 if(user.id === action.id) user.followed = true;
             });
@@ -72,39 +61,39 @@ const usersReducer = (users = initialUsers, action) => {
                 if(user.id === action.id) user.followed = true;
             });
             return {...usersCopy};
-        case SET_USERS_PAGE:
+        case UsersActionTypes.SET_USERS_PAGE:
             return {
                 ...usersCopy,
                 currentUsersPage: action.value
             };
-        case SET_FRIENDS_PAGE:
+        case UsersActionTypes.SET_FRIENDS_PAGE:
             return {
                 ...usersCopy,
                 currentFriendsPage: action.value
             };
-        case TOGGLE_IS_FETCHING_USERS:
+        case UsersActionTypes.TOGGLE_IS_FETCHING_USERS:
             return {
                 ...usersCopy,
                 isFetchingUsers: action.value
             }
-        case TOGGLE_IS_FETCHING_FRIENDS:
+        case UsersActionTypes.TOGGLE_IS_FETCHING_FRIENDS:
             return {
                 ...usersCopy,
                 isFetchingFriends: action.value
             }
-        case TOGGLE_IS_FOLLOWING_PROGRESS:
+        case UsersActionTypes.TOGGLE_IS_FOLLOWING_PROGRESS:
             return {
                 ...usersCopy,
                 followingInProgress: action.value 
                     ? [...usersCopy.followingInProgress, action.id] 
                     : [...usersCopy.followingInProgress.filter(id => id != action.id)]
             }
-        case SET_TOTAL_USERS_COUNT:
+        case UsersActionTypes.SET_TOTAL_USERS_COUNT:
             return {
                 ...usersCopy,
                 totalUsersCount: action.value
             }
-        case SET_TOTAL_FRIENDS_COUNT:
+        case UsersActionTypes.SET_TOTAL_FRIENDS_COUNT:
             return {
                 ...usersCopy,
                 totalFriendsCount: action.value
@@ -115,58 +104,58 @@ const usersReducer = (users = initialUsers, action) => {
 }
 
 export const setUsersActionCreator = (users = []) => ({
-    type: SET_USERS,
+    type: UsersActionTypes.SET_USERS,
     value: users   
 });
 
 export const setFriendsActionCreator = (friends = []) => ({
-    type: SET_FRIENDS,
+    type: UsersActionTypes.SET_FRIENDS,
     value: friends   
 });
 
 export const setCurrentUsersPageActionCreator = (page = 1) => ({
-    type: SET_USERS_PAGE,
+    type: UsersActionTypes.SET_USERS_PAGE,
     value: page
 });
 
 export const setCurrentFriendsPageActionCreator = (page = 1) => ({
-    type: SET_FRIENDS_PAGE,
+    type: UsersActionTypes.SET_FRIENDS_PAGE,
     value: page
 });
 
 export const setTotalUsersCountActionCreator = (count) => ({
-    type: SET_TOTAL_USERS_COUNT,
+    type: UsersActionTypes.SET_TOTAL_USERS_COUNT,
     value: count
 });
 
 export const setTotalFriendsCountActionCreator = (count) => ({
-    type: SET_TOTAL_FRIENDS_COUNT,
+    type: UsersActionTypes.SET_TOTAL_FRIENDS_COUNT,
     value: count
 });
 
 export const toggleIsFetchingUsersActionCreator = (value = true) => ({
-    type: TOGGLE_IS_FETCHING_USERS,
+    type: UsersActionTypes.TOGGLE_IS_FETCHING_USERS,
     value: value
 })
 
 export const toggleIsFetchingFriendsActionCreator = (value = true) => ({
-    type: TOGGLE_IS_FETCHING_FRIENDS,
+    type: UsersActionTypes.TOGGLE_IS_FETCHING_FRIENDS,
     value: value
 })
 
 export const toggleIsFollowingProgressActionCreator = (value = true, id) => ({
-    type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    type: UsersActionTypes.TOGGLE_IS_FOLLOWING_PROGRESS,
     value: value,
     id: id
 })
 
 export const followActionCreator = (id) => ({
-    type: FOLLOW,
+    type: UsersActionTypes.FOLLOW,
     id: id
 })
 
 export const unfollowActionCreator = (id) => ({
-    type: UNFOLLOW,
+    type: UsersActionTypes.UNFOLLOW,
     id: id
 })
 

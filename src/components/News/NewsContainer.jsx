@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {useEffect} from 'react';
 import News from './News';
-import {getPostsThunkCreator} from './../../redux/news-reducer';
+import {getPostsThunkCreator} from '../../redux/reducers/news-reducer';
 
 const NewsContainer = (props) => {
     useEffect(() => {

@@ -1,11 +1,8 @@
-import {authAPI} from './../api/api';
-import {securityAPI} from './../api/api';
+import {authAPI} from '../../api/api';
+import {securityAPI} from '../../api/api';
+import {AuthAction, AuthActionTypes, AuthState} from "../types/auth";
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const SET_CORRECT_LOGIN = 'SET_CORRECT_LOGIN';
-const SET_CAPTCHA_URL = 'SET_CAPTCHA_URL';
-
-let initialState = {
+const initialState: AuthState = {
     userId: null,
     email: null,
     login: null,
@@ -14,19 +11,19 @@ let initialState = {
     correctLogin: true
 }
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action: AuthAction): AuthState => {
     switch (action.type) {
-        case SET_USER_DATA:
+        case AuthActionTypes.SET_USER_DATA:
             return {
                 ...state,
                 ...action.value
             }
-        case SET_CORRECT_LOGIN:
+        case AuthActionTypes.SET_CORRECT_LOGIN:
             return {
                 ...state,
                 correctLogin: action.value
             }
-        case SET_CAPTCHA_URL:
+        case AuthActionTypes.SET_CAPTCHA_URL:
             return {
                 ...state,
                 captchaUrl: action.value
@@ -37,7 +34,7 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setUserDataActionCreator = (userId, email, login, isAuth) => ({
-    type: SET_USER_DATA,
+    type: AuthActionTypes.SET_USER_DATA,
     value: {
         userId: userId,
         email: email,
@@ -47,12 +44,12 @@ export const setUserDataActionCreator = (userId, email, login, isAuth) => ({
 })
 
 export const setCorrectLoginActionCreator = (value) => ({
-    type: SET_CORRECT_LOGIN,
+    type: AuthActionTypes.SET_CORRECT_LOGIN,
     value: value
 })
 
 export const setCaptchaUrlActionCreator = (value) => ({
-    type: SET_CAPTCHA_URL,
+    type: AuthActionTypes.SET_CAPTCHA_URL,
     value: value
 })
 

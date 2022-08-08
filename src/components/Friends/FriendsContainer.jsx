@@ -1,10 +1,10 @@
 import React from 'react';
 import Friends from './Friends';
-import {toggleIsFollowingProgressActionCreator} from '../../redux/users-reducer';
-import {getUsersThunkCreator} from '../../redux/users-reducer';
-import {getFriendsThunkCreator} from '../../redux/users-reducer';
-import {getFollowUserThunkCreator} from '../../redux/users-reducer';
-import {getUnfollowUserThunkCreator} from '../../redux/users-reducer';
+import {toggleIsFollowingProgressActionCreator} from '../../redux/reducers/users-reducer';
+import {getUsersThunkCreator} from '../../redux/reducers/users-reducer';
+import {getFriendsThunkCreator} from '../../redux/reducers/users-reducer';
+import {getFollowUserThunkCreator} from '../../redux/reducers/users-reducer';
+import {getUnfollowUserThunkCreator} from '../../redux/reducers/users-reducer';
 import {connect} from 'react-redux';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
 import { compose } from 'redux';

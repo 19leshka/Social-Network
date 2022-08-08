@@ -1,7 +1,7 @@
 import s from './Login.module.css';
-import {loginThunkCreator} from './../../redux/auth-reducer';
-import {logoutThunkCreator} from './../../redux/auth-reducer';
-import {getAuthThunkCreator} from './../../redux/auth-reducer';
+import {loginThunkCreator} from '../../redux/reducers/auth-reducer';
+import {logoutThunkCreator} from '../../redux/reducers/auth-reducer';
+import {getAuthThunkCreator} from '../../redux/reducers/auth-reducer';
 import {connect} from 'react-redux';
 import { useFormik } from 'formik';
 import {useNavigate} from 'react-router-dom';

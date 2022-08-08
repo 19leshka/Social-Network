@@ -1,24 +1,17 @@
-import maxVirko from './../assets/friends/MaxVyrkoProfileImg.jpg';
-import nikPutsik from './../assets/friends/NikitaPutsikProfileImg.jpg';
-import ivanLuzinov from './../assets/friends/IvanLuzinovProfileImg.jpg';
-import umarBhat from './../assets/friends/UmarBhatProfileImg.jpg';
-import maxMalinets from './../assets/friends/MaxMalinetsProfileImg.jpg';
+import {PeoplesActions, PeoplesActionTypes, PeoplesState} from "../types/peoples";
 
-const SEND_MESSAGE = "SEND-MESSAGE";
-const CHANGE_MESSAGE_TEXT = "CHANGE-MESSAGE-TEXT";
-
-let peoples = [
+let peoples: PeoplesState = [
     {
         id: 1,
         name: "Максим Вырко",
-        img: maxVirko,
+        img: 'https://sun1.velcom-by-minsk.userapi.com/s/v1/ig2/cpkslMxOF8srX9ZqQFccFroHoAISOhUbOZ3dYFFR4lvtDk-kjYIbpCdiBK8mGPdX1kykO53p7JxBxfPKcECzRUr_.jpg?size=50x50&quality=95&crop=0,0,736,736&ava=1',
         messages: [],
         newMessageText: ""
     }, 
     {
         id: 2,
         name: "Никита Пуцик",
-        img: nikPutsik,
+        img: 'https://sun1.velcom-by-minsk.userapi.com/s/v1/if2/RPeHanYwhOP5mLa0Axtih84mbmpMQ0AbdL2VMSmAGkhnSivHO1yn8WJPhORaJT4BtIGZ_8WErcl9bYh_IJOp6qth.jpg?size=50x50&quality=96&crop=407,442,808,808&ava=1',
         messages: [
             {   
                 author: 0,
@@ -72,34 +65,27 @@ let peoples = [
             }
         ],
         newMessageText: ""
-    }, 
+    },
     {
         id: 3,
-        name: "Иван Лузинов",
-        img: ivanLuzinov,
+        name: "Умар Бхат",
+        img: 'https://sun1.velcom-by-minsk.userapi.com/s/v1/ig2/IgJ9CD-Pf7rv7mA2pxh0_F-3NzkKxmMJqF1SNMDLL7JYsGLbBSmb2REI12m1CXrAH5oUh4RKKe3VC1ECqn5-dEvC.jpg?size=50x50&quality=96&crop=336,672,622,622&ava=1',
         messages: [],
         newMessageText: ""
     }, 
     {
         id: 4,
-        name: "Умар Бхат",
-        img: umarBhat,
-        messages: [],
-        newMessageText: ""
-    }, 
-    {
-        id: 5,
         name: "Максим Малинец",
-        img: maxMalinets,
+        img: 'https://sun1.velcom-by-minsk.userapi.com/s/v1/ig2/Yd0J4WCbJtG0XqA5YynILMC2Lvc3IlJymnfI5PHjNexvk_C47VejzNr5LxHn1KM-bOOWgud-5SptpaJB8--BeEbQ.jpg?size=50x50&quality=96&crop=35,73,274,274&ava=1',
         messages: [],
         newMessageText: ""
     }
 ]
 
-const dialogsReducer = (dialog = peoples, action) => {
+const dialogsReducer = (dialog = peoples, action: PeoplesActions): PeoplesState => {
     let dialogCopy = JSON.parse(JSON.stringify(dialog));
     switch(action.type) {
-        case SEND_MESSAGE:
+        case PeoplesActionTypes.SEND_MESSAGE:
             if(dialogCopy[1].newMessageText === "") return dialog;
 
             let newMessage = {
@@ -110,8 +96,8 @@ const dialogsReducer = (dialog = peoples, action) => {
             dialogCopy[1].messages.push(newMessage);
             dialogCopy[1].newMessageText = "";   
             return dialogCopy;
-        case CHANGE_MESSAGE_TEXT:
-            dialogCopy[1].newMessageText = action.newText;
+        case PeoplesActionTypes.CHANGE_MESSAGE_TEXT:
+            dialogCopy[1].newMessageText = action.payload;
             return dialogCopy;
         default:
             return dialogCopy;
@@ -120,12 +106,12 @@ const dialogsReducer = (dialog = peoples, action) => {
 }
 
 export const sendMessageActionCreator = () => ({
-    type: SEND_MESSAGE
+    type: PeoplesActionTypes.SEND_MESSAGE
 })
 
 export const updateNewMessageTextActionCreator = (text) => ({
-    type: CHANGE_MESSAGE_TEXT, 
-    newText: text
+    type: PeoplesActionTypes.CHANGE_MESSAGE_TEXT,
+    payload: text
 })
 
 export default dialogsReducer;

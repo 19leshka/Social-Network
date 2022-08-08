@@ -1,8 +1,8 @@
 import s from './logout.module.css';
 import quitSvg from './../../assets/quit.svg';
 import {connect} from 'react-redux';
-import {logoutThunkCreator} from './../../redux/auth-reducer';
-import {getAuthThunkCreator} from './../../redux/auth-reducer';
+import {logoutThunkCreator} from '../../redux/reducers/auth-reducer';
+import {getAuthThunkCreator} from '../../redux/reducers/auth-reducer';
 import {useNavigate} from 'react-router-dom';
 
 const Logout = (props) => {

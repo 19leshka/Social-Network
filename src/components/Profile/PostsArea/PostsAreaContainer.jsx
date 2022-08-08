@@ -1,6 +1,6 @@
-import {addPostActionCreator} from '../../../redux/profile-reducer';
-import {updateNewPostTextActionCreator} from '../../../redux/profile-reducer';
-import {deletePostActionCreater} from '../../../redux/profile-reducer';
+import {addPostActionCreator} from '../../../redux/reducers/profile-reducer';
+import {updateNewPostTextActionCreator} from '../../../redux/reducers/profile-reducer';
+import {deletePostActionCreater} from '../../../redux/reducers/profile-reducer';
 import PostArea from './PostsArea';
 import {connect} from 'react-redux';
 

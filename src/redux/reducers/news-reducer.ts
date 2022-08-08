@@ -1,17 +1,18 @@
-import { newsAPI } from "../api/api";
-const SET_POSTS = "SET_POSTS";
-const initialNews = {
+import { newsAPI } from "../../api/api";
+import {NewsAction, NewsActionTypes, NewsState} from "../types/news";
+
+const initialNews: NewsState = {
     posts: [
 
     ]
 }
 
-const newsReducer = (news = initialNews, action) => {
+const newsReducer = (news = initialNews, action: NewsAction): NewsState => {
     let newsCopy = JSON.parse(JSON.stringify(news));
     switch(action.type) {
-        case SET_POSTS:
+        case NewsActionTypes.SET_POSTS:
             let posts = [];
-            action.value.forEach(post => {
+            action.payload.forEach(post => {
                 posts.push({
                     avatarImg: null,
                     userId: post.userId,
@@ -27,8 +28,8 @@ const newsReducer = (news = initialNews, action) => {
 }
 
 export const setPostsActionCreator = (posts) => ({
-    type: SET_POSTS,
-    value: posts
+    type: NewsActionTypes.SET_POSTS,
+    payload: posts
 })
 
 export const getPostsThunkCreator = () => async (dispatch) => {

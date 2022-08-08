@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="92609230-5693-4b3f-8a69-ea65568c1b8a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/hooks/useTypedSelector.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/redux-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/types/app.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/types/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/types/news.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/types/peoples.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/types/profile.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/types/users.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Friends/FriendsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Friends/FriendsContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Logout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Logout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/MessagesContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/MessagesContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/News/NewsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/News/NewsContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/PostsArea/PostsAreaContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/PostsArea/PostsAreaContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/app-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/auth-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/auth-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/news-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/news-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/peoples-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/peoples-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/profile-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/profile-reducer.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/redux-store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/users-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/users-reducer.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2Cq4AC2h1RecSI2CBT0bvJaYPFW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/React/projects/Social Network/Social&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.webpack&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Projects\\React\\projects\\Social Network\\Social\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\React\projects\Social Network\Social\src\redux\reducers" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="92609230-5693-4b3f-8a69-ea65568c1b8a" name="Changes" comment="" />
+      <created>1659516640282</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659516640282</updated>
+      <workItem from="1659516644760" duration="1473000" />
+      <workItem from="1659518136081" duration="1050000" />
+      <workItem from="1659519196150" duration="1029000" />
+      <workItem from="1659520263496" duration="307000" />
+      <workItem from="1659520666684" duration="987000" />
+      <workItem from="1659524693161" duration="1399000" />
+      <workItem from="1659912568509" duration="931000" />
+      <workItem from="1659949335372" duration="4577000" />
+      <workItem from="1659997003067" duration="734000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../../../../TypeScript/redux-ts/src/store/reducers/index.ts</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

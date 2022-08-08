@@ -1,6 +1,6 @@
 import Messages from './Messages';
-import {sendMessageActionCreator} from '../../redux/peoples-reducer';
-import {updateNewMessageTextActionCreator} from '../../redux/peoples-reducer';
+import {sendMessageActionCreator} from '../../redux/reducers/peoples-reducer';
+import {updateNewMessageTextActionCreator} from '../../redux/reducers/peoples-reducer';
 import {connect} from 'react-redux';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
 

@@ -1,17 +1,17 @@
 import React from 'react';
 import Profile from './Profile';
 import {connect} from 'react-redux';
-import {setUserProfileActionCreator} from '../../redux/profile-reducer';
-import {deletePostActionCreater} from '../../redux/profile-reducer';
-import {setMyProfileStatusActionCreator} from '../../redux/profile-reducer';
-import {setCurrentPageIdActionCreator} from '../../redux/profile-reducer';
+import {setUserProfileActionCreator} from '../../redux/reducers/profile-reducer';
+import {deletePostActionCreater} from '../../redux/reducers/profile-reducer';
+import {setMyProfileStatusActionCreator} from '../../redux/reducers/profile-reducer';
+import {setCurrentPageIdActionCreator} from '../../redux/reducers/profile-reducer';
 import {useLocation} from 'react-router';
-import {getUserProfileThunkCreator} from './../../redux/profile-reducer';
-import {getProfileStatusThunkCreator} from './../../redux/profile-reducer';
-import {savePhotoThunkCreator} from './../../redux/profile-reducer';
+import {getUserProfileThunkCreator} from '../../redux/reducers/profile-reducer';
+import {getProfileStatusThunkCreator} from '../../redux/reducers/profile-reducer';
+import {savePhotoThunkCreator} from '../../redux/reducers/profile-reducer';
 import {withAuthRedirect} from './../hoc/withAuthRedirect';
-import {saveFullInfoThunkCreator} from './../../redux/profile-reducer';
-import {setIsPostAreaActionCreator} from './../../redux/profile-reducer';
+import {saveFullInfoThunkCreator} from '../../redux/reducers/profile-reducer';
+import {setIsPostAreaActionCreator} from '../../redux/reducers/profile-reducer';
 import { compose } from 'redux';
 /* selectors */
 import {getProfile, getIsPostArea, getMyStatus, getLocation} from './../../redux/selectors/profile-selector';

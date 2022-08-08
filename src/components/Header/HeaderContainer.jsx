@@ -1,7 +1,7 @@
 import React  from 'react';
 import Header from './Header';
 import {connect} from 'react-redux';
-import {setUserDataActionCreator} from './../../redux/auth-reducer';
+import {setUserDataActionCreator} from '../../redux/reducers/auth-reducer';
 
 class HeaderContainer extends React.Component {
     render() {
